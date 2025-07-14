@@ -1,0 +1,705 @@
+Quarter,Comparison,Group,Metric,Type,% Change,Abs Change,Metric Type
+FY2023Q2,vs Prev Q (FY2023Q1),Overall Inquarter,Total ARR,Drop/Decrease,-32.34%,-842012.5799999998,ARR
+FY2023Q2,vs Prev Q (FY2023Q1),Overall Inquarter,Won ARR,Drop/Decrease,-32.45%,-845012.5799999998,ARR
+FY2023Q2,vs Prev Q (FY2023Q1),Overall Inquarter,# of Won Opps,Drop/Decrease,-27.34%,-181.0,Count
+FY2023Q2,vs Prev Q (FY2023Q1),Overall Inquarter,Win Rate (Count),Drop/Decrease,-13.24%,-5.911386481030853,Percentage
+FY2023Q2,vs Prev Q (FY2023Q1),Overall Inquarter,Avg Sales Cycle,Increase,20.22%,2.700011305751488,Days
+FY2023Q3,vs Prev Q (FY2023Q2),Overall Inquarter,# of Opps,Increase,28.72%,357.0,Count
+FY2023Q3,vs Prev Q (FY2023Q2),Overall Inquarter,Avg Sales Price,Drop/Decrease,-25.24%,-922.9307682248009,Currency
+FY2023Q4,vs Prev Q (FY2023Q3),Overall Inquarter,Won ARR,Drop/Decrease,-24.33%,-371230.07999999984,ARR
+FY2023Q4,vs Prev Q (FY2023Q3),Overall Inquarter,# of Opps,Drop/Decrease,-23.69%,-379.0,Count
+FY2023Q4,vs Prev Q (FY2023Q3),Overall Inquarter,# of Won Opps,Drop/Decrease,-21.86%,-122.0,Count
+FY2023Q4,vs Prev Q (FY2023Q3),Overall Inquarter,Avg Sales Cycle,Increase,17.69%,2.8854197494327707,Days
+FY2024Q1,vs Prev Q (FY2023Q4),Overall Inquarter,Total ARR,Increase,330.29%,4144715.5399999996,ARR
+FY2024Q1,vs Prev Q (FY2023Q4),Overall Inquarter,Won ARR,Increase,46.22%,533549.7,ARR
+FY2024Q1,vs Prev Q (FY2023Q4),Overall Inquarter,# of Opps,Drop/Decrease,-22.69%,-277.0,Count
+FY2024Q1,vs Prev Q (FY2023Q4),Overall Inquarter,# of Won Opps,Drop/Decrease,-25.00%,-109.0,Count
+FY2024Q1,vs Prev Q (FY2023Q4),Overall Inquarter,Avg Sales Cycle,Drop/Decrease,-24.03%,-4.613149847094801,Days
+FY2024Q1,vs Prev Q (FY2023Q4),Overall Inquarter,Avg Sales Price,Increase,94.96%,2514.134747706422,Currency
+FY2024Q1,vs Prev Year (FY2023Q1),Overall Inquarter,Total ARR,Increase,107.36%,2795652.8,ARR
+FY2024Q1,vs Prev Year (FY2023Q1),Overall Inquarter,Won ARR,Drop/Decrease,-35.18%,-916111.8999999999,ARR
+FY2024Q1,vs Prev Year (FY2023Q1),Overall Inquarter,# of Opps,Drop/Decrease,-36.39%,-540.0,Count
+FY2024Q1,vs Prev Year (FY2023Q1),Overall Inquarter,# of Won Opps,Drop/Decrease,-50.60%,-335.0,Count
+FY2024Q1,vs Prev Year (FY2023Q1),Overall Inquarter,Win Rate (Count),Drop/Decrease,-22.15%,-9.888979099292506,Percentage
+FY2024Q1,vs Prev Year (FY2023Q1),Overall Inquarter,Avg Sales Price,Increase,31.22%,1228.1268140746693,Currency
+FY2024Q1,vs Avg of FY2023Q1-FY2023Q4,Overall Inquarter,Total ARR,Increase,201.14%,3606529.51,ARR
+FY2024Q1,vs Avg of FY2023Q1-FY2023Q4,Overall Inquarter,# of Opps,Drop/Decrease,-31.94%,-443.0,Count
+FY2024Q1,vs Avg of FY2023Q1-FY2023Q4,Overall Inquarter,# of Won Opps,Drop/Decrease,-38.79%,-207.25,Count
+FY2024Q1,vs Avg of FY2023Q1-FY2023Q4,Overall Inquarter,Avg Sales Price,Increase,59.17%,1918.6735218575545,Currency
+FY2024Q2,vs Prev Q (FY2024Q1),Overall Inquarter,Total ARR,Drop/Decrease,-20.69%,-1116993.9299999997,ARR
+FY2024Q2,vs Prev Q (FY2024Q1),Overall Inquarter,# of Opps,Drop/Decrease,-31.36%,-296.0,Count
+FY2024Q2,vs Prev Q (FY2024Q1),Overall Inquarter,Win Rate (Count),Increase,23.58%,8.195470759294494,Percentage
+FY2024Q2,vs Prev Q (FY2024Q1),Overall Inquarter,Avg Sales Cycle,Increase,31.52%,4.596407555835237,Days
+FY2024Q2,vs Prev Q (FY2024Q1),Overall Inquarter,# of Pipegen Opps,Drop/Decrease,-22.45%,-420.0,Count
+FY2024Q2,vs Prev Year (FY2023Q2),Overall Inquarter,Total ARR,Increase,143.06%,2520671.45,ARR
+FY2024Q2,vs Prev Year (FY2023Q2),Overall Inquarter,# of Opps,Drop/Decrease,-47.87%,-595.0,Count
+FY2024Q2,vs Prev Year (FY2023Q2),Overall Inquarter,# of Won Opps,Drop/Decrease,-42.41%,-204.0,Count
+FY2024Q2,vs Prev Year (FY2023Q2),Overall Inquarter,Avg Sales Cycle,Increase,19.49%,3.1285303631874015,Days
+FY2024Q2,vs Prev Year (FY2023Q2),Overall Inquarter,Avg Sales Price,Increase,44.27%,1618.8602676433725,Currency
+FY2024Q2,vs Avg of FY2023Q2-FY2024Q1,Overall Inquarter,Total ARR,Increase,71.86%,1790622.38,ARR
+FY2024Q2,vs Avg of FY2023Q2-FY2024Q1,Overall Inquarter,# of Opps,Drop/Decrease,-48.24%,-604.0,Count
+FY2024Q2,vs Avg of FY2023Q2-FY2024Q1,Overall Inquarter,# of Won Opps,Drop/Decrease,-38.51%,-173.5,Count
+FY2024Q2,vs Avg of FY2023Q2-FY2024Q1,Overall Inquarter,Win Rate (Count),Increase,19.13%,6.897528133596808,Percentage
+FY2024Q2,vs Avg of FY2023Q2-FY2024Q1,Overall Inquarter,Avg Sales Cycle,Increase,15.99%,2.644218271484071,Days
+FY2024Q2,vs Avg of FY2023Q2-FY2024Q1,Overall Inquarter,Avg Sales Price,Increase,48.61%,1725.7512072700965,Currency
+FY2024Q2,vs Avg of FY2023Q2-FY2024Q1,Overall Inquarter,Pipegen ARR,Increase,225.22%,15672645.985000001,ARR
+FY2024Q2,vs Avg of FY2023Q2-FY2024Q1,Overall Inquarter,# of Pipegen Opps,Increase,210.21%,983.25,Count
+FY2024Q3,vs Prev Q (FY2024Q2),Overall Inquarter,Pipegen ARR,Drop/Decrease,-36.61%,-8285434.450000001,ARR
+FY2024Q3,vs Prev Year (FY2023Q3),Overall Inquarter,Total ARR,Increase,203.23%,3153083.16,ARR
+FY2024Q3,vs Prev Year (FY2023Q3),Overall Inquarter,# of Opps,Drop/Decrease,-56.25%,-900.0,Count
+FY2024Q3,vs Prev Year (FY2023Q3),Overall Inquarter,# of Won Opps,Drop/Decrease,-46.06%,-257.0,Count
+FY2024Q3,vs Prev Year (FY2023Q3),Overall Inquarter,Win Rate (Count),Increase,23.90%,8.365484399350592,Percentage
+FY2024Q3,vs Prev Year (FY2023Q3),Overall Inquarter,Avg Sales Price,Increase,87.75%,2399.016989068696,Currency
+FY2024Q3,vs Avg of FY2023Q3-FY2024Q2,Overall Inquarter,Total ARR,Increase,50.68%,1582447.2875000006,ARR
+FY2024Q3,vs Avg of FY2023Q3-FY2024Q2,Overall Inquarter,# of Opps,Drop/Decrease,-36.55%,-403.25,Count
+FY2024Q3,vs Avg of FY2023Q3-FY2024Q2,Overall Inquarter,# of Won Opps,Drop/Decrease,-24.66%,-98.5,Count
+FY2024Q3,vs Avg of FY2023Q3-FY2024Q2,Overall Inquarter,Win Rate (Count),Increase,16.90%,6.269080089302115,Percentage
+FY2024Q3,vs Avg of FY2023Q3-FY2024Q2,Overall Inquarter,Avg Sales Price,Increase,29.79%,1178.262093559776,Currency
+FY2024Q3,vs Avg of FY2023Q3-FY2024Q2,Overall Inquarter,# of Pipegen Opps,Increase,52.80%,438.5,Count
+FY2024Q4,vs Prev Q (FY2024Q3),Overall Inquarter,# of Opps,Drop/Decrease,-24.86%,-174.0,Count
+FY2024Q4,vs Prev Year (FY2023Q4),Overall Inquarter,Total ARR,Increase,217.00%,2723053.11,ARR
+FY2024Q4,vs Prev Year (FY2023Q4),Overall Inquarter,# of Opps,Drop/Decrease,-56.92%,-695.0,Count
+FY2024Q4,vs Prev Year (FY2023Q4),Overall Inquarter,# of Won Opps,Drop/Decrease,-43.81%,-191.0,Count
+FY2024Q4,vs Prev Year (FY2023Q4),Overall Inquarter,Win Rate (Count),Increase,31.69%,11.316516306919382,Percentage
+FY2024Q4,vs Prev Year (FY2023Q4),Overall Inquarter,Avg Sales Price,Increase,112.04%,2966.1836636397684,Currency
+FY2024Q4,vs Avg of FY2023Q4-FY2024Q3,Overall Inquarter,# of Opps,Drop/Decrease,-40.11%,-352.25,Count
+FY2024Q4,vs Avg of FY2023Q4-FY2024Q3,Overall Inquarter,# of Won Opps,Drop/Decrease,-26.92%,-90.25,Count
+FY2024Q4,vs Avg of FY2023Q4-FY2024Q3,Overall Inquarter,Win Rate (Count),Increase,19.98%,7.830903079747507,Percentage
+FY2024Q4,vs Avg of FY2023Q4-FY2024Q3,Overall Inquarter,Avg Sales Price,Increase,23.26%,1059.2214200942162,Currency
+FY2024Q4,vs Avg of FY2023Q4-FY2024Q3,Overall Inquarter,# of Pipegen Opps,Increase,29.99%,344.25,Count
+FY2025Q1,vs Prev Q (FY2024Q4),Overall Inquarter,Pipegen ARR,Drop/Decrease,-100.00%,-15464033.52,ARR
+FY2025Q1,vs Prev Q (FY2024Q4),Overall Inquarter,# of Pipegen Opps,Drop/Decrease,-100.00%,-1492.0,Count
+FY2025Q1,vs Prev Year (FY2024Q1),Overall Inquarter,# of Opps,Drop/Decrease,-41.74%,-394.0,Count
+FY2025Q1,vs Prev Year (FY2024Q1),Overall Inquarter,# of Won Opps,Drop/Decrease,-22.32%,-73.0,Count
+FY2025Q1,vs Prev Year (FY2024Q1),Overall Inquarter,Win Rate (Count),Increase,33.14%,11.515672394402728,Percentage
+FY2025Q1,vs Prev Year (FY2024Q1),Overall Inquarter,Avg Sales Cycle,Increase,48.64%,7.09306749500349,Days
+FY2025Q1,vs Prev Year (FY2024Q1),Overall Inquarter,Pipegen ARR,Drop/Decrease,-100.00%,-27834993.46,ARR
+FY2025Q1,vs Prev Year (FY2024Q1),Overall Inquarter,# of Pipegen Opps,Drop/Decrease,-100.00%,-1871.0,Count
+FY2025Q1,vs Avg of FY2024Q1-FY2024Q4,Overall Inquarter,# of Opps,Drop/Decrease,-21.93%,-154.5,Count
+FY2025Q1,vs Avg of FY2024Q1-FY2024Q4,Overall Inquarter,Avg Sales Cycle,Increase,21.07%,3.7724881949394238,Days
+FY2025Q1,vs Avg of FY2024Q1-FY2024Q4,Overall Inquarter,Pipegen ARR,Drop/Decrease,-100.00%,-20069095.3075,ARR
+FY2025Q1,vs Avg of FY2024Q1-FY2024Q4,Overall Inquarter,# of Pipegen Opps,Drop/Decrease,-100.00%,-1520.75,Count
+FY2025Q2,vs Prev Year (FY2024Q2),Overall Inquarter,# of Opps,Drop/Decrease,-22.22%,-144.0,Count
+FY2025Q2,vs Prev Year (FY2024Q2),Overall Inquarter,# of Won Opps,Drop/Decrease,-21.30%,-59.0,Count
+FY2025Q2,vs Prev Year (FY2024Q2),Overall Inquarter,Avg Sales Price,Increase,29.57%,1560.064601894478,Currency
+FY2025Q2,vs Prev Year (FY2024Q2),Overall Inquarter,Pipegen ARR,Drop/Decrease,-100.00%,-22631394.35,ARR
+FY2025Q2,vs Prev Year (FY2024Q2),Overall Inquarter,# of Pipegen Opps,Drop/Decrease,-100.00%,-1451.0,Count
+FY2025Q2,vs Avg of FY2024Q2-FY2025Q1,Overall Inquarter,Avg Sales Price,Increase,24.85%,1360.7559177857102,Currency
+FY2025Q2,vs Avg of FY2024Q2-FY2025Q1,Overall Inquarter,Pipegen ARR,Drop/Decrease,-100.00%,-13110346.942499999,ARR
+FY2025Q2,vs Avg of FY2024Q2-FY2025Q1,Overall Inquarter,# of Pipegen Opps,Drop/Decrease,-100.00%,-1053.0,Count
+FY2025Q3,vs Prev Q (FY2025Q2),Overall Inquarter,Total ARR,Drop/Decrease,-35.99%,-1521824.9099999997,ARR
+FY2025Q3,vs Prev Q (FY2025Q2),Overall Inquarter,Won ARR,Drop/Decrease,-27.90%,-415692.62999999966,ARR
+FY2025Q3,vs Prev Q (FY2025Q2),Overall Inquarter,Avg Sales Price,Drop/Decrease,-21.01%,-1436.2470326402645,Currency
+FY2025Q3,vs Prev Year (FY2024Q3),Overall Inquarter,Total ARR,Drop/Decrease,-42.46%,-1997526.5100000002,ARR
+FY2025Q3,vs Prev Year (FY2024Q3),Overall Inquarter,Won ARR,Drop/Decrease,-30.45%,-470506.4099999999,ARR
+FY2025Q3,vs Prev Year (FY2024Q3),Overall Inquarter,# of Opps,Drop/Decrease,-36.14%,-253.0,Count
+FY2025Q3,vs Prev Year (FY2024Q3),Overall Inquarter,# of Won Opps,Drop/Decrease,-33.89%,-102.0,Count
+FY2025Q3,vs Prev Year (FY2024Q3),Overall Inquarter,Pipegen ARR,Drop/Decrease,-100.00%,-14345959.9,ARR
+FY2025Q3,vs Prev Year (FY2024Q3),Overall Inquarter,# of Pipegen Opps,Drop/Decrease,-100.00%,-1269.0,Count
+FY2025Q3,vs Avg of FY2024Q3-FY2025Q2,Overall Inquarter,Total ARR,Drop/Decrease,-37.65%,-1634457.2324999995,ARR
+FY2025Q3,vs Avg of FY2024Q3-FY2025Q2,Overall Inquarter,Won ARR,Drop/Decrease,-27.20%,-401371.45499999984,ARR
+FY2025Q3,vs Avg of FY2024Q3-FY2025Q2,Overall Inquarter,# of Opps,Drop/Decrease,-21.58%,-123.0,Count
+FY2025Q3,vs Avg of FY2024Q3-FY2025Q2,Overall Inquarter,# of Won Opps,Drop/Decrease,-21.81%,-55.5,Count
+FY2025Q3,vs Avg of FY2024Q3-FY2025Q2,Overall Inquarter,Pipegen ARR,Drop/Decrease,-100.00%,-7452498.355,ARR
+FY2025Q3,vs Avg of FY2024Q3-FY2025Q2,Overall Inquarter,# of Pipegen Opps,Drop/Decrease,-100.00%,-690.25,Count
+FY2025Q4,vs Prev Year (FY2024Q4),Overall Inquarter,Total ARR,Drop/Decrease,-33.01%,-1313064.6600000001,ARR
+FY2025Q4,vs Prev Year (FY2024Q4),Overall Inquarter,Won ARR,Drop/Decrease,-25.34%,-348578.8000000003,ARR
+FY2025Q4,vs Prev Year (FY2024Q4),Overall Inquarter,Avg Sales Cycle,Increase,18.73%,3.688975489693366,Days
+FY2025Q4,vs Prev Year (FY2024Q4),Overall Inquarter,Pipegen ARR,Drop/Decrease,-100.00%,-15464033.52,ARR
+FY2025Q4,vs Prev Year (FY2024Q4),Overall Inquarter,# of Pipegen Opps,Drop/Decrease,-100.00%,-1492.0,Count
+FY2025Q4,vs Avg of FY2024Q4-FY2025Q3,Overall Inquarter,Total ARR,Drop/Decrease,-30.64%,-1177275.0250000004,ARR
+FY2025Q4,vs Avg of FY2024Q4-FY2025Q3,Overall Inquarter,Won ARR,Drop/Decrease,-24.41%,-331486.10250000004,ARR
+FY2025Q4,vs Avg of FY2024Q4-FY2025Q3,Overall Inquarter,Pipegen ARR,Drop/Decrease,-100.00%,-3866008.38,ARR
+FY2025Q4,vs Avg of FY2024Q4-FY2025Q3,Overall Inquarter,# of Pipegen Opps,Drop/Decrease,-100.00%,-373.0,Count
+FY2026Q1,vs Prev Q (FY2025Q4),Overall Inquarter,Total ARR,Increase,124.04%,3305594.7300000004,ARR
+FY2026Q1,vs Prev Q (FY2025Q4),Overall Inquarter,Won ARR,Increase,46.37%,476142.92000000016,ARR
+FY2026Q1,vs Prev Q (FY2025Q4),Overall Inquarter,# of Opps,Increase,60.36%,271.0,Count
+FY2026Q1,vs Prev Q (FY2025Q4),Overall Inquarter,Win Rate (Count),Drop/Decrease,-24.83%,-11.103281914555957,Percentage
+FY2026Q1,vs Prev Q (FY2025Q4),Overall Inquarter,Avg Sales Cycle,Drop/Decrease,-25.50%,-5.9625649254676745,Days
+FY2026Q1,vs Prev Q (FY2025Q4),Overall Inquarter,Avg Sales Price,Increase,22.39%,1155.118390904101,Currency
+FY2026Q1,vs Prev Year (FY2025Q1),Overall Inquarter,Total ARR,Increase,34.03%,1515783.04,ARR
+FY2026Q1,vs Prev Year (FY2025Q1),Overall Inquarter,# of Opps,Increase,30.91%,170.0,Count
+FY2026Q1,vs Prev Year (FY2025Q1),Overall Inquarter,Win Rate (Count),Drop/Decrease,-27.34%,-12.650118860177209,Percentage
+FY2026Q1,vs Prev Year (FY2025Q1),Overall Inquarter,Avg Sales Cycle,Drop/Decrease,-19.62%,-4.2527956064315475,Days
+FY2026Q1,vs Avg of FY2025Q1-FY2025Q4,Overall Inquarter,Total ARR,Increase,69.91%,2456585.8700000006,ARR
+FY2026Q1,vs Avg of FY2025Q1-FY2025Q4,Overall Inquarter,# of Opps,Increase,47.69%,232.5,Count
+FY2026Q1,vs Avg of FY2025Q1-FY2025Q4,Overall Inquarter,Win Rate (Count),Drop/Decrease,-25.11%,-11.268193432664795,Percentage
+FY2026Q1,vs Avg of FY2025Q1-FY2025Q4,Overall Inquarter,Avg Sales Cycle,Drop/Decrease,-19.93%,-4.335944365106087,Days
+FY2026Q2,vs Prev Q (FY2026Q1),Overall Inquarter,Total ARR,Drop/Decrease,-24.70%,-1474654.9000000004,ARR
+FY2026Q2,vs Prev Q (FY2026Q1),Overall Inquarter,Won ARR,Drop/Decrease,-51.46%,-773334.25,ARR
+FY2026Q2,vs Prev Q (FY2026Q1),Overall Inquarter,# of Opps,Drop/Decrease,-22.78%,-164.0,Count
+FY2026Q2,vs Prev Q (FY2026Q1),Overall Inquarter,# of Won Opps,Drop/Decrease,-37.39%,-89.0,Count
+FY2026Q2,vs Prev Q (FY2026Q1),Overall Inquarter,Win Rate (Count),Increase,24.16%,8.1208754688316,Percentage
+FY2026Q2,vs Prev Q (FY2026Q1),Overall Inquarter,Avg Sales Cycle,Drop/Decrease,-33.44%,-5.82705431165755,Days
+FY2026Q2,vs Prev Q (FY2026Q1),Overall Inquarter,Avg Sales Price,Drop/Decrease,-22.46%,-1418.2787284981105,Currency
+FY2026Q2,vs Prev Year (FY2025Q2),Overall Inquarter,Won ARR,Drop/Decrease,-51.04%,-760625.2099999997,ARR
+FY2026Q2,vs Prev Year (FY2025Q2),Overall Inquarter,# of Won Opps,Drop/Decrease,-31.65%,-69.0,Count
+FY2026Q2,vs Prev Year (FY2025Q2),Overall Inquarter,Avg Sales Cycle,Drop/Decrease,-46.20%,-9.957730435318021,Days
+FY2026Q2,vs Prev Year (FY2025Q2),Overall Inquarter,Avg Sales Price,Drop/Decrease,-28.37%,-1939.3131491287468,Currency
+FY2026Q2,vs Avg of FY2025Q2-FY2026Q1,Overall Inquarter,Won ARR,Drop/Decrease,-42.72%,-544020.8424999998,ARR
+FY2026Q2,vs Avg of FY2025Q2-FY2026Q1,Overall Inquarter,# of Won Opps,Drop/Decrease,-30.21%,-64.5,Count
+FY2026Q2,vs Avg of FY2025Q2-FY2026Q1,Overall Inquarter,Avg Sales Cycle,Drop/Decrease,-43.97%,-9.099799775155754,Days
+FY2023Q2,vs Prev Q (FY2023Q1),Overall Total,Total ARR,Drop/Decrease,-28.50%,-1289646.3700000006,ARR
+FY2023Q2,vs Prev Q (FY2023Q1),Overall Total,Won ARR,Drop/Decrease,-29.51%,-1335646.3699999996,ARR
+FY2023Q2,vs Prev Q (FY2023Q1),Overall Total,Win Rate (Count),Drop/Decrease,-15.21%,-5.291711154903336,Percentage
+FY2023Q2,vs Prev Q (FY2023Q1),Overall Total,Avg Sales Cycle,Increase,25.50%,9.95363454158825,Days
+FY2023Q4,vs Prev Q (FY2023Q3),Overall Total,Won ARR,Drop/Decrease,-20.55%,-594142.3099999996,ARR
+FY2024Q1,vs Prev Q (FY2023Q4),Overall Total,Total ARR,Increase,486.05%,11879047.14,ARR
+FY2024Q1,vs Prev Q (FY2023Q4),Overall Total,Won ARR,Increase,44.24%,1016087.5,ARR
+FY2024Q1,vs Prev Q (FY2023Q4),Overall Total,Avg Sales Price,Increase,69.58%,2363.83639416002,Currency
+FY2024Q1,vs Prev Year (FY2023Q1),Overall Total,Total ARR,Increase,216.48%,9797365.61,ARR
+FY2024Q1,vs Prev Year (FY2023Q1),Overall Total,Won ARR,Drop/Decrease,-26.80%,-1213088.0299999993,ARR
+FY2024Q1,vs Prev Year (FY2023Q1),Overall Total,# of Opps,Drop/Decrease,-26.12%,-754.0,Count
+FY2024Q1,vs Prev Year (FY2023Q1),Overall Total,# of Won Opps,Drop/Decrease,-42.73%,-429.0,Count
+FY2024Q1,vs Prev Year (FY2023Q1),Overall Total,Win Rate (Count),Drop/Decrease,-22.26%,-7.742538833790007,Percentage
+FY2024Q1,vs Prev Year (FY2023Q1),Overall Total,Avg Sales Cycle,Increase,22.20%,8.666261908886199,Days
+FY2024Q1,vs Prev Year (FY2023Q1),Overall Total,Avg Sales Price,Increase,27.81%,1253.388240325654,Currency
+FY2024Q1,vs Avg of FY2023Q1-FY2023Q4,Overall Total,Total ARR,Increase,335.81%,11036487.790000001,ARR
+FY2024Q1,vs Avg of FY2023Q1-FY2023Q4,Overall Total,# of Opps,Drop/Decrease,-23.34%,-649.25,Count
+FY2024Q1,vs Avg of FY2023Q1-FY2023Q4,Overall Total,# of Won Opps,Drop/Decrease,-30.37%,-250.75,Count
+FY2024Q1,vs Avg of FY2023Q1-FY2023Q4,Overall Total,Avg Sales Price,Increase,49.67%,1911.9024782534525,Currency
+FY2024Q2,vs Prev Q (FY2024Q1),Overall Total,Total ARR,Drop/Decrease,-26.26%,-3761836.17,ARR
+FY2024Q2,vs Prev Q (FY2024Q1),Overall Total,# of Opps,Drop/Decrease,-37.22%,-794.0,Count
+FY2024Q2,vs Prev Q (FY2024Q1),Overall Total,Win Rate (Count),Increase,43.51%,11.767717858969036,Percentage
+FY2024Q2,vs Prev Q (FY2024Q1),Overall Total,Avg Sales Cycle,Increase,46.77%,22.30860650912455,Days
+FY2024Q2,vs Prev Q (FY2024Q1),Overall Total,# of Pipegen Opps,Drop/Decrease,-22.45%,-420.0,Count
+FY2024Q2,vs Prev Year (FY2023Q2),Overall Total,Total ARR,Increase,226.36%,7325175.8100000005,ARR
+FY2024Q2,vs Prev Year (FY2023Q2),Overall Total,# of Opps,Drop/Decrease,-51.56%,-1425.0,Count
+FY2024Q2,vs Prev Year (FY2023Q2),Overall Total,# of Won Opps,Drop/Decrease,-36.56%,-298.0,Count
+FY2024Q2,vs Prev Year (FY2023Q2),Overall Total,Win Rate (Count),Increase,31.59%,9.316890180082364,Percentage
+FY2024Q2,vs Prev Year (FY2023Q2),Overall Total,Avg Sales Cycle,Increase,42.91%,21.0212338764225,Days
+FY2024Q2,vs Prev Year (FY2023Q2),Overall Total,Avg Sales Price,Increase,62.44%,2444.1767403021213,Currency
+FY2024Q2,vs Avg of FY2023Q2-FY2024Q1,Overall Total,Total ARR,Increase,84.12%,4825310.217500001,ARR
+FY2024Q2,vs Avg of FY2023Q2-FY2024Q1,Overall Total,# of Opps,Drop/Decrease,-48.38%,-1254.75,Count
+FY2024Q2,vs Avg of FY2023Q2-FY2024Q1,Overall Total,# of Won Opps,Drop/Decrease,-28.04%,-201.5,Count
+FY2024Q2,vs Avg of FY2023Q2-FY2024Q1,Overall Total,Win Rate (Count),Increase,40.05%,11.09893976060166,Percentage
+FY2024Q2,vs Avg of FY2023Q2-FY2024Q1,Overall Total,Avg Sales Cycle,Increase,45.14%,21.773788290643935,Days
+FY2024Q2,vs Avg of FY2023Q2-FY2024Q1,Overall Total,Avg Sales Price,Increase,52.75%,2195.8487359081428,Currency
+FY2024Q2,vs Avg of FY2023Q2-FY2024Q1,Overall Total,Pipegen ARR,Increase,225.22%,15672645.985000001,ARR
+FY2024Q2,vs Avg of FY2023Q2-FY2024Q1,Overall Total,# of Pipegen Opps,Increase,210.21%,983.25,Count
+FY2024Q3,vs Prev Q (FY2024Q2),Overall Total,Pipegen ARR,Drop/Decrease,-36.61%,-8285434.450000001,ARR
+FY2024Q3,vs Prev Year (FY2023Q3),Overall Total,Total ARR,Increase,315.95%,9290644.29,ARR
+FY2024Q3,vs Prev Year (FY2023Q3),Overall Total,Won ARR,Increase,21.26%,614613.6000000006,ARR
+FY2024Q3,vs Prev Year (FY2023Q3),Overall Total,# of Opps,Drop/Decrease,-49.63%,-1488.0,Count
+FY2024Q3,vs Prev Year (FY2023Q3),Overall Total,# of Won Opps,Drop/Decrease,-26.61%,-215.0,Count
+FY2024Q3,vs Prev Year (FY2023Q3),Overall Total,Win Rate (Count),Increase,46.44%,12.54533000825916,Percentage
+FY2024Q3,vs Prev Year (FY2023Q3),Overall Total,Avg Sales Cycle,Increase,32.01%,15.655827893075994,Days
+FY2024Q3,vs Prev Year (FY2023Q3),Overall Total,Avg Sales Price,Increase,65.23%,2333.5348008114474,Currency
+FY2024Q3,vs Avg of FY2023Q3-FY2024Q2,Overall Total,Total ARR,Increase,61.63%,4663970.295,ARR
+FY2024Q3,vs Avg of FY2023Q3-FY2024Q2,Overall Total,# of Opps,Drop/Decrease,-32.51%,-727.5,Count
+FY2024Q3,vs Avg of FY2023Q3-FY2024Q2,Overall Total,Win Rate (Count),Increase,31.67%,9.515609872747909,Percentage
+FY2024Q3,vs Avg of FY2023Q3-FY2024Q2,Overall Total,Avg Sales Cycle,Increase,20.72%,11.08241235486556,Days
+FY2024Q3,vs Avg of FY2023Q3-FY2024Q2,Overall Total,Avg Sales Price,Increase,23.83%,1137.5441779458379,Currency
+FY2024Q3,vs Avg of FY2023Q3-FY2024Q2,Overall Total,# of Pipegen Opps,Increase,52.80%,438.5,Count
+FY2024Q4,vs Prev Q (FY2024Q3),Overall Total,Avg Sales Price,Increase,22.79%,1347.3209402626608,Currency
+FY2024Q4,vs Prev Year (FY2023Q4),Overall Total,Total ARR,Increase,384.51%,9397446.45,ARR
+FY2024Q4,vs Prev Year (FY2023Q4),Overall Total,Won ARR,Increase,56.45%,1296393.79,ARR
+FY2024Q4,vs Prev Year (FY2023Q4),Overall Total,# of Opps,Drop/Decrease,-49.23%,-1221.0,Count
+FY2024Q4,vs Prev Year (FY2023Q4),Overall Total,# of Won Opps,Drop/Decrease,-26.78%,-181.0,Count
+FY2024Q4,vs Prev Year (FY2023Q4),Overall Total,Win Rate (Count),Increase,46.33%,12.649473688328044,Percentage
+FY2024Q4,vs Prev Year (FY2023Q4),Overall Total,Avg Sales Cycle,Increase,49.85%,23.596993604685913,Days
+FY2024Q4,vs Prev Year (FY2023Q4),Overall Total,Avg Sales Price,Increase,113.66%,3861.1902792720102,Currency
+FY2024Q4,vs Avg of FY2023Q4-FY2024Q3,Overall Total,# of Opps,Drop/Decrease,-32.51%,-606.5,Count
+FY2024Q4,vs Avg of FY2023Q4-FY2024Q3,Overall Total,Win Rate (Count),Increase,20.41%,6.771144749581403,Percentage
+FY2024Q4,vs Avg of FY2023Q4-FY2024Q3,Overall Total,Avg Sales Cycle,Increase,23.57%,13.528099035675282,Days
+FY2024Q4,vs Avg of FY2023Q4-FY2024Q3,Overall Total,Avg Sales Price,Increase,35.50%,1901.4814180056374,Currency
+FY2024Q4,vs Avg of FY2023Q4-FY2024Q3,Overall Total,# of Pipegen Opps,Increase,29.99%,344.25,Count
+FY2025Q1,vs Prev Q (FY2024Q4),Overall Total,Pipegen ARR,Drop/Decrease,-100.00%,-15464033.52,ARR
+FY2025Q1,vs Prev Q (FY2024Q4),Overall Total,# of Pipegen Opps,Drop/Decrease,-100.00%,-1492.0,Count
+FY2025Q1,vs Prev Year (FY2024Q1),Overall Total,Total ARR,Drop/Decrease,-22.83%,-3269441.120000001,ARR
+FY2025Q1,vs Prev Year (FY2024Q1),Overall Total,# of Opps,Drop/Decrease,-43.23%,-922.0,Count
+FY2025Q1,vs Prev Year (FY2024Q1),Overall Total,Win Rate (Count),Increase,57.58%,15.572753086022608,Percentage
+FY2025Q1,vs Prev Year (FY2024Q1),Overall Total,Avg Sales Cycle,Increase,33.25%,15.858599506508973,Days
+FY2025Q1,vs Prev Year (FY2024Q1),Overall Total,Pipegen ARR,Drop/Decrease,-100.00%,-27834993.46,ARR
+FY2025Q1,vs Prev Year (FY2024Q1),Overall Total,# of Pipegen Opps,Drop/Decrease,-100.00%,-1871.0,Count
+FY2025Q1,vs Avg of FY2024Q1-FY2024Q4,Overall Total,# of Opps,Drop/Decrease,-22.38%,-349.25,Count
+FY2025Q1,vs Avg of FY2024Q1-FY2024Q4,Overall Total,Win Rate (Count),Increase,17.27%,6.27605151848784,Percentage
+FY2025Q1,vs Avg of FY2024Q1-FY2024Q4,Overall Total,Pipegen ARR,Drop/Decrease,-100.00%,-20069095.3075,ARR
+FY2025Q1,vs Avg of FY2024Q1-FY2024Q4,Overall Total,# of Pipegen Opps,Drop/Decrease,-100.00%,-1520.75,Count
+FY2025Q2,vs Prev Year (FY2024Q2),Overall Total,Pipegen ARR,Drop/Decrease,-100.00%,-22631394.35,ARR
+FY2025Q2,vs Prev Year (FY2024Q2),Overall Total,# of Pipegen Opps,Drop/Decrease,-100.00%,-1451.0,Count
+FY2025Q2,vs Avg of FY2024Q2-FY2025Q1,Overall Total,Pipegen ARR,Drop/Decrease,-100.00%,-13110346.942499999,ARR
+FY2025Q2,vs Avg of FY2024Q2-FY2025Q1,Overall Total,# of Pipegen Opps,Drop/Decrease,-100.00%,-1053.0,Count
+FY2025Q3,vs Prev Year (FY2024Q3),Overall Total,# of Won Opps,Drop/Decrease,-23.10%,-137.0,Count
+FY2025Q3,vs Prev Year (FY2024Q3),Overall Total,Avg Sales Cycle,Increase,18.35%,11.8471901718884,Days
+FY2025Q3,vs Prev Year (FY2024Q3),Overall Total,Pipegen ARR,Drop/Decrease,-100.00%,-14345959.9,ARR
+FY2025Q3,vs Prev Year (FY2024Q3),Overall Total,# of Pipegen Opps,Drop/Decrease,-100.00%,-1269.0,Count
+FY2025Q3,vs Avg of FY2024Q3-FY2025Q2,Overall Total,Avg Sales Cycle,Increase,15.08%,10.011269869251379,Days
+FY2025Q3,vs Avg of FY2024Q3-FY2025Q2,Overall Total,Pipegen ARR,Drop/Decrease,-100.00%,-7452498.355,ARR
+FY2025Q3,vs Avg of FY2024Q3-FY2025Q2,Overall Total,# of Pipegen Opps,Drop/Decrease,-100.00%,-690.25,Count
+FY2025Q4,vs Prev Q (FY2025Q3),Overall Total,Avg Sales Price,Increase,23.64%,1514.1669083333327,Currency
+FY2025Q4,vs Prev Year (FY2024Q4),Overall Total,Pipegen ARR,Drop/Decrease,-100.00%,-15464033.52,ARR
+FY2025Q4,vs Prev Year (FY2024Q4),Overall Total,# of Pipegen Opps,Drop/Decrease,-100.00%,-1492.0,Count
+FY2025Q4,vs Avg of FY2024Q4-FY2025Q3,Overall Total,Pipegen ARR,Drop/Decrease,-100.00%,-3866008.38,ARR
+FY2025Q4,vs Avg of FY2024Q4-FY2025Q3,Overall Total,# of Pipegen Opps,Drop/Decrease,-100.00%,-373.0,Count
+FY2026Q1,vs Prev Q (FY2025Q4),Overall Total,Total ARR,Increase,30.49%,3371651.91,ARR
+FY2026Q1,vs Prev Q (FY2025Q4),Overall Total,# of Opps,Increase,26.45%,301.0,Count
+FY2026Q1,vs Prev Q (FY2025Q4),Overall Total,Win Rate (Count),Drop/Decrease,-17.43%,-6.223479490806223,Percentage
+FY2026Q1,vs Prev Q (FY2025Q4),Overall Total,Avg Sales Cycle,Drop/Decrease,-24.90%,-19.213369304556352,Days
+FY2026Q1,vs Prev Year (FY2025Q1),Overall Total,Total ARR,Increase,30.54%,3375684.530000001,ARR
+FY2026Q1,vs Prev Year (FY2025Q1),Overall Total,Win Rate (Count),Drop/Decrease,-30.80%,-13.128042817387897,Percentage
+FY2026Q1,vs Avg of FY2025Q1-FY2025Q4,Overall Total,Total ARR,Increase,28.19%,3172988.164999999,ARR
+FY2026Q1,vs Avg of FY2025Q1-FY2025Q4,Overall Total,# of Opps,Increase,21.26%,252.25,Count
+FY2026Q1,vs Avg of FY2025Q1-FY2025Q4,Overall Total,Win Rate (Count),Drop/Decrease,-25.02%,-9.840372749581984,Percentage
+FY2026Q1,vs Avg of FY2025Q1-FY2025Q4,Overall Total,Avg Sales Cycle,Drop/Decrease,-18.28%,-12.9686783445716,Days
+FY2026Q2,vs Prev Q (FY2026Q1),Overall Total,Won ARR,Drop/Decrease,-37.95%,-1191634.77,ARR
+FY2026Q2,vs Prev Q (FY2026Q1),Overall Total,# of Won Opps,Drop/Decrease,-26.38%,-110.0,Count
+FY2026Q2,vs Prev Year (FY2025Q2),Overall Total,Total ARR,Increase,24.63%,2725204.1500000004,ARR
+FY2026Q2,vs Prev Year (FY2025Q2),Overall Total,Won ARR,Drop/Decrease,-37.05%,-1146626.81,ARR
+FY2026Q2,vs Prev Year (FY2025Q2),Overall Total,# of Won Opps,Drop/Decrease,-36.17%,-174.0,Count
+FY2026Q2,vs Prev Year (FY2025Q2),Overall Total,Win Rate (Count),Drop/Decrease,-24.69%,-10.230614903048249,Percentage
+FY2026Q2,vs Avg of FY2025Q2-FY2026Q1,Overall Total,Won ARR,Drop/Decrease,-36.76%,-1132551.5900000003,ARR
+FY2026Q2,vs Avg of FY2025Q2-FY2026Q1,Overall Total,# of Won Opps,Drop/Decrease,-29.99%,-131.5,Count
+FY2026Q3,vs Prev Q (FY2026Q2),Overall Total,Total ARR,Increase,28.63%,3948459.710000001,ARR
+FY2026Q3,vs Prev Q (FY2026Q2),Overall Total,Won ARR,Drop/Decrease,-100.00%,-1948195.8199999998,ARR
+FY2026Q3,vs Prev Q (FY2026Q2),Overall Total,# of Opps,Drop/Decrease,-38.01%,-507.0,Count
+FY2026Q3,vs Prev Q (FY2026Q2),Overall Total,# of Won Opps,Drop/Decrease,-100.00%,-307.0,Count
+FY2026Q3,vs Prev Q (FY2026Q2),Overall Total,Win Rate (Count),Drop/Decrease,-100.00%,-31.199186991869922,Percentage
+FY2026Q3,vs Prev Q (FY2026Q2),Overall Total,Avg Sales Price,Drop/Decrease,-100.00%,-6345.914723127035,Currency
+FY2026Q3,vs Prev Year (FY2025Q3),Overall Total,Total ARR,Increase,49.74%,5893110.360000001,ARR
+FY2026Q3,vs Prev Year (FY2025Q3),Overall Total,Won ARR,Drop/Decrease,-100.00%,-2920674.49,ARR
+FY2026Q3,vs Prev Year (FY2025Q3),Overall Total,# of Opps,Drop/Decrease,-32.76%,-403.0,Count
+FY2026Q3,vs Prev Year (FY2025Q3),Overall Total,# of Won Opps,Drop/Decrease,-100.00%,-456.0,Count
+FY2026Q3,vs Prev Year (FY2025Q3),Overall Total,Win Rate (Count),Drop/Decrease,-100.00%,-37.56177924217463,Percentage
+FY2026Q3,vs Prev Year (FY2025Q3),Overall Total,Avg Sales Price,Drop/Decrease,-100.00%,-6404.987916666667,Currency
+FY2026Q3,vs Avg of FY2025Q3-FY2026Q2,Overall Total,Total ARR,Increase,38.80%,4958844.995000001,ARR
+FY2026Q3,vs Avg of FY2025Q3-FY2026Q2,Overall Total,Won ARR,Drop/Decrease,-100.00%,-2794090.7075,ARR
+FY2026Q3,vs Avg of FY2025Q3-FY2026Q2,Overall Total,# of Opps,Drop/Decrease,-35.65%,-458.25,Count
+FY2026Q3,vs Avg of FY2025Q3-FY2026Q2,Overall Total,# of Won Opps,Drop/Decrease,-100.00%,-395.0,Count
+FY2026Q3,vs Avg of FY2025Q3-FY2026Q2,Overall Total,Win Rate (Count),Drop/Decrease,-100.00%,-33.491514542952444,Percentage
+FY2026Q3,vs Avg of FY2025Q3-FY2026Q2,Overall Total,Avg Sales Price,Drop/Decrease,-100.00%,-7049.9068062463875,Currency
+FY2026Q4,vs Prev Q (FY2026Q3),Overall Total,Total ARR,Drop/Decrease,-74.49%,-13215666.520000001,ARR
+FY2026Q4,vs Prev Q (FY2026Q3),Overall Total,# of Opps,Drop/Decrease,-88.39%,-731.0,Count
+FY2026Q4,vs Prev Year (FY2025Q4),Overall Total,Total ARR,Drop/Decrease,-59.08%,-6532935.610000001,ARR
+FY2026Q4,vs Prev Year (FY2025Q4),Overall Total,Won ARR,Drop/Decrease,-100.00%,-3167661.9299999997,ARR
+FY2026Q4,vs Prev Year (FY2025Q4),Overall Total,# of Opps,Drop/Decrease,-91.56%,-1042.0,Count
+FY2026Q4,vs Prev Year (FY2025Q4),Overall Total,# of Won Opps,Drop/Decrease,-100.00%,-400.0,Count
+FY2026Q4,vs Prev Year (FY2025Q4),Overall Total,Win Rate (Count),Drop/Decrease,-100.00%,-35.714285714285715,Percentage
+FY2026Q4,vs Prev Year (FY2025Q4),Overall Total,Avg Sales Price,Drop/Decrease,-100.00%,-7919.154825,Currency
+FY2026Q4,vs Avg of FY2025Q4-FY2026Q3,Overall Total,Total ARR,Drop/Decrease,-68.26%,-9730099.115000002,ARR
+FY2026Q4,vs Avg of FY2025Q4-FY2026Q3,Overall Total,Won ARR,Drop/Decrease,-100.00%,-2063922.085,ARR
+FY2026Q4,vs Avg of FY2025Q4-FY2026Q3,Overall Total,# of Opps,Drop/Decrease,-91.90%,-1088.5,Count
+FY2026Q4,vs Avg of FY2025Q4-FY2026Q3,Overall Total,# of Won Opps,Drop/Decrease,-100.00%,-281.0,Count
+FY2026Q4,vs Avg of FY2025Q4-FY2026Q3,Overall Total,Win Rate (Count),Drop/Decrease,-100.00%,-24.10106973240878,Percentage
+FY2026Q4,vs Avg of FY2025Q4-FY2026Q3,Overall Total,Avg Sales Price,Drop/Decrease,-100.00%,-5448.65982707972,Currency
+FY2027Q1,vs Prev Q (FY2026Q4),Overall Total,Total ARR,Drop/Decrease,-59.12%,-2674990.6799999997,ARR
+FY2027Q1,vs Prev Q (FY2026Q4),Overall Total,# of Opps,Drop/Decrease,-78.12%,-75.0,Count
+FY2027Q1,vs Prev Year (FY2026Q1),Overall Total,Total ARR,Drop/Decrease,-87.18%,-12579578.200000001,ARR
+FY2027Q1,vs Prev Year (FY2026Q1),Overall Total,Won ARR,Drop/Decrease,-100.00%,-3139830.59,ARR
+FY2027Q1,vs Prev Year (FY2026Q1),Overall Total,# of Opps,Drop/Decrease,-98.54%,-1418.0,Count
+FY2027Q1,vs Prev Year (FY2026Q1),Overall Total,# of Won Opps,Drop/Decrease,-100.00%,-417.0,Count
+FY2027Q1,vs Prev Year (FY2026Q1),Overall Total,Win Rate (Count),Drop/Decrease,-100.00%,-29.490806223479492,Percentage
+FY2027Q1,vs Prev Year (FY2026Q1),Overall Total,Avg Sales Price,Drop/Decrease,-100.00%,-7529.569760191846,Currency
+FY2027Q1,vs Avg of FY2026Q1-FY2026Q4,Overall Total,Total ARR,Drop/Decrease,-85.34%,-10771855.8925,ARR
+FY2027Q1,vs Avg of FY2026Q1-FY2026Q4,Overall Total,Won ARR,Drop/Decrease,-100.00%,-1272006.6025,ARR
+FY2027Q1,vs Avg of FY2026Q1-FY2026Q4,Overall Total,# of Opps,Drop/Decrease,-97.73%,-903.0,Count
+FY2027Q1,vs Avg of FY2026Q1-FY2026Q4,Overall Total,# of Won Opps,Drop/Decrease,-100.00%,-181.0,Count
+FY2027Q1,vs Avg of FY2026Q1-FY2026Q4,Overall Total,Win Rate (Count),Drop/Decrease,-100.00%,-15.172498303837354,Percentage
+FY2027Q1,vs Avg of FY2026Q1-FY2026Q4,Overall Total,Avg Sales Price,Drop/Decrease,-100.00%,-3468.8711208297204,Currency
+FY2027Q2,vs Prev Q (FY2027Q1),Overall Total,Total ARR,Drop/Decrease,-87.25%,-1613811.76,ARR
+FY2027Q2,vs Prev Q (FY2027Q1),Overall Total,# of Opps,Drop/Decrease,-76.19%,-16.0,Count
+FY2027Q2,vs Prev Year (FY2026Q2),Overall Total,Total ARR,Drop/Decrease,-98.29%,-13556009.25,ARR
+FY2027Q2,vs Prev Year (FY2026Q2),Overall Total,Won ARR,Drop/Decrease,-100.00%,-1948195.8199999998,ARR
+FY2027Q2,vs Prev Year (FY2026Q2),Overall Total,# of Opps,Drop/Decrease,-99.63%,-1329.0,Count
+FY2027Q2,vs Prev Year (FY2026Q2),Overall Total,# of Won Opps,Drop/Decrease,-100.00%,-307.0,Count
+FY2027Q2,vs Prev Year (FY2026Q2),Overall Total,Win Rate (Count),Drop/Decrease,-100.00%,-31.199186991869922,Percentage
+FY2027Q2,vs Prev Year (FY2026Q2),Overall Total,Avg Sales Price,Drop/Decrease,-100.00%,-6345.914723127035,Currency
+FY2027Q2,vs Avg of FY2026Q2-FY2027Q1,Overall Total,Total ARR,Drop/Decrease,-97.51%,-9240773.1025,ARR
+FY2027Q2,vs Avg of FY2026Q2-FY2027Q1,Overall Total,Won ARR,Drop/Decrease,-100.00%,-487048.95499999996,ARR
+FY2027Q2,vs Avg of FY2026Q2-FY2027Q1,Overall Total,# of Opps,Drop/Decrease,-99.12%,-564.5,Count
+FY2027Q2,vs Avg of FY2026Q2-FY2027Q1,Overall Total,# of Won Opps,Drop/Decrease,-100.00%,-76.75,Count
+FY2027Q2,vs Avg of FY2026Q2-FY2027Q1,Overall Total,Win Rate (Count),Drop/Decrease,-100.00%,-7.799796747967481,Percentage
+FY2027Q2,vs Avg of FY2026Q2-FY2027Q1,Overall Total,Avg Sales Price,Drop/Decrease,-100.00%,-1586.4786807817588,Currency
+FY2027Q3,vs Prev Q (FY2027Q2),Overall Total,Total ARR,Drop/Decrease,-74.84%,-176549.8,ARR
+FY2027Q3,vs Prev Year (FY2026Q3),Overall Total,Total ARR,Drop/Decrease,-99.67%,-17681018.76,ARR
+FY2027Q3,vs Prev Year (FY2026Q3),Overall Total,# of Opps,Drop/Decrease,-99.64%,-824.0,Count
+FY2027Q3,vs Avg of FY2026Q3-FY2027Q2,Overall Total,Total ARR,Drop/Decrease,-99.02%,-6028320.59,ARR
+FY2027Q3,vs Avg of FY2026Q3-FY2027Q2,Overall Total,# of Opps,Drop/Decrease,-98.74%,-234.25,Count
+FY2027Q4,vs Prev Q (FY2027Q3),Overall Total,Total ARR,Drop/Decrease,-88.15%,-52323.399999999994,ARR
+FY2027Q4,vs Prev Year (FY2026Q4),Overall Total,Total ARR,Drop/Decrease,-99.84%,-4517675.64,ARR
+FY2027Q4,vs Prev Year (FY2026Q4),Overall Total,# of Opps,Drop/Decrease,-97.92%,-94.0,Count
+FY2027Q4,vs Avg of FY2026Q4-FY2027Q3,Overall Total,Total ARR,Drop/Decrease,-99.58%,-1660389.2999999998,ARR
+FY2027Q4,vs Avg of FY2026Q4-FY2027Q3,Overall Total,# of Opps,Drop/Decrease,-93.60%,-29.25,Count
+FY2028Q1,vs Prev Q (FY2027Q4),Overall Total,Total ARR,Increase,731.48%,51472.96,ARR
+FY2028Q1,vs Prev Year (FY2027Q1),Overall Total,Total ARR,Drop/Decrease,-96.84%,-1791212.0,ARR
+FY2028Q1,vs Prev Year (FY2027Q1),Overall Total,# of Opps,Drop/Decrease,-90.48%,-19.0,Count
+FY2028Q1,vs Avg of FY2027Q1-FY2027Q4,Overall Total,Total ARR,Drop/Decrease,-89.12%,-479497.42999999993,ARR
+FY2028Q1,vs Avg of FY2027Q1-FY2027Q4,Overall Total,# of Opps,Drop/Decrease,-74.19%,-5.75,Count
+FY2028Q2,vs Prev Q (FY2028Q1),Overall Total,Total ARR,Drop/Decrease,-89.48%,-52352.560000000005,ARR
+FY2028Q2,vs Prev Year (FY2027Q2),Overall Total,Total ARR,Drop/Decrease,-97.39%,-229752.8,ARR
+FY2028Q2,vs Avg of FY2027Q2-FY2028Q1,Overall Total,Total ARR,Drop/Decrease,-93.17%,-84046.99,ARR
+FY2023Q2,vs Prev Q (FY2023Q1),By Bookings Type: Expansion,Total ARR,Drop/Decrease,-27.83%,-1031991.9699999997,ARR
+FY2023Q2,vs Prev Q (FY2023Q1),By Bookings Type: Expansion,Won ARR,Drop/Decrease,-29.07%,-1077991.9700000002,ARR
+FY2023Q2,vs Prev Q (FY2023Q1),By Bookings Type: Expansion,# of Won Opps,Drop/Decrease,-20.74%,-141.0,Count
+FY2023Q2,vs Prev Q (FY2023Q1),By Bookings Type: Expansion,Win Rate (Count),Drop/Decrease,-12.49%,-7.410041461126411,Percentage
+FY2023Q2,vs Prev Q (FY2023Q1),By Bookings Type: Expansion,Avg Sales Cycle,Increase,37.00%,12.100013641820361,Days
+FY2023Q2,vs Prev Q (FY2023Q1),By Bookings Type: New Business,Total ARR,Drop/Decrease,-31.51%,-257654.40000000002,ARR
+FY2023Q2,vs Prev Q (FY2023Q1),By Bookings Type: New Business,Won ARR,Drop/Decrease,-31.51%,-257654.40000000002,ARR
+FY2023Q3,vs Prev Q (FY2023Q2),By Bookings Type: Expansion,Win Rate (Count),Drop/Decrease,-12.19%,-6.330451998373725,Percentage
+FY2023Q4,vs Prev Q (FY2023Q3),By Bookings Type: New Business,Total ARR,Drop/Decrease,-21.11%,-139260.43,ARR
+FY2023Q4,vs Prev Q (FY2023Q3),By Bookings Type: New Business,Won ARR,Drop/Decrease,-36.20%,-237368.51,ARR
+FY2023Q4,vs Prev Q (FY2023Q3),By Bookings Type: New Business,# of Won Opps,Drop/Decrease,-23.79%,-74.0,Count
+FY2024Q1,vs Prev Q (FY2023Q4),By Bookings Type: Expansion,Total ARR,Increase,176.65%,3398137.56,ARR
+FY2024Q1,vs Prev Q (FY2023Q4),By Bookings Type: New Business,Total ARR,Increase,1629.70%,8480909.58,ARR
+FY2024Q1,vs Prev Q (FY2023Q4),By Bookings Type: New Business,Won ARR,Increase,230.20%,963194.5900000001,ARR
+FY2024Q1,vs Prev Q (FY2023Q4),By Bookings Type: New Business,# of Won Opps,Drop/Decrease,-20.68%,-49.0,Count
+FY2024Q1,vs Prev Q (FY2023Q4),By Bookings Type: New Business,Avg Sales Price,Increase,316.26%,5583.523122811744,Currency
+FY2024Q1,vs Prev Year (FY2023Q1),By Bookings Type: Expansion,Total ARR,Increase,43.52%,1613696.04,ARR
+FY2024Q1,vs Prev Year (FY2023Q1),By Bookings Type: Expansion,Won ARR,Drop/Decrease,-47.92%,-1777062.13,ARR
+FY2024Q1,vs Prev Year (FY2023Q1),By Bookings Type: Expansion,# of Opps,Drop/Decrease,-31.33%,-359.0,Count
+FY2024Q1,vs Prev Year (FY2023Q1),By Bookings Type: Expansion,# of Won Opps,Drop/Decrease,-43.09%,-293.0,Count
+FY2024Q1,vs Prev Year (FY2023Q1),By Bookings Type: Expansion,Win Rate (Count),Drop/Decrease,-16.49%,-9.78496714061938,Percentage
+FY2024Q1,vs Prev Year (FY2023Q1),By Bookings Type: Expansion,Avg Sales Cycle,Increase,43.65%,14.275273597811214,Days
+FY2024Q1,vs Prev Year (FY2023Q1),By Bookings Type: New Business,Total ARR,Increase,1000.89%,8183669.57,ARR
+FY2024Q1,vs Prev Year (FY2023Q1),By Bookings Type: New Business,Won ARR,Increase,68.98%,563974.1000000002,ARR
+FY2024Q1,vs Prev Year (FY2023Q1),By Bookings Type: New Business,# of Opps,Drop/Decrease,-22.64%,-394.0,Count
+FY2024Q1,vs Prev Year (FY2023Q1),By Bookings Type: New Business,# of Won Opps,Drop/Decrease,-41.80%,-135.0,Count
+FY2024Q1,vs Prev Year (FY2023Q1),By Bookings Type: New Business,Avg Sales Price,Increase,190.32%,4817.608110467032,Currency
+FY2024Q1,vs Avg of FY2023Q1-FY2023Q4,By Bookings Type: Expansion,Total ARR,Increase,101.04%,2674599.7225,ARR
+FY2024Q1,vs Avg of FY2023Q1-FY2023Q4,By Bookings Type: Expansion,Won ARR,Drop/Decrease,-26.09%,-681780.0674999999,ARR
+FY2024Q1,vs Avg of FY2023Q1-FY2023Q4,By Bookings Type: Expansion,# of Opps,Drop/Decrease,-25.53%,-269.75,Count
+FY2024Q1,vs Avg of FY2023Q1-FY2023Q4,By Bookings Type: Expansion,# of Won Opps,Drop/Decrease,-28.17%,-151.75,Count
+FY2024Q1,vs Avg of FY2023Q1-FY2023Q4,By Bookings Type: New Business,Total ARR,Increase,1307.74%,8361888.067500001,ARR
+FY2024Q1,vs Avg of FY2023Q1-FY2023Q4,By Bookings Type: New Business,Won ARR,Increase,125.40%,768655.8175000001,ARR
+FY2024Q1,vs Avg of FY2023Q1-FY2023Q4,By Bookings Type: New Business,# of Opps,Drop/Decrease,-21.98%,-379.25,Count
+FY2024Q1,vs Avg of FY2023Q1-FY2023Q4,By Bookings Type: New Business,# of Won Opps,Drop/Decrease,-34.44%,-98.75,Count
+FY2024Q1,vs Avg of FY2023Q1-FY2023Q4,By Bookings Type: New Business,Avg Sales Price,Increase,248.52%,5240.390054671719,Currency
+FY2024Q2,vs Prev Q (FY2024Q1),By Bookings Type: Expansion,Total ARR,Drop/Decrease,-22.90%,-1218904.52,ARR
+FY2024Q2,vs Prev Q (FY2024Q1),By Bookings Type: Expansion,# of Opps,Drop/Decrease,-20.58%,-162.0,Count
+FY2024Q2,vs Prev Q (FY2024Q1),By Bookings Type: Expansion,Win Rate (Count),Increase,23.36%,11.577175663954407,Percentage
+FY2024Q2,vs Prev Q (FY2024Q1),By Bookings Type: Expansion,Avg Sales Cycle,Increase,44.66%,20.981039455114434,Days
+FY2024Q2,vs Prev Q (FY2024Q1),By Bookings Type: Expansion,Pipegen ARR,Drop/Decrease,-21.61%,-3211488.84,ARR
+FY2024Q2,vs Prev Q (FY2024Q1),By Bookings Type: New Business,Total ARR,Drop/Decrease,-28.25%,-2542931.6500000013,ARR
+FY2024Q2,vs Prev Q (FY2024Q1),By Bookings Type: New Business,# of Opps,Drop/Decrease,-46.95%,-632.0,Count
+FY2024Q2,vs Prev Q (FY2024Q1),By Bookings Type: New Business,# of Won Opps,Drop/Decrease,-26.60%,-50.0,Count
+FY2024Q2,vs Prev Q (FY2024Q1),By Bookings Type: New Business,Win Rate (Count),Increase,38.66%,5.404327304623868,Percentage
+FY2024Q2,vs Prev Q (FY2024Q1),By Bookings Type: New Business,Avg Sales Cycle,Increase,53.78%,26.451510946654338,Days
+FY2024Q2,vs Prev Q (FY2024Q1),By Bookings Type: New Business,# of Pipegen Opps,Drop/Decrease,-26.48%,-201.0,Count
+FY2024Q2,vs Prev Year (FY2023Q2),By Bookings Type: Expansion,Total ARR,Increase,53.32%,1426783.4899999998,ARR
+FY2024Q2,vs Prev Year (FY2023Q2),By Bookings Type: Expansion,# of Opps,Drop/Decrease,-39.85%,-414.0,Count
+FY2024Q2,vs Prev Year (FY2023Q2),By Bookings Type: Expansion,# of Won Opps,Drop/Decrease,-29.68%,-160.0,Count
+FY2024Q2,vs Prev Year (FY2023Q2),By Bookings Type: Expansion,Win Rate (Count),Increase,17.72%,9.202249984461439,Percentage
+FY2024Q2,vs Prev Year (FY2023Q2),By Bookings Type: Expansion,Avg Sales Cycle,Increase,51.69%,23.156299411105287,Days
+FY2024Q2,vs Prev Year (FY2023Q2),By Bookings Type: New Business,Total ARR,Increase,1053.32%,5898392.319999999,ARR
+FY2024Q2,vs Prev Year (FY2023Q2),By Bookings Type: New Business,Won ARR,Increase,105.02%,588083.7500000002,ARR
+FY2024Q2,vs Prev Year (FY2023Q2),By Bookings Type: New Business,# of Opps,Drop/Decrease,-58.61%,-1011.0,Count
+FY2024Q2,vs Prev Year (FY2023Q2),By Bookings Type: New Business,# of Won Opps,Drop/Decrease,-50.00%,-138.0,Count
+FY2024Q2,vs Prev Year (FY2023Q2),By Bookings Type: New Business,Avg Sales Cycle,Increase,32.33%,18.478260869565226,Days
+FY2024Q2,vs Prev Year (FY2023Q2),By Bookings Type: New Business,Avg Sales Price,Increase,310.04%,6290.393695652176,Currency
+FY2024Q2,vs Avg of FY2023Q2-FY2024Q1,By Bookings Type: Expansion,Total ARR,Increase,34.49%,1052271.1925,ARR
+FY2024Q2,vs Avg of FY2023Q2-FY2024Q1,By Bookings Type: Expansion,# of Opps,Drop/Decrease,-35.37%,-342.0,Count
+FY2024Q2,vs Avg of FY2023Q2-FY2024Q1,By Bookings Type: Expansion,Win Rate (Count),Increase,26.25%,12.709546872541189,Percentage
+FY2024Q2,vs Avg of FY2023Q2-FY2024Q1,By Bookings Type: Expansion,Avg Sales Cycle,Increase,44.60%,20.95929703758685,Days
+FY2024Q2,vs Avg of FY2023Q2-FY2024Q1,By Bookings Type: Expansion,Avg Sales Price,Increase,21.10%,983.3134168274955,Currency
+FY2024Q2,vs Avg of FY2023Q2-FY2024Q1,By Bookings Type: Expansion,Pipegen ARR,Increase,213.56%,7934578.4625,ARR
+FY2024Q2,vs Avg of FY2023Q2-FY2024Q1,By Bookings Type: Expansion,# of Pipegen Opps,Increase,221.22%,615.0,Count
+FY2024Q2,vs Avg of FY2023Q2-FY2024Q1,By Bookings Type: New Business,Total ARR,Increase,140.51%,3773039.0249999994,ARR
+FY2024Q2,vs Avg of FY2023Q2-FY2024Q1,By Bookings Type: New Business,Won ARR,Increase,52.27%,394117.5425000001,ARR
+FY2024Q2,vs Avg of FY2023Q2-FY2024Q1,By Bookings Type: New Business,# of Opps,Drop/Decrease,-56.11%,-912.75,Count
+FY2024Q2,vs Avg of FY2023Q2-FY2024Q1,By Bookings Type: New Business,# of Won Opps,Drop/Decrease,-45.45%,-115.0,Count
+FY2024Q2,vs Avg of FY2023Q2-FY2024Q1,By Bookings Type: New Business,Avg Sales Cycle,Increase,49.28%,24.96821136965579,Days
+FY2024Q2,vs Avg of FY2023Q2-FY2024Q1,By Bookings Type: New Business,Avg Sales Price,Increase,151.11%,5006.311415892457,Currency
+FY2024Q2,vs Avg of FY2023Q2-FY2024Q1,By Bookings Type: New Business,Pipegen ARR,Increase,238.58%,7738067.522500001,ARR
+FY2024Q2,vs Avg of FY2023Q2-FY2024Q1,By Bookings Type: New Business,# of Pipegen Opps,Increase,194.07%,368.25,Count
+FY2024Q3,vs Prev Q (FY2024Q2),By Bookings Type: Expansion,Total ARR,Increase,28.44%,1167010.5000000005,ARR
+FY2024Q3,vs Prev Q (FY2024Q2),By Bookings Type: Expansion,# of Opps,Increase,29.44%,184.0,Count
+FY2024Q3,vs Prev Q (FY2024Q2),By Bookings Type: Expansion,# of Won Opps,Increase,27.44%,104.0,Count
+FY2024Q3,vs Prev Q (FY2024Q2),By Bookings Type: Expansion,Pipegen ARR,Drop/Decrease,-39.44%,-4595135.630000001,ARR
+FY2024Q3,vs Prev Q (FY2024Q2),By Bookings Type: New Business,# of Won Opps,Drop/Decrease,-20.29%,-28.0,Count
+FY2024Q3,vs Prev Q (FY2024Q2),By Bookings Type: New Business,Pipegen ARR,Drop/Decrease,-33.60%,-3690298.820000001,ARR
+FY2024Q3,vs Prev Year (FY2023Q3),By Bookings Type: Expansion,Total ARR,Increase,131.05%,2988983.2600000002,ARR
+FY2024Q3,vs Prev Year (FY2023Q3),By Bookings Type: Expansion,# of Opps,Drop/Decrease,-26.19%,-287.0,Count
+FY2024Q3,vs Prev Year (FY2023Q3),By Bookings Type: Expansion,Win Rate (Count),Increase,32.25%,14.703295192935443,Percentage
+FY2024Q3,vs Prev Year (FY2023Q3),By Bookings Type: Expansion,Avg Sales Cycle,Increase,28.24%,13.8340186043799,Days
+FY2024Q3,vs Prev Year (FY2023Q3),By Bookings Type: New Business,Total ARR,Increase,955.30%,6301661.029999999,ARR
+FY2024Q3,vs Prev Year (FY2023Q3),By Bookings Type: New Business,Won ARR,Increase,55.04%,360958.8799999999,ARR
+FY2024Q3,vs Prev Year (FY2023Q3),By Bookings Type: New Business,# of Opps,Drop/Decrease,-63.14%,-1201.0,Count
+FY2024Q3,vs Prev Year (FY2023Q3),By Bookings Type: New Business,# of Won Opps,Drop/Decrease,-64.63%,-201.0,Count
+FY2024Q3,vs Prev Year (FY2023Q3),By Bookings Type: New Business,Avg Sales Cycle,Increase,48.06%,23.45390236772873,Days
+FY2024Q3,vs Prev Year (FY2023Q3),By Bookings Type: New Business,Avg Sales Price,Increase,338.35%,7134.4843981292015,Currency
+FY2024Q3,vs Avg of FY2023Q3-FY2024Q2,By Bookings Type: Expansion,Total ARR,Increase,54.67%,1862585.8200000003,ARR
+FY2024Q3,vs Avg of FY2023Q3-FY2024Q2,By Bookings Type: Expansion,Won ARR,Increase,21.64%,442737.47000000044,ARR
+FY2024Q3,vs Avg of FY2023Q3-FY2024Q2,By Bookings Type: Expansion,Win Rate (Count),Increase,18.89%,9.579577586526113,Percentage
+FY2024Q3,vs Avg of FY2023Q3-FY2024Q2,By Bookings Type: Expansion,Avg Sales Cycle,Increase,19.01%,10.034384713421844,Days
+FY2024Q3,vs Avg of FY2023Q3-FY2024Q2,By Bookings Type: Expansion,# of Pipegen Opps,Increase,56.21%,281.75,Count
+FY2024Q3,vs Avg of FY2023Q3-FY2024Q2,By Bookings Type: New Business,Total ARR,Increase,67.34%,2801384.4749999996,ARR
+FY2024Q3,vs Avg of FY2023Q3-FY2024Q2,By Bookings Type: New Business,# of Opps,Drop/Decrease,-48.98%,-673.0,Count
+FY2024Q3,vs Avg of FY2023Q3-FY2024Q2,By Bookings Type: New Business,# of Won Opps,Drop/Decrease,-49.66%,-108.5,Count
+FY2024Q3,vs Avg of FY2023Q3-FY2024Q2,By Bookings Type: New Business,Avg Sales Cycle,Increase,30.69%,16.965510447389647,Days
+FY2024Q3,vs Avg of FY2023Q3-FY2024Q2,By Bookings Type: New Business,Avg Sales Price,Increase,89.19%,4357.515322677698,Currency
+FY2024Q3,vs Avg of FY2023Q3-FY2024Q2,By Bookings Type: New Business,Pipegen ARR,Increase,21.75%,1302403.6724999994,ARR
+FY2024Q3,vs Avg of FY2023Q3-FY2024Q2,By Bookings Type: New Business,# of Pipegen Opps,Increase,47.61%,156.75,Count
+FY2024Q4,vs Prev Q (FY2024Q3),By Bookings Type: Expansion,Avg Sales Price,Increase,21.58%,1111.7472491093095,Currency
+FY2024Q4,vs Prev Q (FY2024Q3),By Bookings Type: New Business,Avg Sales Price,Increase,20.50%,1894.5176183618369,Currency
+FY2024Q4,vs Prev Year (FY2023Q4),By Bookings Type: Expansion,Total ARR,Increase,188.63%,3628435.3300000005,ARR
+FY2024Q4,vs Prev Year (FY2023Q4),By Bookings Type: Expansion,Won ARR,Increase,31.41%,589908.1400000001,ARR
+FY2024Q4,vs Prev Year (FY2023Q4),By Bookings Type: Expansion,# of Opps,Drop/Decrease,-26.96%,-255.0,Count
+FY2024Q4,vs Prev Year (FY2023Q4),By Bookings Type: Expansion,Win Rate (Count),Increase,25.25%,11.76739797121963,Percentage
+FY2024Q4,vs Prev Year (FY2023Q4),By Bookings Type: Expansion,Avg Sales Cycle,Increase,49.20%,23.23413850120832,Days
+FY2024Q4,vs Prev Year (FY2023Q4),By Bookings Type: Expansion,Avg Sales Price,Increase,46.42%,1985.8480207670873,Currency
+FY2024Q4,vs Prev Year (FY2023Q4),By Bookings Type: New Business,Total ARR,Increase,1108.58%,5769011.12,ARR
+FY2024Q4,vs Prev Year (FY2023Q4),By Bookings Type: New Business,Won ARR,Increase,168.85%,706485.6499999999,ARR
+FY2024Q4,vs Prev Year (FY2023Q4),By Bookings Type: New Business,# of Opps,Drop/Decrease,-62.97%,-966.0,Count
+FY2024Q4,vs Prev Year (FY2023Q4),By Bookings Type: New Business,# of Won Opps,Drop/Decrease,-57.38%,-136.0,Count
+FY2024Q4,vs Prev Year (FY2023Q4),By Bookings Type: New Business,Avg Sales Cycle,Increase,53.08%,25.230730668003517,Days
+FY2024Q4,vs Prev Year (FY2023Q4),By Bookings Type: New Business,Avg Sales Price,Increase,530.86%,9372.166460709363,Currency
+FY2024Q4,vs Avg of FY2023Q4-FY2024Q3,By Bookings Type: Expansion,Total ARR,Increase,33.64%,1397531.7950000004,ARR
+FY2024Q4,vs Avg of FY2023Q4-FY2024Q3,By Bookings Type: Expansion,Avg Sales Cycle,Increase,25.27%,14.215862826564766,Days
+FY2024Q4,vs Avg of FY2023Q4-FY2024Q3,By Bookings Type: Expansion,Avg Sales Price,Increase,24.88%,1247.897251318339,Currency
+FY2024Q4,vs Avg of FY2023Q4-FY2024Q3,By Bookings Type: Expansion,# of Pipegen Opps,Increase,30.70%,214.0,Count
+FY2024Q4,vs Avg of FY2023Q4-FY2024Q3,By Bookings Type: New Business,# of Opps,Drop/Decrease,-47.10%,-505.75,Count
+FY2024Q4,vs Avg of FY2023Q4-FY2024Q3,By Bookings Type: New Business,# of Won Opps,Drop/Decrease,-39.97%,-67.25,Count
+FY2024Q4,vs Avg of FY2023Q4-FY2024Q3,By Bookings Type: New Business,Avg Sales Cycle,Increase,18.99%,11.60986563853578,Days
+FY2024Q4,vs Avg of FY2023Q4-FY2024Q3,By Bookings Type: New Business,Avg Sales Price,Increase,67.00%,4468.411841507235,Currency
+FY2024Q4,vs Avg of FY2023Q4-FY2024Q3,By Bookings Type: New Business,# of Pipegen Opps,Increase,28.90%,130.25,Count
+FY2025Q1,vs Prev Q (FY2024Q4),By Bookings Type: Expansion,Pipegen ARR,Drop/Decrease,-100.00%,-7610358.31,ARR
+FY2025Q1,vs Prev Q (FY2024Q4),By Bookings Type: Expansion,# of Pipegen Opps,Drop/Decrease,-100.00%,-911.0,Count
+FY2025Q1,vs Prev Q (FY2024Q4),By Bookings Type: New Business,Won ARR,Increase,26.34%,296351.27,ARR
+FY2025Q1,vs Prev Q (FY2024Q4),By Bookings Type: New Business,Avg Sales Price,Increase,26.34%,2934.17099009901,Currency
+FY2025Q1,vs Prev Q (FY2024Q4),By Bookings Type: New Business,Pipegen ARR,Drop/Decrease,-100.00%,-7853675.21,ARR
+FY2025Q1,vs Prev Q (FY2024Q4),By Bookings Type: New Business,# of Pipegen Opps,Drop/Decrease,-100.00%,-581.0,Count
+FY2025Q1,vs Prev Year (FY2024Q1),By Bookings Type: Expansion,Win Rate (Count),Increase,22.04%,10.920119807069824,Percentage
+FY2025Q1,vs Prev Year (FY2024Q1),By Bookings Type: Expansion,Avg Sales Cycle,Increase,33.92%,15.935450935904711,Days
+FY2025Q1,vs Prev Year (FY2024Q1),By Bookings Type: Expansion,Pipegen ARR,Drop/Decrease,-100.00%,-14861423.07,ARR
+FY2025Q1,vs Prev Year (FY2024Q1),By Bookings Type: Expansion,# of Pipegen Opps,Drop/Decrease,-100.00%,-1112.0,Count
+FY2025Q1,vs Prev Year (FY2024Q1),By Bookings Type: New Business,Total ARR,Drop/Decrease,-32.84%,-2956013.490000001,ARR
+FY2025Q1,vs Prev Year (FY2024Q1),By Bookings Type: New Business,# of Opps,Drop/Decrease,-61.07%,-822.0,Count
+FY2025Q1,vs Prev Year (FY2024Q1),By Bookings Type: New Business,# of Won Opps,Drop/Decrease,-46.28%,-87.0,Count
+FY2025Q1,vs Prev Year (FY2024Q1),By Bookings Type: New Business,Win Rate (Count),Increase,38.69%,5.408101377819323,Percentage
+FY2025Q1,vs Prev Year (FY2024Q1),By Bookings Type: New Business,Avg Sales Cycle,Increase,34.55%,16.992047609016225,Days
+FY2025Q1,vs Prev Year (FY2024Q1),By Bookings Type: New Business,Avg Sales Price,Increase,91.48%,6722.814327996629,Currency
+FY2025Q1,vs Prev Year (FY2024Q1),By Bookings Type: New Business,Pipegen ARR,Drop/Decrease,-100.00%,-12973570.39,ARR
+FY2025Q1,vs Prev Year (FY2024Q1),By Bookings Type: New Business,# of Pipegen Opps,Drop/Decrease,-100.00%,-759.0,Count
+FY2025Q1,vs Avg of FY2024Q1-FY2024Q4,By Bookings Type: Expansion,Pipegen ARR,Drop/Decrease,-100.00%,-10294128.5525,ARR
+FY2025Q1,vs Avg of FY2024Q1-FY2024Q4,By Bookings Type: Expansion,# of Pipegen Opps,Drop/Decrease,-100.00%,-924.75,Count
+FY2025Q1,vs Avg of FY2024Q1-FY2024Q4,By Bookings Type: New Business,Won ARR,Increase,21.70%,253422.5525,ARR
+FY2025Q1,vs Avg of FY2024Q1-FY2024Q4,By Bookings Type: New Business,# of Opps,Drop/Decrease,-37.04%,-308.25,Count
+FY2025Q1,vs Avg of FY2024Q1-FY2024Q4,By Bookings Type: New Business,# of Won Opps,Drop/Decrease,-24.77%,-33.25,Count
+FY2025Q1,vs Avg of FY2024Q1-FY2024Q4,By Bookings Type: New Business,Avg Sales Price,Increase,56.14%,5059.541216428905,Currency
+FY2025Q1,vs Avg of FY2024Q1-FY2024Q4,By Bookings Type: New Business,Pipegen ARR,Drop/Decrease,-100.00%,-9774966.755,ARR
+FY2025Q1,vs Avg of FY2024Q1-FY2024Q4,By Bookings Type: New Business,# of Pipegen Opps,Drop/Decrease,-100.00%,-596.0,Count
+FY2025Q2,vs Prev Q (FY2025Q1),By Bookings Type: New Business,Won ARR,Drop/Decrease,-23.23%,-330174.57000000007,ARR
+FY2025Q2,vs Prev Q (FY2025Q1),By Bookings Type: New Business,Avg Sales Price,Drop/Decrease,-26.85%,-3778.618673640951,Currency
+FY2025Q2,vs Prev Year (FY2024Q2),By Bookings Type: Expansion,Total ARR,Increase,23.73%,973609.1599999997,ARR
+FY2025Q2,vs Prev Year (FY2024Q2),By Bookings Type: Expansion,Pipegen ARR,Drop/Decrease,-100.00%,-11649934.23,ARR
+FY2025Q2,vs Prev Year (FY2024Q2),By Bookings Type: Expansion,# of Pipegen Opps,Drop/Decrease,-100.00%,-893.0,Count
+FY2025Q2,vs Prev Year (FY2024Q2),By Bookings Type: New Business,# of Opps,Drop/Decrease,-30.25%,-216.0,Count
+FY2025Q2,vs Prev Year (FY2024Q2),By Bookings Type: New Business,# of Won Opps,Drop/Decrease,-23.19%,-32.0,Count
+FY2025Q2,vs Prev Year (FY2024Q2),By Bookings Type: New Business,Avg Sales Cycle,Drop/Decrease,-14.05%,-10.628247197156142,Days
+FY2025Q2,vs Prev Year (FY2024Q2),By Bookings Type: New Business,Avg Sales Price,Increase,23.73%,1973.872265518181,Currency
+FY2025Q2,vs Prev Year (FY2024Q2),By Bookings Type: New Business,Pipegen ARR,Drop/Decrease,-100.00%,-10981460.120000001,ARR
+FY2025Q2,vs Prev Year (FY2024Q2),By Bookings Type: New Business,# of Pipegen Opps,Drop/Decrease,-100.00%,-558.0,Count
+FY2025Q2,vs Avg of FY2024Q2-FY2025Q1,By Bookings Type: Expansion,Pipegen ARR,Drop/Decrease,-100.00%,-6578772.784999999,ARR
+FY2025Q2,vs Avg of FY2024Q2-FY2025Q1,By Bookings Type: Expansion,# of Pipegen Opps,Drop/Decrease,-100.00%,-646.75,Count
+FY2025Q2,vs Avg of FY2024Q2-FY2025Q1,By Bookings Type: New Business,# of Opps,Drop/Decrease,-20.54%,-128.75,Count
+FY2025Q2,vs Avg of FY2024Q2-FY2025Q1,By Bookings Type: New Business,Pipegen ARR,Drop/Decrease,-100.00%,-6531574.157500001,ARR
+FY2025Q2,vs Avg of FY2024Q2-FY2025Q1,By Bookings Type: New Business,# of Pipegen Opps,Drop/Decrease,-100.00%,-406.25,Count
+FY2025Q3,vs Prev Q (FY2025Q2),By Bookings Type: Expansion,Total ARR,Increase,25.48%,1293342.6300000008,ARR
+FY2025Q3,vs Prev Q (FY2025Q2),By Bookings Type: Expansion,Win Rate (Count),Drop/Decrease,-11.09%,-6.264933150322818,Percentage
+FY2025Q3,vs Prev Q (FY2025Q2),By Bookings Type: Expansion,Avg Sales Cycle,Increase,19.01%,12.740033613445377,Days
+FY2025Q3,vs Prev Year (FY2024Q3),By Bookings Type: Expansion,Total ARR,Increase,20.87%,1099941.29,ARR
+FY2025Q3,vs Prev Year (FY2024Q3),By Bookings Type: Expansion,# of Won Opps,Drop/Decrease,-26.09%,-126.0,Count
+FY2025Q3,vs Prev Year (FY2024Q3),By Bookings Type: Expansion,Win Rate (Count),Drop/Decrease,-16.73%,-10.088655004029782,Percentage
+FY2025Q3,vs Prev Year (FY2024Q3),By Bookings Type: Expansion,Avg Sales Cycle,Increase,26.95%,16.92875411033979,Days
+FY2025Q3,vs Prev Year (FY2024Q3),By Bookings Type: Expansion,Pipegen ARR,Drop/Decrease,-100.00%,-7054798.6,ARR
+FY2025Q3,vs Prev Year (FY2024Q3),By Bookings Type: Expansion,# of Pipegen Opps,Drop/Decrease,-100.00%,-783.0,Count
+FY2025Q3,vs Prev Year (FY2024Q3),By Bookings Type: New Business,Total ARR,Drop/Decrease,-21.32%,-1483847.0999999996,ARR
+FY2025Q3,vs Prev Year (FY2024Q3),By Bookings Type: New Business,# of Opps,Drop/Decrease,-27.96%,-196.0,Count
+FY2025Q3,vs Prev Year (FY2024Q3),By Bookings Type: New Business,Pipegen ARR,Drop/Decrease,-100.00%,-7291161.3,ARR
+FY2025Q3,vs Prev Year (FY2024Q3),By Bookings Type: New Business,# of Pipegen Opps,Drop/Decrease,-100.00%,-486.0,Count
+FY2025Q3,vs Avg of FY2024Q3-FY2025Q2,By Bookings Type: Expansion,Total ARR,Increase,21.87%,1143127.080000001,ARR
+FY2025Q3,vs Avg of FY2024Q3-FY2025Q2,By Bookings Type: Expansion,Win Rate (Count),Drop/Decrease,-14.76%,-8.693498499408221,Percentage
+FY2025Q3,vs Avg of FY2024Q3-FY2025Q2,By Bookings Type: Expansion,Avg Sales Cycle,Increase,21.20%,13.949016057011974,Days
+FY2025Q3,vs Avg of FY2024Q3-FY2025Q2,By Bookings Type: Expansion,Pipegen ARR,Drop/Decrease,-100.00%,-3666289.2275,ARR
+FY2025Q3,vs Avg of FY2024Q3-FY2025Q2,By Bookings Type: Expansion,# of Pipegen Opps,Drop/Decrease,-100.00%,-423.5,Count
+FY2025Q3,vs Avg of FY2024Q3-FY2025Q2,By Bookings Type: New Business,Won ARR,Drop/Decrease,-24.43%,-284218.0475,ARR
+FY2025Q3,vs Avg of FY2024Q3-FY2025Q2,By Bookings Type: New Business,Avg Sales Price,Drop/Decrease,-20.60%,-2304.8656464712512,Currency
+FY2025Q3,vs Avg of FY2024Q3-FY2025Q2,By Bookings Type: New Business,Pipegen ARR,Drop/Decrease,-100.00%,-3786209.1275,ARR
+FY2025Q3,vs Avg of FY2024Q3-FY2025Q2,By Bookings Type: New Business,# of Pipegen Opps,Drop/Decrease,-100.00%,-266.75,Count
+FY2025Q4,vs Prev Q (FY2025Q3),By Bookings Type: Expansion,Win Rate (Count),Drop/Decrease,-10.16%,-5.100560369497792,Percentage
+FY2025Q4,vs Prev Q (FY2025Q3),By Bookings Type: New Business,Won ARR,Increase,54.17%,476323.58999999997,ARR
+FY2025Q4,vs Prev Q (FY2025Q3),By Bookings Type: New Business,Avg Sales Cycle,Increase,18.71%,12.05209994683679,Days
+FY2025Q4,vs Prev Q (FY2025Q3),By Bookings Type: New Business,Avg Sales Price,Increase,33.89%,3009.6499122807018,Currency
+FY2025Q4,vs Prev Year (FY2024Q4),By Bookings Type: Expansion,Won ARR,Drop/Decrease,-26.58%,-655945.24,ARR
+FY2025Q4,vs Prev Year (FY2024Q4),By Bookings Type: Expansion,# of Won Opps,Drop/Decrease,-27.41%,-108.0,Count
+FY2025Q4,vs Prev Year (FY2024Q4),By Bookings Type: Expansion,Win Rate (Count),Drop/Decrease,-22.72%,-13.25996027573315,Percentage
+FY2025Q4,vs Prev Year (FY2024Q4),By Bookings Type: Expansion,Pipegen ARR,Drop/Decrease,-100.00%,-7610358.31,ARR
+FY2025Q4,vs Prev Year (FY2024Q4),By Bookings Type: Expansion,# of Pipegen Opps,Drop/Decrease,-100.00%,-911.0,Count
+FY2025Q4,vs Prev Year (FY2024Q4),By Bookings Type: New Business,Won ARR,Increase,20.51%,230697.96999999997,ARR
+FY2025Q4,vs Prev Year (FY2024Q4),By Bookings Type: New Business,Win Rate (Count),Increase,30.99%,5.54898870501707,Percentage
+FY2025Q4,vs Prev Year (FY2024Q4),By Bookings Type: New Business,Pipegen ARR,Drop/Decrease,-100.00%,-7853675.21,ARR
+FY2025Q4,vs Prev Year (FY2024Q4),By Bookings Type: New Business,# of Pipegen Opps,Drop/Decrease,-100.00%,-581.0,Count
+FY2025Q4,vs Avg of FY2024Q4-FY2025Q3,By Bookings Type: Expansion,# of Won Opps,Drop/Decrease,-25.52%,-98.0,Count
+FY2025Q4,vs Avg of FY2024Q4-FY2025Q3,By Bookings Type: Expansion,Win Rate (Count),Drop/Decrease,-19.99%,-11.271895117898566,Percentage
+FY2025Q4,vs Avg of FY2024Q4-FY2025Q3,By Bookings Type: Expansion,Pipegen ARR,Drop/Decrease,-100.00%,-1902589.5775,ARR
+FY2025Q4,vs Avg of FY2024Q4-FY2025Q3,By Bookings Type: Expansion,# of Pipegen Opps,Drop/Decrease,-100.00%,-227.75,Count
+FY2025Q4,vs Avg of FY2024Q4-FY2025Q3,By Bookings Type: New Business,Won ARR,Increase,20.06%,226472.38250000007,ARR
+FY2025Q4,vs Avg of FY2024Q4-FY2025Q3,By Bookings Type: New Business,Pipegen ARR,Drop/Decrease,-100.00%,-1963418.8025,ARR
+FY2025Q4,vs Avg of FY2024Q4-FY2025Q3,By Bookings Type: New Business,# of Pipegen Opps,Drop/Decrease,-100.00%,-145.25,Count
+FY2026Q1,vs Prev Q (FY2025Q4),By Bookings Type: Expansion,Avg Sales Cycle,Drop/Decrease,-24.11%,-18.67516075256014,Days
+FY2026Q1,vs Prev Q (FY2025Q4),By Bookings Type: New Business,Total ARR,Increase,45.00%,2553370.3099999996,ARR
+FY2026Q1,vs Prev Q (FY2025Q4),By Bookings Type: New Business,# of Opps,Increase,45.59%,222.0,Count
+FY2026Q1,vs Prev Q (FY2025Q4),By Bookings Type: New Business,Win Rate (Count),Drop/Decrease,-43.24%,-10.1423425313888,Percentage
+FY2026Q1,vs Prev Q (FY2025Q4),By Bookings Type: New Business,Avg Sales Cycle,Drop/Decrease,-27.90%,-21.32848077640911,Days
+FY2026Q1,vs Prev Year (FY2025Q1),By Bookings Type: Expansion,Total ARR,Increase,23.83%,1193373.87,ARR
+FY2026Q1,vs Prev Year (FY2025Q1),By Bookings Type: Expansion,# of Won Opps,Drop/Decrease,-21.22%,-87.0,Count
+FY2026Q1,vs Prev Year (FY2025Q1),By Bookings Type: Expansion,Win Rate (Count),Drop/Decrease,-24.56%,-14.85050747462627,Percentage
+FY2026Q1,vs Prev Year (FY2025Q1),By Bookings Type: Expansion,Avg Sales Price,Increase,21.96%,1102.43031896096,Currency
+FY2026Q1,vs Prev Year (FY2025Q1),By Bookings Type: New Business,Total ARR,Increase,36.10%,2182310.66,ARR
+FY2026Q1,vs Prev Year (FY2025Q1),By Bookings Type: New Business,# of Opps,Increase,35.31%,185.0,Count
+FY2026Q1,vs Prev Year (FY2025Q1),By Bookings Type: New Business,Win Rate (Count),Drop/Decrease,-31.32%,-6.07134895303758,Percentage
+FY2026Q1,vs Prev Year (FY2025Q1),By Bookings Type: New Business,Avg Sales Cycle,Drop/Decrease,-16.70%,-11.0505582473141,Days
+FY2026Q1,vs Avg of FY2025Q1-FY2025Q4,By Bookings Type: Expansion,Win Rate (Count),Drop/Decrease,-14.03%,-7.445846217048832,Percentage
+FY2026Q1,vs Avg of FY2025Q1-FY2025Q4,By Bookings Type: Expansion,Avg Sales Cycle,Drop/Decrease,-18.11%,-12.997397423588772,Days
+FY2026Q1,vs Avg of FY2025Q1-FY2025Q4,By Bookings Type: New Business,Total ARR,Increase,41.93%,2430789.1550000003,ARR
+FY2026Q1,vs Avg of FY2025Q1-FY2025Q4,By Bookings Type: New Business,# of Opps,Increase,40.81%,205.5,Count
+FY2026Q1,vs Avg of FY2025Q1-FY2025Q4,By Bookings Type: New Business,Win Rate (Count),Drop/Decrease,-36.49%,-7.648668163959803,Percentage
+FY2026Q1,vs Avg of FY2025Q1-FY2025Q4,By Bookings Type: New Business,Avg Sales Cycle,Drop/Decrease,-18.94%,-12.88429856027291,Days
+FY2026Q2,vs Prev Q (FY2026Q1),By Bookings Type: Expansion,Won ARR,Drop/Decrease,-31.72%,-627468.6599999999,ARR
+FY2026Q2,vs Prev Q (FY2026Q1),By Bookings Type: Expansion,# of Won Opps,Drop/Decrease,-31.27%,-101.0,Count
+FY2026Q2,vs Prev Q (FY2026Q1),By Bookings Type: New Business,Won ARR,Drop/Decrease,-48.56%,-564166.1100000001,ARR
+FY2026Q2,vs Prev Q (FY2026Q1),By Bookings Type: New Business,Avg Sales Cycle,Increase,26.27%,14.484105131414267,Days
+FY2026Q2,vs Prev Q (FY2026Q1),By Bookings Type: New Business,Avg Sales Price,Drop/Decrease,-43.11%,-5328.513454317899,Currency
+FY2026Q2,vs Prev Year (FY2025Q2),By Bookings Type: Expansion,Total ARR,Increase,23.15%,1175039.6000000006,ARR
+FY2026Q2,vs Prev Year (FY2025Q2),By Bookings Type: Expansion,Won ARR,Drop/Decrease,-32.60%,-653249.0399999998,ARR
+FY2026Q2,vs Prev Year (FY2025Q2),By Bookings Type: Expansion,# of Won Opps,Drop/Decrease,-40.80%,-153.0,Count
+FY2026Q2,vs Prev Year (FY2025Q2),By Bookings Type: Expansion,Win Rate (Count),Drop/Decrease,-19.45%,-10.984100335769313,Percentage
+FY2026Q2,vs Prev Year (FY2025Q2),By Bookings Type: New Business,Total ARR,Increase,25.61%,1534164.5499999998,ARR
+FY2026Q2,vs Prev Year (FY2025Q2),By Bookings Type: New Business,Won ARR,Drop/Decrease,-45.22%,-493377.77,ARR
+FY2026Q2,vs Prev Year (FY2025Q2),By Bookings Type: New Business,# of Opps,Increase,23.49%,117.0,Count
+FY2026Q2,vs Prev Year (FY2025Q2),By Bookings Type: New Business,Avg Sales Price,Drop/Decrease,-31.69%,-3261.4226193118757,Currency
+FY2026Q2,vs Avg of FY2025Q2-FY2026Q1,By Bookings Type: Expansion,Won ARR,Drop/Decrease,-31.05%,-608296.9974999998,ARR
+FY2026Q2,vs Avg of FY2025Q2-FY2026Q1,By Bookings Type: Expansion,# of Won Opps,Drop/Decrease,-33.78%,-113.25,Count
+FY2026Q2,vs Avg of FY2025Q2-FY2026Q1,By Bookings Type: Expansion,Avg Sales Cycle,Drop/Decrease,-14.85%,-10.504573031576122,Days
+FY2026Q2,vs Avg of FY2025Q2-FY2026Q1,By Bookings Type: New Business,Won ARR,Drop/Decrease,-46.73%,-524254.5925,ARR
+FY2026Q2,vs Avg of FY2025Q2-FY2026Q1,By Bookings Type: New Business,Avg Sales Price,Drop/Decrease,-35.23%,-3824.7995356933043,Currency
+FY2026Q3,vs Prev Q (FY2026Q2),By Bookings Type: Expansion,Won ARR,Drop/Decrease,-100.00%,-1350496.1700000002,ARR
+FY2026Q3,vs Prev Q (FY2026Q2),By Bookings Type: Expansion,# of Opps,Drop/Decrease,-50.77%,-364.0,Count
+FY2026Q3,vs Prev Q (FY2026Q2),By Bookings Type: Expansion,# of Won Opps,Drop/Decrease,-100.00%,-222.0,Count
+FY2026Q3,vs Prev Q (FY2026Q2),By Bookings Type: Expansion,Win Rate (Count),Drop/Decrease,-100.00%,-45.49180327868852,Percentage
+FY2026Q3,vs Prev Q (FY2026Q2),By Bookings Type: Expansion,Avg Sales Price,Drop/Decrease,-100.00%,-6083.316081081081,Currency
+FY2026Q3,vs Prev Q (FY2026Q2),By Bookings Type: New Business,Total ARR,Increase,49.27%,3707038.2300000004,ARR
+FY2026Q3,vs Prev Q (FY2026Q2),By Bookings Type: New Business,Won ARR,Drop/Decrease,-100.00%,-597699.6499999999,ARR
+FY2026Q3,vs Prev Q (FY2026Q2),By Bookings Type: New Business,# of Opps,Drop/Decrease,-22.93%,-141.0,Count
+FY2026Q3,vs Prev Q (FY2026Q2),By Bookings Type: New Business,# of Won Opps,Drop/Decrease,-100.00%,-85.0,Count
+FY2026Q3,vs Prev Q (FY2026Q2),By Bookings Type: New Business,Win Rate (Count),Drop/Decrease,-100.00%,-17.17171717171717,Percentage
+FY2026Q3,vs Prev Q (FY2026Q2),By Bookings Type: New Business,Avg Sales Price,Drop/Decrease,-100.00%,-7031.760588235293,Currency
+FY2026Q3,vs Prev Year (FY2025Q3),By Bookings Type: Expansion,Won ARR,Drop/Decrease,-100.00%,-2041399.39,ARR
+FY2026Q3,vs Prev Year (FY2025Q3),By Bookings Type: Expansion,# of Opps,Drop/Decrease,-51.31%,-372.0,Count
+FY2026Q3,vs Prev Year (FY2025Q3),By Bookings Type: Expansion,# of Won Opps,Drop/Decrease,-100.00%,-357.0,Count
+FY2026Q3,vs Prev Year (FY2025Q3),By Bookings Type: Expansion,Win Rate (Count),Drop/Decrease,-100.00%,-50.210970464135016,Percentage
+FY2026Q3,vs Prev Year (FY2025Q3),By Bookings Type: Expansion,Avg Sales Price,Drop/Decrease,-100.00%,-5718.205574229692,Currency
+FY2026Q3,vs Prev Year (FY2025Q3),By Bookings Type: New Business,Total ARR,Increase,105.05%,5753991.91,ARR
+FY2026Q3,vs Prev Year (FY2025Q3),By Bookings Type: New Business,Won ARR,Drop/Decrease,-100.00%,-879275.1,ARR
+FY2026Q3,vs Prev Year (FY2025Q3),By Bookings Type: New Business,# of Won Opps,Drop/Decrease,-100.00%,-99.0,Count
+FY2026Q3,vs Prev Year (FY2025Q3),By Bookings Type: New Business,Win Rate (Count),Drop/Decrease,-100.00%,-19.681908548707753,Percentage
+FY2026Q3,vs Prev Year (FY2025Q3),By Bookings Type: New Business,Avg Sales Price,Drop/Decrease,-100.00%,-8881.566666666666,Currency
+FY2026Q3,vs Avg of FY2025Q3-FY2026Q2,By Bookings Type: Expansion,Won ARR,Drop/Decrease,-100.00%,-1795480.9075,ARR
+FY2026Q3,vs Avg of FY2025Q3-FY2026Q2,By Bookings Type: Expansion,# of Opps,Drop/Decrease,-49.98%,-352.75,Count
+FY2026Q3,vs Avg of FY2025Q3-FY2026Q2,By Bookings Type: Expansion,# of Won Opps,Drop/Decrease,-100.00%,-297.0,Count
+FY2026Q3,vs Avg of FY2025Q3-FY2026Q2,By Bookings Type: Expansion,Win Rate (Count),Drop/Decrease,-100.00%,-46.6086631910036,Percentage
+FY2026Q3,vs Avg of FY2025Q3-FY2026Q2,By Bookings Type: Expansion,Avg Sales Price,Drop/Decrease,-100.00%,-6065.284308423809,Currency
+FY2026Q3,vs Avg of FY2025Q3-FY2026Q2,By Bookings Type: New Business,Total ARR,Increase,66.99%,4505529.8725000005,ARR
+FY2026Q3,vs Avg of FY2025Q3-FY2026Q2,By Bookings Type: New Business,Won ARR,Drop/Decrease,-100.00%,-998609.7999999999,ARR
+FY2026Q3,vs Avg of FY2025Q3-FY2026Q2,By Bookings Type: New Business,# of Won Opps,Drop/Decrease,-100.00%,-98.0,Count
+FY2026Q3,vs Avg of FY2025Q3-FY2026Q2,By Bookings Type: New Business,Win Rate (Count),Drop/Decrease,-100.00%,-18.406215858987423,Percentage
+FY2026Q3,vs Avg of FY2025Q3-FY2026Q2,By Bookings Type: New Business,Avg Sales Price,Drop/Decrease,-100.00%,-10041.20446910063,Currency
+FY2026Q4,vs Prev Q (FY2026Q3),By Bookings Type: Expansion,Total ARR,Drop/Decrease,-52.05%,-3388096.3,ARR
+FY2026Q4,vs Prev Q (FY2026Q3),By Bookings Type: Expansion,# of Opps,Drop/Decrease,-83.00%,-293.0,Count
+FY2026Q4,vs Prev Q (FY2026Q3),By Bookings Type: New Business,Total ARR,Drop/Decrease,-87.50%,-9827570.22,ARR
+FY2026Q4,vs Prev Q (FY2026Q3),By Bookings Type: New Business,# of Opps,Drop/Decrease,-92.41%,-438.0,Count
+FY2026Q4,vs Prev Year (FY2025Q4),By Bookings Type: Expansion,Total ARR,Drop/Decrease,-42.03%,-2262595.2199999997,ARR
+FY2026Q4,vs Prev Year (FY2025Q4),By Bookings Type: Expansion,Won ARR,Drop/Decrease,-100.00%,-1812063.24,ARR
+FY2026Q4,vs Prev Year (FY2025Q4),By Bookings Type: Expansion,# of Opps,Drop/Decrease,-90.78%,-591.0,Count
+FY2026Q4,vs Prev Year (FY2025Q4),By Bookings Type: Expansion,# of Won Opps,Drop/Decrease,-100.00%,-286.0,Count
+FY2026Q4,vs Prev Year (FY2025Q4),By Bookings Type: Expansion,Win Rate (Count),Drop/Decrease,-100.00%,-45.110410094637224,Percentage
+FY2026Q4,vs Prev Year (FY2025Q4),By Bookings Type: Expansion,Avg Sales Price,Drop/Decrease,-100.00%,-6335.885454545454,Currency
+FY2026Q4,vs Prev Year (FY2025Q4),By Bookings Type: New Business,Total ARR,Drop/Decrease,-75.26%,-4270340.390000001,ARR
+FY2026Q4,vs Prev Year (FY2025Q4),By Bookings Type: New Business,Won ARR,Drop/Decrease,-100.00%,-1355598.69,ARR
+FY2026Q4,vs Prev Year (FY2025Q4),By Bookings Type: New Business,# of Opps,Drop/Decrease,-92.61%,-451.0,Count
+FY2026Q4,vs Prev Year (FY2025Q4),By Bookings Type: New Business,# of Won Opps,Drop/Decrease,-100.00%,-114.0,Count
+FY2026Q4,vs Prev Year (FY2025Q4),By Bookings Type: New Business,Win Rate (Count),Drop/Decrease,-100.00%,-23.456790123456788,Percentage
+FY2026Q4,vs Prev Year (FY2025Q4),By Bookings Type: New Business,Avg Sales Price,Drop/Decrease,-100.00%,-11891.216578947367,Currency
+FY2026Q4,vs Avg of FY2025Q4-FY2026Q3,By Bookings Type: Expansion,Total ARR,Drop/Decrease,-48.72%,-2965560.79,ARR
+FY2026Q4,vs Avg of FY2025Q4-FY2026Q3,By Bookings Type: Expansion,Won ARR,Drop/Decrease,-100.00%,-1285131.06,ARR
+FY2026Q4,vs Avg of FY2025Q4-FY2026Q3,By Bookings Type: Expansion,# of Opps,Drop/Decrease,-90.21%,-552.75,Count
+FY2026Q4,vs Avg of FY2025Q4-FY2026Q3,By Bookings Type: Expansion,# of Won Opps,Drop/Decrease,-100.00%,-207.75,Count
+FY2026Q4,vs Avg of FY2025Q4-FY2026Q3,By Bookings Type: Expansion,Win Rate (Count),Drop/Decrease,-100.00%,-34.05592057496985,Percentage
+FY2026Q4,vs Avg of FY2025Q4-FY2026Q3,By Bookings Type: Expansion,Avg Sales Price,Drop/Decrease,-100.00%,-4635.732914866386,Currency
+FY2026Q4,vs Avg of FY2025Q4-FY2026Q3,By Bookings Type: New Business,Total ARR,Drop/Decrease,-82.80%,-6760538.324999999,ARR
+FY2026Q4,vs Avg of FY2025Q4-FY2026Q3,By Bookings Type: New Business,Won ARR,Drop/Decrease,-100.00%,-778791.025,ARR
+FY2026Q4,vs Avg of FY2025Q4-FY2026Q3,By Bookings Type: New Business,# of Opps,Drop/Decrease,-93.70%,-535.25,Count
+FY2026Q4,vs Avg of FY2025Q4-FY2026Q3,By Bookings Type: New Business,# of Won Opps,Drop/Decrease,-100.00%,-73.25,Count
+FY2026Q4,vs Avg of FY2025Q4-FY2026Q3,By Bookings Type: New Business,Win Rate (Count),Drop/Decrease,-100.00%,-13.485738721810486,Percentage
+FY2026Q4,vs Avg of FY2025Q4-FY2026Q3,By Bookings Type: New Business,Avg Sales Price,Drop/Decrease,-100.00%,-7820.812802433964,Currency
+FY2027Q1,vs Prev Q (FY2026Q4),By Bookings Type: Expansion,Total ARR,Drop/Decrease,-55.21%,-1722889.98,ARR
+FY2027Q1,vs Prev Q (FY2026Q4),By Bookings Type: Expansion,# of Opps,Drop/Decrease,-78.33%,-47.0,Count
+FY2027Q1,vs Prev Q (FY2026Q4),By Bookings Type: New Business,Total ARR,Drop/Decrease,-67.82%,-952100.7000000001,ARR
+FY2027Q1,vs Prev Q (FY2026Q4),By Bookings Type: New Business,# of Opps,Drop/Decrease,-77.78%,-28.0,Count
+FY2027Q1,vs Prev Year (FY2026Q1),By Bookings Type: Expansion,Total ARR,Drop/Decrease,-77.46%,-4803766.800000001,ARR
+FY2027Q1,vs Prev Year (FY2026Q1),By Bookings Type: Expansion,Won ARR,Drop/Decrease,-100.00%,-1977964.83,ARR
+FY2027Q1,vs Prev Year (FY2026Q1),By Bookings Type: Expansion,# of Opps,Drop/Decrease,-98.22%,-717.0,Count
+FY2027Q1,vs Prev Year (FY2026Q1),By Bookings Type: Expansion,# of Won Opps,Drop/Decrease,-100.00%,-323.0,Count
+FY2027Q1,vs Prev Year (FY2026Q1),By Bookings Type: Expansion,Win Rate (Count),Drop/Decrease,-100.00%,-45.62146892655367,Percentage
+FY2027Q1,vs Prev Year (FY2026Q1),By Bookings Type: Expansion,Avg Sales Price,Drop/Decrease,-100.00%,-6123.730123839009,Currency
+FY2027Q1,vs Prev Year (FY2026Q1),By Bookings Type: New Business,Total ARR,Drop/Decrease,-94.51%,-7775811.399999999,ARR
+FY2027Q1,vs Prev Year (FY2026Q1),By Bookings Type: New Business,Won ARR,Drop/Decrease,-100.00%,-1161865.76,ARR
+FY2027Q1,vs Prev Year (FY2026Q1),By Bookings Type: New Business,# of Opps,Drop/Decrease,-98.87%,-701.0,Count
+FY2027Q1,vs Prev Year (FY2026Q1),By Bookings Type: New Business,# of Won Opps,Drop/Decrease,-100.00%,-94.0,Count
+FY2027Q1,vs Prev Year (FY2026Q1),By Bookings Type: New Business,Win Rate (Count),Drop/Decrease,-100.00%,-13.314447592067987,Percentage
+FY2027Q1,vs Prev Year (FY2026Q1),By Bookings Type: New Business,Avg Sales Price,Drop/Decrease,-100.00%,-12360.274042553192,Currency
+FY2027Q1,vs Avg of FY2026Q1-FY2026Q4,By Bookings Type: Expansion,Total ARR,Drop/Decrease,-74.68%,-4122801.9650000003,ARR
+FY2027Q1,vs Avg of FY2026Q1-FY2026Q4,By Bookings Type: Expansion,Won ARR,Drop/Decrease,-100.00%,-832115.25,ARR
+FY2027Q1,vs Avg of FY2026Q1-FY2026Q4,By Bookings Type: Expansion,# of Opps,Drop/Decrease,-97.20%,-452.0,Count
+FY2027Q1,vs Avg of FY2026Q1-FY2026Q4,By Bookings Type: Expansion,# of Won Opps,Drop/Decrease,-100.00%,-136.25,Count
+FY2027Q1,vs Avg of FY2026Q1-FY2026Q4,By Bookings Type: Expansion,Win Rate (Count),Drop/Decrease,-100.00%,-22.77831805131055,Percentage
+FY2027Q1,vs Avg of FY2026Q1-FY2026Q4,By Bookings Type: Expansion,Avg Sales Price,Drop/Decrease,-100.00%,-3051.7615512300226,Currency
+FY2027Q1,vs Avg of FY2026Q1-FY2026Q4,By Bookings Type: New Business,Total ARR,Drop/Decrease,-93.63%,-6645053.9275,ARR
+FY2027Q1,vs Avg of FY2026Q1-FY2026Q4,By Bookings Type: New Business,Won ARR,Drop/Decrease,-100.00%,-439891.3525,ARR
+FY2027Q1,vs Avg of FY2026Q1-FY2026Q4,By Bookings Type: New Business,# of Opps,Drop/Decrease,-98.26%,-450.5,Count
+FY2027Q1,vs Avg of FY2026Q1-FY2026Q4,By Bookings Type: New Business,# of Won Opps,Drop/Decrease,-100.00%,-44.75,Count
+FY2027Q1,vs Avg of FY2026Q1-FY2026Q4,By Bookings Type: New Business,Win Rate (Count),Drop/Decrease,-100.00%,-7.621541190946289,Percentage
+FY2027Q1,vs Avg of FY2026Q1-FY2026Q4,By Bookings Type: New Business,Avg Sales Price,Drop/Decrease,-100.00%,-4848.008657697121,Currency
+FY2027Q2,vs Prev Q (FY2027Q1),By Bookings Type: Expansion,Total ARR,Drop/Decrease,-88.64%,-1239194.8599999999,ARR
+FY2027Q2,vs Prev Q (FY2027Q1),By Bookings Type: Expansion,# of Opps,Drop/Decrease,-76.92%,-10.0,Count
+FY2027Q2,vs Prev Q (FY2027Q1),By Bookings Type: New Business,Total ARR,Drop/Decrease,-82.92%,-374616.9,ARR
+FY2027Q2,vs Prev Q (FY2027Q1),By Bookings Type: New Business,# of Opps,Drop/Decrease,-75.00%,-6.0,Count
+FY2027Q2,vs Prev Year (FY2026Q2),By Bookings Type: Expansion,Total ARR,Drop/Decrease,-97.46%,-6092759.66,ARR
+FY2027Q2,vs Prev Year (FY2026Q2),By Bookings Type: Expansion,Won ARR,Drop/Decrease,-100.00%,-1350496.1700000002,ARR
+FY2027Q2,vs Prev Year (FY2026Q2),By Bookings Type: Expansion,# of Opps,Drop/Decrease,-99.58%,-714.0,Count
+FY2027Q2,vs Prev Year (FY2026Q2),By Bookings Type: Expansion,# of Won Opps,Drop/Decrease,-100.00%,-222.0,Count
+FY2027Q2,vs Prev Year (FY2026Q2),By Bookings Type: Expansion,Win Rate (Count),Drop/Decrease,-100.00%,-45.49180327868852,Percentage
+FY2027Q2,vs Prev Year (FY2026Q2),By Bookings Type: Expansion,Avg Sales Price,Drop/Decrease,-100.00%,-6083.316081081081,Currency
+FY2027Q2,vs Prev Year (FY2026Q2),By Bookings Type: New Business,Total ARR,Drop/Decrease,-98.97%,-7447249.59,ARR
+FY2027Q2,vs Prev Year (FY2026Q2),By Bookings Type: New Business,Won ARR,Drop/Decrease,-100.00%,-597699.6499999999,ARR
+FY2027Q2,vs Prev Year (FY2026Q2),By Bookings Type: New Business,# of Opps,Drop/Decrease,-99.67%,-613.0,Count
+FY2027Q2,vs Prev Year (FY2026Q2),By Bookings Type: New Business,# of Won Opps,Drop/Decrease,-100.00%,-85.0,Count
+FY2027Q2,vs Prev Year (FY2026Q2),By Bookings Type: New Business,Win Rate (Count),Drop/Decrease,-100.00%,-17.17171717171717,Percentage
+FY2027Q2,vs Prev Year (FY2026Q2),By Bookings Type: New Business,Avg Sales Price,Drop/Decrease,-100.00%,-7031.760588235293,Currency
+FY2027Q2,vs Avg of FY2026Q2-FY2027Q1,By Bookings Type: Expansion,Total ARR,Drop/Decrease,-96.33%,-4161055.125,ARR
+FY2027Q2,vs Avg of FY2026Q2-FY2027Q1,By Bookings Type: Expansion,Won ARR,Drop/Decrease,-100.00%,-337624.04250000004,ARR
+FY2027Q2,vs Avg of FY2026Q2-FY2027Q1,By Bookings Type: Expansion,# of Opps,Drop/Decrease,-98.95%,-282.75,Count
+FY2027Q2,vs Avg of FY2026Q2-FY2027Q1,By Bookings Type: Expansion,# of Won Opps,Drop/Decrease,-100.00%,-55.5,Count
+FY2027Q2,vs Avg of FY2026Q2-FY2027Q1,By Bookings Type: Expansion,Win Rate (Count),Drop/Decrease,-100.00%,-11.37295081967213,Percentage
+FY2027Q2,vs Avg of FY2026Q2-FY2027Q1,By Bookings Type: Expansion,Avg Sales Price,Drop/Decrease,-100.00%,-1520.8290202702703,Currency
+FY2027Q2,vs Avg of FY2026Q2-FY2027Q1,By Bookings Type: New Business,Total ARR,Drop/Decrease,-98.50%,-5075717.9775,ARR
+FY2027Q2,vs Avg of FY2026Q2-FY2027Q1,By Bookings Type: New Business,Won ARR,Drop/Decrease,-100.00%,-149424.91249999998,ARR
+FY2027Q2,vs Avg of FY2026Q2-FY2027Q1,By Bookings Type: New Business,# of Opps,Drop/Decrease,-99.29%,-281.25,Count
+FY2027Q2,vs Avg of FY2026Q2-FY2027Q1,By Bookings Type: New Business,# of Won Opps,Drop/Decrease,-100.00%,-21.25,Count
+FY2027Q2,vs Avg of FY2026Q2-FY2027Q1,By Bookings Type: New Business,Avg Sales Price,Drop/Decrease,-100.00%,-1757.9401470588232,Currency
+FY2027Q3,vs Prev Q (FY2027Q2),By Bookings Type: Expansion,Total ARR,Drop/Decrease,-62.60%,-99375.8,ARR
+FY2027Q3,vs Prev Year (FY2026Q3),By Bookings Type: Expansion,Total ARR,Drop/Decrease,-99.09%,-6449556.9399999995,ARR
+FY2027Q3,vs Prev Year (FY2026Q3),By Bookings Type: Expansion,# of Opps,Drop/Decrease,-99.15%,-350.0,Count
+FY2027Q3,vs Avg of FY2026Q3-FY2027Q2,By Bookings Type: Expansion,Total ARR,Drop/Decrease,-97.88%,-2737241.01,ARR
+FY2027Q3,vs Avg of FY2026Q3-FY2027Q2,By Bookings Type: Expansion,# of Opps,Drop/Decrease,-97.20%,-104.25,Count
+FY2027Q4,vs Prev Q (FY2027Q3),By Bookings Type: Expansion,Total ARR,Drop/Decrease,-100.00%,-59360.2,ARR
+FY2027Q4,vs Prev Year (FY2026Q4),By Bookings Type: Expansion,Total ARR,Drop/Decrease,-100.00%,-3120820.84,ARR
+FY2027Q4,vs Prev Year (FY2026Q4),By Bookings Type: Expansion,# of Opps,Drop/Decrease,-98.33%,-59.0,Count
+FY2027Q4,vs Prev Year (FY2026Q4),By Bookings Type: New Business,Total ARR,Drop/Decrease,-99.50%,-1396854.8,ARR
+FY2027Q4,vs Prev Year (FY2026Q4),By Bookings Type: New Business,# of Opps,Drop/Decrease,-97.22%,-35.0,Count
+FY2027Q4,vs Avg of FY2026Q4-FY2027Q3,By Bookings Type: Expansion,Total ARR,Drop/Decrease,-100.00%,-1184211.9749999999,ARR
+FY2027Q4,vs Avg of FY2026Q4-FY2027Q3,By Bookings Type: Expansion,# of Opps,Drop/Decrease,-94.94%,-18.75,Count
+FY2028Q1,vs Prev Year (FY2027Q1),By Bookings Type: Expansion,Total ARR,Drop/Decrease,-95.81%,-1339421.0999999999,ARR
+FY2028Q1,vs Prev Year (FY2027Q1),By Bookings Type: Expansion,# of Opps,Drop/Decrease,-84.62%,-11.0,Count
+FY2028Q1,vs Avg of FY2027Q1-FY2027Q4,By Bookings Type: Expansion,Total ARR,Drop/Decrease,-85.52%,-345497.00499999995,ARR
+FY2028Q2,vs Prev Year (FY2027Q2),By Bookings Type: New Business,Total ARR,Drop/Decrease,-92.02%,-71016.8,ARR

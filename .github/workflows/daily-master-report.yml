@@ -1,0 +1,73 @@
+name: Daily Master Report
+
+on:
+  schedule:
+    # Run every day at 6 AM EST (11 AM UTC)
+    - cron: '0 11 * * *'
+  workflow_dispatch:  # Allow manual triggering
+
+jobs:
+  generate-master-report:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          
+      - name: Install dependencies
+        run: |
+          pip install --upgrade pip
+          pip install pandas numpy simple-salesforce gspread requests
+          pip install google-auth google-auth-oauthlib google-auth-httplib2
+          pip install google-api-python-client matplotlib plotly
+          pip install kaleido  # for plotly image export
+          
+      - name: Create credentials directory
+        run: mkdir -p ~/.credentials
+        
+      - name: Setup Google Service Account
+        run: |
+          echo '${{ secrets.GOOGLE_SERVICE_ACCOUNT_KEY }}' > ~/.credentials/google-service-account.json
+          export GOOGLE_APPLICATION_CREDENTIALS=~/.credentials/google-service-account.json
+          
+      - name: Run Master Report
+        env:
+          SF_USERNAME: ${{ secrets.SF_USERNAME }}
+          SF_PASSWORD: ${{ secrets.SF_PASSWORD }}
+          SF_SECURITY_TOKEN: ${{ secrets.SF_SECURITY_TOKEN }}
+          GOOGLE_CREDENTIALS_PATH: /home/runner/.credentials/google-service-account.json
+          GOOGLE_SHEET_KEY: ${{ secrets.GOOGLE_SHEET_KEY }}
+        run: |
+          python master_report.py
+          
+      - name: Upload report artifacts
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: master-report-${{ github.run_number }}
+          path: |
+            master_report.csv
+            master_report_*.log
+          retention-days: 30
+          
+      - name: Create status summary
+        if: success()
+        run: |
+          echo "## ✅ Daily Master Report Summary" >> $GITHUB_STEP_SUMMARY
+          echo "- **Date**: $(date)" >> $GITHUB_STEP_SUMMARY
+          echo "- **Status**: Successfully generated and uploaded to Google Sheets" >> $GITHUB_STEP_SUMMARY
+          echo "- **Report File**: master_report.csv" >> $GITHUB_STEP_SUMMARY
+          
+      - name: Notify on failure
+        if: failure()
+        run: |
+          echo "## ❌ Master Report Failed" >> $GITHUB_STEP_SUMMARY
+          echo "- **Date**: $(date)" >> $GITHUB_STEP_SUMMARY
+          echo "- **Error**: Check the logs above for details" >> $GITHUB_STEP_SUMMARY
