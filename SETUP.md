@@ -139,10 +139,28 @@ python master_report.py
 ## Next Steps
 
 After setup:
-1. ✅ Initialize git repository and push to GitHub
-2. ✅ Set up GitHub secrets for credentials
-3. ✅ Test the workflow manually
-4. ✅ Monitor daily automation
-5. ✅ Customize report processing if needed
+1. **Create GitHub repository**:
+   ```bash
+   # Create a new repository on GitHub called "master-reporting-automation"
+   # Then push the code:
+   git remote add origin https://github.com/YOUR_USERNAME/master-reporting-automation.git
+   git push -u origin main
+   ```
+
+2. **Set up GitHub secrets for credentials**:
+   - Go to GitHub repo → Settings → Secrets and Variables → Actions
+   - Add the secrets listed in step 3 above
+
+3. **Test the workflow manually**:
+   - Go to GitHub → Actions → "Daily Master Report"
+   - Click "Run workflow" → Run workflow
+
+4. **Monitor daily automation**:
+   - Check GitHub Actions for daily runs
+   - Verify Google Sheets are updated
+
+5. **Customize report processing if needed**:
+   - Modify `master_report.py` for additional processing
+   - Update pivot table logic as required
 
 The system will now automatically maintain your master report with the latest Salesforce data every day!
