@@ -61,10 +61,21 @@ st.markdown("""
 def load_data():
     """Load and process Salesforce data with caching."""
     try:
-        sf = connect_to_salesforce()
-        df = fetch_salesforce_report(sf)
-        df = process_date_columns(df)
-        return df
+        # First try to load demo data if available
+        if os.path.exists("demo_master_report.csv"):
+            df = pd.read_csv("demo_master_report.csv")
+            # Convert date columns
+            date_columns = ['Created Date', 'SQO Date', 'SAO Date', 'Timestamp: Solution Validation', 'Close Date']
+            for col in date_columns:
+                df[col] = pd.to_datetime(df[col], errors='coerce')
+            df = process_date_columns(df)
+            return df
+        else:
+            # Fall back to live Salesforce data
+            sf = connect_to_salesforce()
+            df = fetch_salesforce_report(sf)
+            df = process_date_columns(df)
+            return df
     except Exception as e:
         st.error(f"Error loading data: {str(e)}")
         return None
