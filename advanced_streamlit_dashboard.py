@@ -1278,8 +1278,47 @@ def create_pipegen_pacing_chart(df):
     
     return fig
 
+def check_password():
+    """Returns `True` if the user had the correct password."""
+    
+    def password_entered():
+        """Checks whether a password entered by the user is correct."""
+        if st.session_state["password"] == st.secrets.get("APP_PASSWORD", "envoy2024"):
+            st.session_state["password_correct"] = True
+            del st.session_state["password"]  # Don't store the password
+        else:
+            st.session_state["password_correct"] = False
+
+    if "password_correct" not in st.session_state:
+        # First run, show input for password
+        st.markdown("### 🔐 Advanced Master Report Dashboard")
+        st.markdown("*Please enter the password to access the dashboard*")
+        st.text_input(
+            "Password", type="password", on_change=password_entered, key="password"
+        )
+        st.markdown("---")
+        st.info("💡 Contact your administrator for access credentials")
+        return False
+    elif not st.session_state["password_correct"]:
+        # Password not correct, show input + error
+        st.markdown("### 🔐 Advanced Master Report Dashboard")
+        st.markdown("*Please enter the password to access the dashboard*")
+        st.text_input(
+            "Password", type="password", on_change=password_entered, key="password"
+        )
+        st.error("😞 Password incorrect. Please try again.")
+        return False
+    else:
+        # Password correct
+        return True
+
 def main():
     """Main dashboard function."""
+    
+    # Check password first
+    if not check_password():
+        return
+    
     st.title("📊 Advanced Master Report Dashboard")
     st.markdown("*Comprehensive analytics matching notebook framework*")
     
