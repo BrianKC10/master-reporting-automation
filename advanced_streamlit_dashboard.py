@@ -1270,6 +1270,26 @@ def main():
     current_q_created = filtered_df[filtered_df['Created Date_Quarter'] == current_quarter]
     current_q_pipeline = current_q_created[current_q_created['SAO Date'].notna()]['ARR Change'].sum()
     
+    # Calculate Win Rate, ASP, and ASC for current quarter
+    current_q_won = current_q_data[current_q_data['Stage'] == STAGE_WON]
+    current_q_lost = current_q_data[current_q_data['Stage'] == STAGE_LOST]
+    current_q_relevant = len(current_q_won) + len(current_q_lost)
+    current_q_winrate = (len(current_q_won) / current_q_relevant * 100) if current_q_relevant > 0 else 0
+    
+    # ASP: Average Sales Price for won deals
+    current_q_asp = current_q_won['ARR Change'].mean() if len(current_q_won) > 0 else 0
+    
+    # ASC: Average Sales Cycle for won deals (in days)
+    if len(current_q_won) > 0:
+        current_q_won_with_dates = current_q_won.dropna(subset=['Created Date', 'Close Date'])
+        if len(current_q_won_with_dates) > 0:
+            current_q_asc = (current_q_won_with_dates['Close Date'] - current_q_won_with_dates['Created Date']).dt.days.mean()
+        else:
+            current_q_asc = 0
+    else:
+        current_q_asc = 0
+    
+    # Display metrics in two rows
     col1, col2, col3 = st.columns(3)
     
     with col1:
@@ -1280,6 +1300,18 @@ def main():
     
     with col3:
         st.metric("Deals Closed", f"{current_q_deals:,}", delta="Won Deals")
+    
+    # Second row of metrics
+    col4, col5, col6 = st.columns(3)
+    
+    with col4:
+        st.metric("Win Rate", f"{current_q_winrate:.1f}%", delta="Current Quarter")
+    
+    with col5:
+        st.metric("Avg Sales Price", f"${current_q_asp:,.0f}", delta="Won Deals")
+    
+    with col6:
+        st.metric("Avg Sales Cycle", f"{current_q_asc:.0f} days", delta="Won Deals")
     
     # Main analysis tabs
     tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs([
