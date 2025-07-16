@@ -33,6 +33,48 @@ except ImportError as e:
     st.error(f"⚠️ Cannot import master_report.py: {e}")
     st.info("The dashboard will run in demo mode with sample data.")
     MASTER_REPORT_AVAILABLE = False
+    
+    # Define fallback functions when master_report.py is not available
+    def get_quarter_info(current_date):
+        """Fallback quarter function."""
+        fiscal_year = current_date.year if current_date.month >= 2 else current_date.year - 1
+        
+        if datetime(current_date.year, 2, 1) <= current_date < datetime(current_date.year, 5, 1):
+            quarter = f"FY{fiscal_year + 1}Q1"
+        elif datetime(current_date.year, 5, 1) <= current_date < datetime(current_date.year, 8, 1):
+            quarter = f"FY{fiscal_year + 1}Q2"
+        elif datetime(current_date.year, 8, 1) <= current_date < datetime(current_date.year, 11, 1):
+            quarter = f"FY{fiscal_year + 1}Q3"
+        else:
+            quarter = f"FY{fiscal_year + 1}Q4"
+        
+        return quarter, current_date, current_date
+
+    def get_last_completed_quarters(n, today=None):
+        """Fallback function for getting last quarters."""
+        if today is None:
+            today = datetime.today()
+        return [f"FY2024Q{i}" for i in range(1, n+1)]
+
+    def compute_day_of_quarter(date_val):
+        """Fallback function for day of quarter calculation."""
+        if pd.isnull(date_val):
+            return {'Day_of_Quarter': 0, 'Total_Days_in_Quarter': 90, 'Pct_Day': 0}
+        
+        # Simple approximation - assume we're about 50% through the quarter
+        return {'Day_of_Quarter': 45, 'Total_Days_in_Quarter': 90, 'Pct_Day': 50.0}
+    
+    def create_sql_pivot_enhanced(df):
+        """Fallback function."""
+        return pd.DataFrame({"Message": ["Pivot functionality requires master_report.py"]})
+    
+    def create_sao_pivot_enhanced(df):
+        """Fallback function."""
+        return pd.DataFrame({"Message": ["Pivot functionality requires master_report.py"]})
+    
+    def create_pipegen_pivot_enhanced(df):
+        """Fallback function."""
+        return pd.DataFrame({"Message": ["Pivot functionality requires master_report.py"]})
 
 # Configuration
 STAGE_WON = 'Closed Won'
