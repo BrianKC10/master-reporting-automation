@@ -15,18 +15,24 @@ import os
 import sys
 from io import StringIO
 
-# Import functions from master_report.py
-from master_report import (
-    connect_to_salesforce, 
-    fetch_salesforce_report,
-    process_date_columns,
-    get_quarter_info,
-    get_last_completed_quarters,
-    compute_day_of_quarter,
-    create_sql_pivot,
-    create_sao_pivot,
-    create_pipegen_pivot
-)
+# Import functions from master_report.py with error handling
+try:
+    from master_report import (
+        connect_to_salesforce, 
+        fetch_salesforce_report,
+        process_date_columns,
+        get_quarter_info,
+        get_last_completed_quarters,
+        compute_day_of_quarter,
+        create_sql_pivot,
+        create_sao_pivot,
+        create_pipegen_pivot
+    )
+    MASTER_REPORT_AVAILABLE = True
+except ImportError as e:
+    st.error(f"⚠️ Cannot import master_report.py: {e}")
+    st.info("The dashboard will run in demo mode with sample data.")
+    MASTER_REPORT_AVAILABLE = False
 
 # Configuration
 STAGE_WON = 'Closed Won'
@@ -105,14 +111,25 @@ st.markdown("""
 def load_and_process_data():
     """Load and process Salesforce data with comprehensive filtering and enhancement."""
     try:
+        # Check if master_report functions are available
+        if not MASTER_REPORT_AVAILABLE:
+            st.error("⚠️ Master report functions not available")
+            st.info("Please ensure master_report.py is in the same directory and all required environment variables are set.")
+            return create_sample_data()
+        
         # Load data
         if os.path.exists("master_report.csv"):
             df = pd.read_csv("master_report.csv")
         else:
-            sf = connect_to_salesforce()
-            df = fetch_salesforce_report(sf)
-            df = process_date_columns(df)
-            df.to_csv("master_report.csv", index=False)
+            try:
+                sf = connect_to_salesforce()
+                df = fetch_salesforce_report(sf)
+                df = process_date_columns(df)
+                df.to_csv("master_report.csv", index=False)
+            except Exception as e:
+                st.error(f"Error connecting to Salesforce: {str(e)}")
+                st.info("Please check your Salesforce credentials in the app secrets.")
+                return create_sample_data()
         
         # Handle duplicate columns and index issues
         if df.columns.duplicated().any():
@@ -126,30 +143,78 @@ def load_and_process_data():
                 df[col] = pd.to_datetime(df[col], errors='coerce')
         
         # Process date columns if not already done
-        if 'Created Date_Quarter' not in df.columns:
+        if 'Created Date_Quarter' not in df.columns and MASTER_REPORT_AVAILABLE:
             df = process_date_columns(df)
         
         # Filter to valid segments and sources
-        df = df[df['Segment - historical'].isin(VALID_SEGMENTS)].reset_index(drop=True)
-        df = df[~df['Source'].isin(['Other', 'Connect'])].reset_index(drop=True)
+        if 'Segment - historical' in df.columns:
+            df = df[df['Segment - historical'].isin(VALID_SEGMENTS)].reset_index(drop=True)
+        if 'Source' in df.columns:
+            df = df[~df['Source'].isin(['Other', 'Connect'])].reset_index(drop=True)
         
         # Create in-quarter booking flag
-        df['Inquarter Booking Flag'] = (df['Created Date_Quarter'] == df['Close Date_Quarter']).fillna(False)
+        if 'Created Date_Quarter' in df.columns and 'Close Date_Quarter' in df.columns:
+            df['Inquarter Booking Flag'] = (df['Created Date_Quarter'] == df['Close Date_Quarter']).fillna(False)
         
         # Ensure ARR Change is numeric
-        df['ARR Change'] = pd.to_numeric(df['ARR Change'], errors='coerce').fillna(0)
+        if 'ARR Change' in df.columns:
+            df['ARR Change'] = pd.to_numeric(df['ARR Change'], errors='coerce').fillna(0)
         
         # Calculate sales cycle for closed won deals
-        closed_won_mask = df['Stage'] == STAGE_WON
-        df.loc[closed_won_mask, 'Sales Cycle Days'] = (
-            df.loc[closed_won_mask, 'Close Date'] - df.loc[closed_won_mask, 'Created Date']
-        ).dt.days
+        if 'Stage' in df.columns and 'Created Date' in df.columns and 'Close Date' in df.columns:
+            closed_won_mask = df['Stage'] == STAGE_WON
+            df.loc[closed_won_mask, 'Sales Cycle Days'] = (
+                df.loc[closed_won_mask, 'Close Date'] - df.loc[closed_won_mask, 'Created Date']
+            ).dt.days
         
         return df
         
     except Exception as e:
         st.error(f"Error loading data: {str(e)}")
-        return None
+        return create_sample_data()
+
+def create_sample_data():
+    """Create sample data for demo purposes when real data is not available."""
+    np.random.seed(42)
+    
+    # Create sample data
+    n_records = 1000
+    
+    # Generate dates
+    start_date = datetime(2023, 2, 1)
+    end_date = datetime(2025, 1, 31)
+    
+    data = {
+        'Created Date': pd.date_range(start=start_date, end=end_date, periods=n_records),
+        'Close Date': pd.date_range(start=start_date, end=end_date, periods=n_records),
+        'SAO Date': pd.date_range(start=start_date, end=end_date, periods=n_records),
+        'Stage': np.random.choice([STAGE_WON, STAGE_LOST, 'Open'], n_records, p=[0.3, 0.2, 0.5]),
+        'Segment - historical': np.random.choice(VALID_SEGMENTS, n_records),
+        'Source': np.random.choice(VALID_SOURCES, n_records),
+        'Bookings Type': np.random.choice(['New Business', 'Expansion'], n_records),
+        'ARR Change': np.random.lognormal(mean=9, sigma=1, size=n_records),
+        'Opportunity ID': [f"OPP{i:06d}" for i in range(n_records)]
+    }
+    
+    df = pd.DataFrame(data)
+    
+    # Add quarter columns
+    df['Created Date_Quarter'] = df['Created Date'].dt.to_period('Q').astype(str)
+    df['Close Date_Quarter'] = df['Close Date'].dt.to_period('Q').astype(str)
+    df['SAO Date_Quarter'] = df['SAO Date'].dt.to_period('Q').astype(str)
+    
+    # Create in-quarter booking flag
+    df['Inquarter Booking Flag'] = (df['Created Date_Quarter'] == df['Close Date_Quarter']).fillna(False)
+    
+    # Calculate sales cycle for closed won deals
+    closed_won_mask = df['Stage'] == STAGE_WON
+    df.loc[closed_won_mask, 'Sales Cycle Days'] = (
+        df.loc[closed_won_mask, 'Close Date'] - df.loc[closed_won_mask, 'Created Date']
+    ).dt.days
+    
+    st.info("📊 Using sample data for demonstration purposes")
+    
+    return df
 
 def add_comparison_columns(df):
     """Add QoQ, YoY, and vs Last 4Q Avg comparison columns matching notebook logic."""
