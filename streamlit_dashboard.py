@@ -61,14 +61,34 @@ st.markdown("""
 def load_data():
     """Load and process Salesforce data with caching."""
     try:
-        # First try to load demo data if available
-        if os.path.exists("demo_master_report.csv"):
-            df = pd.read_csv("demo_master_report.csv")
+        # First try to load real data from CSV
+        if os.path.exists("master_report.csv"):
+            df = pd.read_csv("master_report.csv")
+            
+            # Handle duplicate column names
+            if df.columns.duplicated().any():
+                st.warning("Duplicate column names detected. Removing duplicates...")
+                df = df.loc[:, ~df.columns.duplicated()]
+            
+            # Force a clean index reset
+            df = df.reset_index(drop=True)
+            
+            # Ensure index is unique
+            if not df.index.is_unique:
+                df = df.reset_index(drop=True)
+            
             # Convert date columns
             date_columns = ['Created Date', 'SQO Date', 'SAO Date', 'Timestamp: Solution Validation', 'Close Date']
             for col in date_columns:
-                df[col] = pd.to_datetime(df[col], errors='coerce')
+                if col in df.columns:
+                    df[col] = pd.to_datetime(df[col], errors='coerce')
+            
             df = process_date_columns(df)
+            
+            # Final index check after processing
+            if not df.index.is_unique:
+                df = df.reset_index(drop=True)
+            
             return df
         else:
             # Fall back to live Salesforce data
@@ -86,14 +106,36 @@ def get_quarter_metrics(df):
     today = datetime.today()
     current_quarter = get_quarter_info(today)[0]
     
-    # Filter for current quarter
-    current_df = df[df['Created Date_Quarter'] == current_quarter]
+    # Filter for current quarter with proper index handling
+    try:
+        mask = df['Created Date_Quarter'] == current_quarter
+        current_df = df.loc[mask].reset_index(drop=True)
+    except ValueError:
+        # If we still have duplicate index issues, use query instead
+        current_df = df.query(f"`Created Date_Quarter` == '{current_quarter}'").reset_index(drop=True)
     
     # Key metrics
     total_sqls = len(current_df)
-    total_saos = len(current_df[current_df['SAO Date'].notna()])
-    total_bookings = current_df[current_df['Stage'] == 'Closed Won']['ARR Change'].sum()
-    avg_deal_size = current_df[current_df['Stage'] == 'Closed Won']['ARR Change'].mean()
+    
+    # For SAOs, filter by SAO Date_Quarter instead of Created Date_Quarter
+    try:
+        sao_mask = df['SAO Date_Quarter'] == current_quarter
+        sao_df = df.loc[sao_mask].reset_index(drop=True)
+    except ValueError:
+        sao_df = df.query(f"`SAO Date_Quarter` == '{current_quarter}'").reset_index(drop=True)
+    
+    total_saos = len(sao_df[sao_df['SAO Date'].notna()])
+    
+    # For bookings, filter by Close Date_Quarter instead of Created Date_Quarter
+    try:
+        bookings_mask = df['Close Date_Quarter'] == current_quarter
+        bookings_df = df.loc[bookings_mask].reset_index(drop=True)
+    except ValueError:
+        bookings_df = df.query(f"`Close Date_Quarter` == '{current_quarter}'").reset_index(drop=True)
+    
+    closed_won_deals = bookings_df[bookings_df['Stage'] == 'Closed Won']
+    total_bookings = closed_won_deals['ARR Change'].sum()
+    avg_deal_size = closed_won_deals['ARR Change'].mean()
     
     return {
         'total_sqls': total_sqls,
@@ -119,7 +161,11 @@ def create_pacing_chart(df, metric_type='bookings'):
         )
         
         # Get current quarter data
-        current_data = bookings_df[bookings_df['Close Date_Quarter'] == current_quarter]
+        try:
+            mask = bookings_df['Close Date_Quarter'] == current_quarter
+            current_data = bookings_df.loc[mask].reset_index(drop=True)
+        except ValueError:
+            current_data = bookings_df.query(f"`Close Date_Quarter` == '{current_quarter}'").reset_index(drop=True)
         
         # Calculate cumulative bookings by day
         daily_bookings = current_data.groupby('Pct_Day')['ARR Change'].sum().cumsum()
@@ -142,7 +188,11 @@ def create_pacing_chart(df, metric_type='bookings'):
         
     else:
         # SQL pacing
-        sql_data = df[df['Created Date_Quarter'] == current_quarter]
+        try:
+            mask = df['Created Date_Quarter'] == current_quarter
+            sql_data = df.loc[mask].reset_index(drop=True)
+        except ValueError:
+            sql_data = df.query(f"`Created Date_Quarter` == '{current_quarter}'").reset_index(drop=True)
         sql_data['Pct_Day'] = sql_data['Created Date'].apply(
             lambda x: compute_day_of_quarter(x)['Pct_Day'] if pd.notnull(x) else None
         )
@@ -174,10 +224,14 @@ def create_segment_analysis(df):
     current_quarter = get_quarter_info(today)[0]
     
     # Filter for current quarter and valid segments
-    current_df = df[
-        (df['Created Date_Quarter'] == current_quarter) & 
-        (df['Segment - historical'].isin(segments))
-    ]
+    try:
+        # First filter by quarter
+        quarter_df = df.query(f"`Created Date_Quarter` == '{current_quarter}'").reset_index(drop=True)
+        # Then filter by segments
+        current_df = quarter_df[quarter_df['Segment - historical'].isin(segments)].reset_index(drop=True)
+    except (ValueError, TypeError):
+        # Fallback to direct filtering
+        current_df = df[(df['Created Date_Quarter'] == current_quarter) & (df['Segment - historical'].isin(segments))].copy().reset_index(drop=True)
     
     # Calculate metrics by segment
     segment_metrics = []
@@ -222,10 +276,14 @@ def create_source_analysis(df):
     current_quarter = get_quarter_info(today)[0]
     
     # Filter for current quarter and valid sources
-    current_df = df[
-        (df['Created Date_Quarter'] == current_quarter) & 
-        (df['Source'].isin(sources))
-    ]
+    try:
+        # First filter by quarter
+        quarter_df = df.query(f"`Created Date_Quarter` == '{current_quarter}'").reset_index(drop=True)
+        # Then filter by sources
+        current_df = quarter_df[quarter_df['Source'].isin(sources)].reset_index(drop=True)
+    except (ValueError, TypeError):
+        # Fallback to direct filtering
+        current_df = df[(df['Created Date_Quarter'] == current_quarter) & (df['Source'].isin(sources))].copy().reset_index(drop=True)
     
     # Calculate metrics by source
     source_metrics = current_df.groupby('Source').agg({
@@ -239,6 +297,7 @@ def create_source_analysis(df):
     })
     
     source_metrics['Conversion Rate'] = (source_metrics['SAOs'] / source_metrics['SQLs'] * 100).fillna(0)
+    source_metrics = source_metrics.reset_index()
     
     # Create sunburst chart
     fig = px.sunburst(
@@ -267,15 +326,23 @@ def main():
         st.error("Failed to load data. Please check your connection.")
         return
     
+    # Filter to only include valid segments (SMB, MM, Enterprise)
+    valid_segments = ['SMB', 'Mid Market', 'Enterprise']
+    df = df[df['Segment - historical'].isin(valid_segments)].reset_index(drop=True)
+    
+    # Filter to exclude 'Other' and 'Connect' from sources
+    df = df[~df['Source'].isin(['Other', 'Connect'])].reset_index(drop=True)
+    
     # Date range filter
     min_date = df['Created Date'].min().date()
     max_date = df['Created Date'].max().date()
     
     date_range = st.sidebar.date_input(
-        "Date Range",
+        "Date Range (Created Date)",
         value=(min_date, max_date),
         min_value=min_date,
-        max_value=max_date
+        max_value=max_date,
+        help="This filters the dataset by Created Date. Note: Top metrics show current quarter only, and different views use different date fields."
     )
     
     # Segment filter
@@ -289,22 +356,36 @@ def main():
     # Apply filters
     filtered_df = df.copy()
     
+    # Ensure clean index for filtering
+    filtered_df = filtered_df.reset_index(drop=True)
+    
     if len(date_range) == 2:
-        filtered_df = filtered_df[
-            (filtered_df['Created Date'].dt.date >= date_range[0]) &
-            (filtered_df['Created Date'].dt.date <= date_range[1])
-        ]
+        try:
+            mask = (filtered_df['Created Date'].dt.date >= date_range[0]) & (filtered_df['Created Date'].dt.date <= date_range[1])
+            filtered_df = filtered_df.loc[mask].reset_index(drop=True)
+        except ValueError:
+            filtered_df = filtered_df.query(f"`Created Date`.dt.date >= '{date_range[0]}' and `Created Date`.dt.date <= '{date_range[1]}'").reset_index(drop=True)
     
     if selected_segment != 'All':
-        filtered_df = filtered_df[filtered_df['Segment - historical'] == selected_segment]
+        try:
+            mask = filtered_df['Segment - historical'] == selected_segment
+            filtered_df = filtered_df.loc[mask].reset_index(drop=True)
+        except ValueError:
+            filtered_df = filtered_df.query(f"`Segment - historical` == '{selected_segment}'").reset_index(drop=True)
     
     if selected_source != 'All':
-        filtered_df = filtered_df[filtered_df['Source'] == selected_source]
+        try:
+            mask = filtered_df['Source'] == selected_source
+            filtered_df = filtered_df.loc[mask].reset_index(drop=True)
+        except ValueError:
+            filtered_df = filtered_df.query(f"`Source` == '{selected_source}'").reset_index(drop=True)
     
     # Key metrics
     metrics = get_quarter_metrics(filtered_df)
     
-    # Display metrics
+    # Display metrics with current quarter header
+    st.subheader(f"📊 Current Quarter Metrics ({metrics['current_quarter']})")
+    
     col1, col2, col3, col4 = st.columns(4)
     
     with col1:
@@ -339,6 +420,13 @@ def main():
     tab1, tab2, tab3, tab4, tab5 = st.tabs([
         "📈 Pacing", "🎯 Segments", "🔄 Sources", "📊 Pivot Tables", "🔍 Raw Data"
     ])
+    
+    # Update sidebar based on active tab
+    st.sidebar.markdown("---")
+    st.sidebar.markdown("**Current View Context:**")
+    st.sidebar.markdown("• **Pacing**: Bookings use Close Date, SQLs use Created Date")
+    st.sidebar.markdown("• **Segments/Sources**: Use Created Date")
+    st.sidebar.markdown("• **Pivot Tables**: Use date field specific to each pivot type")
     
     with tab1:
         st.header("Quarter Pacing Analysis")
@@ -375,9 +463,15 @@ def main():
         st.header("Pivot Tables")
         
         # Create pivot tables
-        sql_pivot = create_sql_pivot(filtered_df)
-        sao_pivot = create_sao_pivot(filtered_df)
-        pipegen_pivot = create_pipegen_pivot(filtered_df)
+        # Clean DataFrame before passing to pivot functions
+        clean_df = filtered_df.copy()
+        if clean_df.columns.duplicated().any():
+            clean_df = clean_df.loc[:, ~clean_df.columns.duplicated()]
+        clean_df = clean_df.reset_index(drop=True)
+        
+        sql_pivot = create_sql_pivot(clean_df)
+        sao_pivot = create_sao_pivot(clean_df)
+        pipegen_pivot = create_pipegen_pivot(clean_df)
         
         pivot_tab1, pivot_tab2, pivot_tab3 = st.tabs(["SQLs", "SAOs", "Pipegen"])
         
