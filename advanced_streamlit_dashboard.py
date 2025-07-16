@@ -348,19 +348,70 @@ def calculate_bookings_analysis(df):
     bookings_by_type.loc['Total Inquarter'] = bookings_by_type.sum(axis=0)
     bookings_by_type.loc['Total bookings'] = total_bookings
     
-    # Calculate percentage
+    # Calculate percentage (keep numeric for comparison calculations)
     pct_inquarter = (bookings_by_type.loc['Total Inquarter'] / 
                     bookings_by_type.loc['Total bookings'].replace(0, np.nan) * 100).fillna(0)
-    bookings_by_type.loc['Percent inquarter'] = pct_inquarter.apply(lambda x: f"{x:.1f}%")
+    bookings_by_type.loc['Percent inquarter'] = pct_inquarter
     
-    # Add comparison columns for numeric rows only
+    # Add comparison columns for numeric rows only (original approach for non-percentage rows)
     numeric_rows = bookings_by_type.index[bookings_by_type.index != 'Percent inquarter']
     bookings_numeric = bookings_by_type.loc[numeric_rows].copy()
     bookings_numeric = add_comparison_columns(bookings_numeric)
     
-    # Add back percentage row
+    # Handle percentage row separately with percentage point calculations
     percent_row = bookings_by_type.loc[['Percent inquarter']].copy()
-    bookings_final = pd.concat([bookings_numeric, percent_row])
+    
+    # Add percentage point comparison columns for the percentage row
+    if 'Percent inquarter' in percent_row.index:
+        # Get quarter columns (format: YYYY-QX)
+        quarter_cols = [col for col in percent_row.columns 
+                       if isinstance(col, str) and '-Q' in col and col[0].isdigit()]
+        quarter_cols.sort()
+        
+        if len(quarter_cols) >= 2:
+            # Use last completed quarter (second to last) for comparisons
+            last_completed_quarter = quarter_cols[-2]
+            
+            # QoQ Change: percentage point difference
+            if len(quarter_cols) >= 3:
+                prev_quarter = quarter_cols[-3]
+                qoq_change = percent_row.loc['Percent inquarter', last_completed_quarter] - percent_row.loc['Percent inquarter', prev_quarter]
+                percent_row.loc['Percent inquarter', 'QoQ Change'] = round(qoq_change, 1)
+            
+            # vs Last 4Q Avg: percentage point difference
+            if len(quarter_cols) >= 6:
+                last_4_quarters = quarter_cols[-6:-2]
+                avg_last_4 = percent_row.loc['Percent inquarter', last_4_quarters].mean()
+                four_q_change = percent_row.loc['Percent inquarter', last_completed_quarter] - avg_last_4
+                percent_row.loc['Percent inquarter', '4Q Avg'] = round(four_q_change, 1)
+            
+            # YoY Change: percentage point difference
+            try:
+                last_completed_year = int(last_completed_quarter.split('-')[0])
+                last_completed_q = last_completed_quarter.split('-')[1]
+                prev_year_quarter = f"{last_completed_year-1}-{last_completed_q}"
+                
+                if prev_year_quarter in quarter_cols:
+                    yoy_change = percent_row.loc['Percent inquarter', last_completed_quarter] - percent_row.loc['Percent inquarter', prev_year_quarter]
+                    percent_row.loc['Percent inquarter', 'YoY Change'] = round(yoy_change, 1)
+            except (ValueError, IndexError):
+                pass
+    
+    # Combine numeric and percentage rows
+    bookings_with_comparisons = pd.concat([bookings_numeric, percent_row])
+    
+    # Now format the percentage row as strings with % symbol (for quarter columns only)
+    if 'Percent inquarter' in bookings_with_comparisons.index:
+        # Get quarter columns to format
+        quarter_cols = [col for col in bookings_with_comparisons.columns 
+                       if isinstance(col, str) and '-Q' in col and col[0].isdigit()]
+        
+        # Format percentage values for quarter columns only (not comparison columns)
+        for col in quarter_cols:
+            if col in bookings_with_comparisons.columns:
+                bookings_with_comparisons.loc['Percent inquarter', col] = f"{bookings_with_comparisons.loc['Percent inquarter', col]:.1f}%"
+    
+    bookings_final = bookings_with_comparisons
     
     # Final cleanup - remove any remaining empty or header rows
     bookings_final = bookings_final[~bookings_final.index.isin(['Bookings Type', '', 'NaN'])]
@@ -1322,8 +1373,6 @@ def create_pipegen_pacing_chart(df):
 
 def main():
     """Main dashboard function."""
-    st.title("📊 Advanced Master Report Dashboard")
-    st.markdown("*Comprehensive analytics matching notebook framework*")
     
     # Load data
     with st.spinner("Loading and processing data..."):
@@ -1334,13 +1383,6 @@ def main():
         return
     
     # Remove global filters - will be added per tab
-    
-    # Sidebar info and filters
-    st.sidebar.header("📋 Data Summary")
-    st.sidebar.write(f"**Total Records**: {len(df):,}")
-    st.sidebar.write(f"**Date Range**: {df['Created Date'].min().date()} to {df['Created Date'].max().date()}")
-    st.sidebar.write(f"**Segments**: {', '.join(VALID_SEGMENTS)}")
-    st.sidebar.write(f"**Sources**: {', '.join(VALID_SOURCES)}")
     
     # Global segment filter
     st.sidebar.header("🔍 Filters")
@@ -1426,8 +1468,6 @@ def main():
     ])
     
     with tab1:
-        st.header("Bookings Analysis")
-        
         # Pacing chart on top
         st.subheader("Current Quarter Pacing")
         with st.spinner("Calculating bookings pacing..."):
@@ -1442,12 +1482,9 @@ def main():
             st.plotly_chart(chart, use_container_width=True, key="bookings_trends")
         
         # Analysis table at bottom
-        st.subheader("Bookings Analysis Table")
         display_metric_table(bookings_analysis, "Bookings")
     
     with tab2:
-        st.header("Pipeline Generation Analysis")
-        
         # Pacing chart on top
         st.subheader("Current Quarter Pacing")
         with st.spinner("Calculating pipeline generation pacing..."):
