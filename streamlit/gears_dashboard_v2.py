@@ -112,70 +112,87 @@ def get_current_quarter():
     return f"FY{fiscal_year}{quarter}"
 
 @st.cache_data(ttl=3600)
-def load_master_sqls_csv():
-    """Load the Master - SQLs.csv file and parse the three tables."""
+def load_master_report_data():
+    """Load the master_report.csv file and create the three tables from raw data."""
     try:
         # Load the CSV file
-        df = pd.read_csv("../data_sources/Master - SQLs.csv")
+        df = pd.read_csv("../data_sources/master_report.csv")
         
-        # Load plan data to merge with Table 1
+        # Load plan data to merge with calculations
         plan_data = load_plan_data_from_csv()
         
-        # Parse Table 1: Source × Segment × Booking Type (columns 1-3 are source, segment, booking type)
+        # Filter for SQLs (where SQO Date is not null)
+        sql_data = df[df['SQO Date'].notna()].copy()
+        
+        # Filter for current fiscal quarter (FY26Q2) 
+        # Use SQO Date Quarter for SQLs data
+        current_quarter = "2026-Q2"  # Hard-coded for now, should match the actual data
+        sql_data = sql_data[sql_data['SQO Date_Quarter'] == current_quarter]
+        
+        # Add debug info
+        st.info(f"📊 Loaded {len(sql_data)} SQLs for {current_quarter}")
+        
+        # Show breakdown by source for debugging
+        source_breakdown = sql_data.groupby('Source').size().sort_values(ascending=False)
+        st.info(f"📈 Source breakdown: {dict(source_breakdown)}")
+        
+        # Create aggregated data for Table 1: Source × Segment × Booking Type
         table1_data = []
-        for idx, row in df.iterrows():
-            if len(row) > 8 and pd.notna(row.iloc[1]) and str(row.iloc[1]).strip() != '':
-                source = str(row.iloc[1]).strip()
-                segment = str(row.iloc[2]).strip() if pd.notna(row.iloc[2]) else ''
-                booking_type = str(row.iloc[3]).strip() if pd.notna(row.iloc[3]) else ''
+        
+        # Group by Source, Segment, and Booking Type
+        grouped = sql_data.groupby(['Source', 'Segment - historical', 'Bookings Type']).size().reset_index(name='Actuals')
+        
+        for _, row in grouped.iterrows():
+            source = row['Source']
+            segment = row['Segment - historical']
+            booking_type = row['Bookings Type']
+            actuals = row['Actuals']
+            
+            # Filter for valid combinations
+            if (source in VALID_SOURCES and 
+                segment in ['SMB', 'Mid Market', 'Enterprise'] and 
+                booking_type in VALID_BOOKING_TYPES):
                 
-                if (source in VALID_SOURCES and 
-                    segment in ['SMB', 'MM', 'ENT', 'Enterprise', 'Mid Market'] and 
-                    booking_type in VALID_BOOKING_TYPES):
-                    
-                    # Map segment names
-                    if segment == 'MM':
-                        segment = 'Mid Market'
-                    elif segment == 'ENT':
-                        segment = 'Enterprise'
-                    
-                    # Get 2026-Q2 actuals from column 8 
-                    actuals = row.iloc[8] if pd.notna(row.iloc[8]) else 0
-                    
-                    # Get plan data for this combination
-                    plan_value = 0
-                    if plan_data is not None:
-                        matching_plan = plan_data[
+                # Get plan data for this combination
+                plan_value = 0
+                if plan_data is not None:
+                    matching_plan = plan_data[
+                        (plan_data['Source'] == source) & 
+                        (plan_data['Segment'] == segment) & 
+                        (plan_data['Booking Type'] == booking_type)
+                    ]
+                    if not matching_plan.empty:
+                        plan_value = matching_plan.iloc[0]['SQL Plan']
+                    else:
+                        # Fallback: try to find any plan for this source/booking type combo
+                        fallback_plan = plan_data[
                             (plan_data['Source'] == source) & 
-                            (plan_data['Segment'] == segment) & 
                             (plan_data['Booking Type'] == booking_type)
                         ]
-                        if not matching_plan.empty:
-                            plan_value = matching_plan.iloc[0]['SQL Plan']
-                    
-                    # Calculate attainment and gap
-                    attainment = (float(actuals) / float(plan_value) * 100) if plan_value > 0 else 0
-                    gap = float(actuals) - float(plan_value)
-                    
-                    table1_data.append({
-                        'Source': source,
-                        'Segment': segment,
-                        'Booking Type': booking_type,
-                        'Actuals': actuals,
-                        'Plan to Date': plan_value,
-                        'Attainment to Date': f"{attainment:.0f}%" if attainment == int(attainment) else f"{attainment:.1f}%",
-                        'Gap to Date': gap,
-                        'Q2 Plan Total': plan_value
-                    })
+                        if not fallback_plan.empty:
+                            plan_value = fallback_plan.iloc[0]['SQL Plan']
+                
+                # Calculate attainment and gap
+                attainment = (float(actuals) / float(plan_value) * 100) if plan_value > 0 else 0
+                gap = float(actuals) - float(plan_value)
+                
+                table1_data.append({
+                    'Source': source,
+                    'Segment': segment,
+                    'Booking Type': booking_type,
+                    'Actuals': actuals,
+                    'Plan to Date': plan_value,
+                    'Attainment to Date': f"{attainment:.0f}%" if attainment == int(attainment) else f"{attainment:.1f}%",
+                    'Gap to Date': gap,
+                    'Q2 Plan Total': plan_value
+                })
         
-        # For Table 2, we need to reorganize Table 1 data by Segment first
+        # Create Table 2: Reorganize by Segment first
         table2_data = []
         segment_order = ['SMB', 'Mid Market', 'Enterprise']
         
-        # Reorganize the data by segment
         for segment in segment_order:
             segment_items = [item for item in table1_data if item['Segment'] == segment]
-            # Sort by source and booking type
             segment_items.sort(key=lambda x: (x['Source'], x['Booking Type']))
             
             for item in segment_items:
@@ -190,27 +207,48 @@ def load_master_sqls_csv():
                     'Q2 Plan Total': item['Q2 Plan Total']
                 })
         
-        # Parse Table 3: Source Summary (columns 29-34)
+        # Create Table 3: Source Summary
         table3_data = []
-        for idx, row in df.iterrows():
-            if len(row) > 34 and pd.notna(row.iloc[29]) and str(row.iloc[29]).strip() != '':
-                source = str(row.iloc[29]).strip()
+        source_grouped = sql_data.groupby('Source').size().reset_index(name='Actuals')
+        
+        for _, row in source_grouped.iterrows():
+            source = row['Source']
+            actuals = row['Actuals']
+            
+            if source in VALID_SOURCES:
+                # Get total plan for this source (use "Total" segment entries)
+                plan_value = 0
+                if plan_data is not None:
+                    total_plans = plan_data[
+                        (plan_data['Source'] == source) & 
+                        (plan_data['Segment'] == 'Total')
+                    ]
+                    if not total_plans.empty:
+                        plan_value = total_plans['SQL Plan'].sum()
+                    else:
+                        # Fallback: sum all segment-specific plans for this source
+                        source_plans = plan_data[
+                            (plan_data['Source'] == source) & 
+                            (plan_data['Segment'] != 'Total')
+                        ]
+                        if not source_plans.empty:
+                            plan_value = source_plans['SQL Plan'].sum()
                 
-                if source in VALID_SOURCES:
-                    table3_data.append({
-                        'Source': source,
-                        'Actuals': row.iloc[30] if pd.notna(row.iloc[30]) else 0,
-                        'Plan to Date': row.iloc[31] if pd.notna(row.iloc[31]) else 0,
-                        'Attainment to Date': row.iloc[32] if pd.notna(row.iloc[32]) else 0,
-                        'Gap to Date': row.iloc[33] if pd.notna(row.iloc[33]) else 0,
-                        'Q2 Plan Total': row.iloc[34] if pd.notna(row.iloc[34]) else 0
-                    })
+                # Calculate attainment and gap
+                attainment = (float(actuals) / float(plan_value) * 100) if plan_value > 0 else 0
+                gap = float(actuals) - float(plan_value)
+                
+                table3_data.append({
+                    'Source': source,
+                    'Actuals': actuals,
+                    'Plan to Date': plan_value,
+                    'Attainment to Date': f"{attainment:.0f}%" if attainment == int(attainment) else f"{attainment:.1f}%",
+                    'Gap to Date': gap,
+                    'Q2 Plan Total': plan_value
+                })
         
         # Sort tables appropriately
-        # Table 1: Sort by source, then segment (SMB, MM, ENT), then booking type
         table1_data.sort(key=lambda x: (x['Source'], segment_order.index(x['Segment']), x['Booking Type']))
-        
-        # Table 3: Sort by source
         table3_data.sort(key=lambda x: x['Source'])
         
         return {
@@ -220,7 +258,7 @@ def load_master_sqls_csv():
         }
         
     except Exception as e:
-        st.error(f"Error loading Master - SQLs.csv: {e}")
+        st.error(f"Error loading master_report.csv: {e}")
         return None
 
 @st.cache_data(ttl=3600)
@@ -402,11 +440,11 @@ def main():
     """Main dashboard function."""
     st.title("⚙️ Gears - Pipeline Attainment Dashboard")
     
-    # Load the Master - SQLs.csv data
-    sqls_data = load_master_sqls_csv()
+    # Load the master report data
+    sqls_data = load_master_report_data()
     
     if sqls_data is None:
-        st.error("❌ Could not load Master - SQLs.csv data")
+        st.error("❌ Could not load master report data")
         st.stop()
     
     # Load plan data from CSV files
