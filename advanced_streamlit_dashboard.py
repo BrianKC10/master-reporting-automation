@@ -1107,9 +1107,21 @@ def create_bookings_combo_chart(bookings_analysis):
         barmode='group'  # Changed from 'stack' to 'group'
     )
     
-    # Update y-axes
-    fig.update_yaxes(title_text="Bookings ($)", secondary_y=False, rangemode='tozero')
-    fig.update_yaxes(title_text="Expansion %", secondary_y=True, range=[0, 100])
+    # Update y-axes with evenly spaced ticks
+    fig.update_yaxes(
+        title_text="Bookings ($)", 
+        secondary_y=False, 
+        rangemode='tozero',
+        tickmode='linear',
+        dtick='auto'
+    )
+    fig.update_yaxes(
+        title_text="Expansion %", 
+        secondary_y=True, 
+        range=[0, 100],
+        tickmode='linear',
+        dtick=10
+    )
     
     return fig
 
@@ -1167,8 +1179,8 @@ def create_bookings_pacing_chart(df):
         y=target_y,
         mode='lines',
         name='Target Pace',
-        line=dict(color='gray', width=2, dash='dash'),
-        opacity=0.7
+        line=dict(color=ENVOY_COLORS['powder'], width=3, dash='dash'),
+        opacity=0.8
     ))
     
     # Add current position to actual bookings line if we have data
@@ -1296,8 +1308,8 @@ def create_pipegen_pacing_chart(df):
         y=target_y,
         mode='lines',
         name='Target Pace',
-        line=dict(color='gray', width=2, dash='dash'),
-        opacity=0.7
+        line=dict(color=ENVOY_COLORS['powder'], width=3, dash='dash'),
+        opacity=0.8
     ))
     
     # Add current position to actual pipeline line if we have data
