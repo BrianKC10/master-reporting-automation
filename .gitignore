@@ -1,37 +1,54 @@
-# Virtual environment
-venv/
-*.venv
-
-# Large data files
-*.csv
-*.xlsx
-*.xls
-
-# Python cache
+# Python
 __pycache__/
-*.pyc
-*.pyo
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
 
-# System files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
+# Virtual environments
+venv/
+env/
+ENV/
 
-# Jupyter Notebook checkpoints
-.ipynb_checkpoints/
-
-# IDE files
+# IDE
 .vscode/
 .idea/
+*.swp
+*.swo
 
-# Environment variables
-.env
-.env.local
+# OS
+.DS_Store
+Thumbs.db
+
+# Jupyter Notebook
+.ipynb_checkpoints
 
 # Logs
 *.log
-logs/
+
+# Streamlit
+streamlit_output.log
+gears_output.log
+
+# Google Sheets credentials (keep private)
+/Users/bchen/Downloads/gspread-*.json
+
+# Data files that might be sensitive
+# Note: We'll keep CSV files in git for deployment
+EOF < /dev/null
