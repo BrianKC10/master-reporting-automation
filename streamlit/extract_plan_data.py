@@ -95,10 +95,12 @@ def extract_plan_data():
         print(f"📅 Current quarter: {current_quarter}")
         
         # Extract plan data
-        plan_data = extract_sql_plan_data(df, current_quarter)
+        sql_plan_data = extract_sql_plan_data(df, current_quarter)
+        sao_plan_data = extract_sao_plan_data(df, current_quarter)
+        pipegen_plan_data = extract_pipegen_plan_data(df, current_quarter)
         
         # Save to CSV files
-        save_plan_data_to_csv(plan_data, current_quarter)
+        save_plan_data_to_csv(sql_plan_data, sao_plan_data, pipegen_plan_data, current_quarter)
         
         print(f"✅ Plan data extraction completed successfully!")
         
@@ -147,7 +149,7 @@ def extract_sql_plan_data(df, current_quarter):
                 except:
                     plan_value = 0
                 
-                if plan_value > 0:  # Only include non-zero values
+                if plan_value > 0 and segment != 'Total':  # Only include non-zero values and exclude Total rows
                     sql_plan_data.append({
                         'Source': source,
                         'Segment': segment,
@@ -159,7 +161,112 @@ def extract_sql_plan_data(df, current_quarter):
     
     return sql_plan_data
 
-def save_plan_data_to_csv(sql_plan_data, current_quarter):
+def extract_sao_plan_data(df, current_quarter):
+    """Extract SAO plan data from the worksheet."""
+    
+    print(f"📊 Extracting SAO plan data for {current_quarter}")
+    
+    # Determine which column contains our target quarter data
+    quarter_col_map = {
+        'FY26Q1': 11,  # 2026-Q1
+        'FY26Q2': 12,  # 2026-Q2
+        'FY26Q3': 14,  # 2026-Q3
+        'FY26Q4': 15   # 2026-Q4
+    }
+    
+    target_col = quarter_col_map.get(current_quarter, 12)  # Default to Q2
+    print(f"🎯 Using column {target_col} for {current_quarter} SAO data")
+    
+    # Extract SAO plan data
+    sao_plan_data = []
+    
+    for idx, row in df.iterrows():
+        # Check if this row contains SAO data
+        if len(row) > 5 and str(row[f'col_5']).strip().upper() == 'SAO':
+            source = str(row['col_2']).strip()
+            segment = str(row['col_3']).strip()
+            booking_type = str(row['col_4']).strip()
+            
+            # Map segment names
+            segment_map = {'MM': 'Mid Market', 'SMB': 'SMB', 'ENT': 'Enterprise'}
+            segment = segment_map.get(segment, segment)
+            
+            # Get the plan value from the target quarter column
+            if len(row) > target_col:
+                plan_value_str = str(row[f'col_{target_col}']).strip()
+                
+                # Parse numeric value (remove commas, convert to float)
+                try:
+                    plan_value = float(plan_value_str.replace(',', '')) if plan_value_str else 0
+                except:
+                    plan_value = 0
+                
+                if plan_value > 0 and segment != 'Total':  # Only include non-zero values and exclude Total rows
+                    sao_plan_data.append({
+                        'Source': source,
+                        'Segment': segment,
+                        'Booking Type': booking_type,
+                        'SAO Plan': plan_value
+                    })
+    
+    print(f"✅ Extracted {len(sao_plan_data)} SAO plan entries")
+    
+    return sao_plan_data
+
+def extract_pipegen_plan_data(df, current_quarter):
+    """Extract Pipegen plan data from the worksheet."""
+    
+    print(f"📊 Extracting Pipegen plan data for {current_quarter}")
+    
+    # Determine which column contains our target quarter data
+    quarter_col_map = {
+        'FY26Q1': 11,  # 2026-Q1
+        'FY26Q2': 12,  # 2026-Q2
+        'FY26Q3': 14,  # 2026-Q3
+        'FY26Q4': 15   # 2026-Q4
+    }
+    
+    target_col = quarter_col_map.get(current_quarter, 12)  # Default to Q2
+    print(f"🎯 Using column {target_col} for {current_quarter} Pipegen data")
+    
+    # Extract Pipegen plan data
+    pipegen_plan_data = []
+    
+    for idx, row in df.iterrows():
+        # Check if this row contains Pipegen data
+        if len(row) > 5 and str(row[f'col_5']).strip() in ['Pipegen', 'PIPEGEN', 'PIPELINE']:
+            source = str(row['col_2']).strip()
+            segment = str(row['col_3']).strip()
+            booking_type = str(row['col_4']).strip()
+            
+            # Map segment names
+            segment_map = {'MM': 'Mid Market', 'SMB': 'SMB', 'ENT': 'Enterprise'}
+            segment = segment_map.get(segment, segment)
+            
+            # Get the plan value from the target quarter column
+            if len(row) > target_col:
+                plan_value_str = str(row[f'col_{target_col}']).strip()
+                
+                # Parse numeric value (remove dollar signs, commas, convert to float)
+                try:
+                    clean_value = plan_value_str.replace('$', '').replace(',', '') if plan_value_str else '0'
+                    plan_value = float(clean_value)
+                except:
+                    plan_value = 0
+                
+                if plan_value > 0 and segment != 'Total':  # Only include non-zero values and exclude Total rows
+                    pipegen_plan_data.append({
+                        'Source': source,
+                        'Segment': segment,
+                        'Booking Type': booking_type,
+                        'Pipegen Plan': plan_value
+                    })
+    
+    print(f"✅ Extracted {len(pipegen_plan_data)} Pipegen plan entries")
+    
+    return pipegen_plan_data
+
+def save_plan_data_to_csv(sql_plan_data, sao_plan_data, pipegen_plan_data, current_quarter):
     """Save plan data to CSV files."""
     
     print(f"💾 Saving plan data to CSV files...")
@@ -169,35 +276,80 @@ def save_plan_data_to_csv(sql_plan_data, current_quarter):
     os.makedirs(plan_dir, exist_ok=True)
     
     # Save SQL plan data
-    sql_df = pd.DataFrame(sql_plan_data)
-    sql_csv_path = os.path.join(plan_dir, f"sql_plan_{current_quarter.lower()}.csv")
-    sql_df.to_csv(sql_csv_path, index=False)
-    print(f"✅ Saved SQL plan data to {sql_csv_path}")
+    if sql_plan_data:
+        sql_df = pd.DataFrame(sql_plan_data)
+        sql_csv_path = os.path.join(plan_dir, f"sql_plan_{current_quarter.lower()}.csv")
+        sql_df.to_csv(sql_csv_path, index=False)
+        print(f"✅ Saved SQL plan data to {sql_csv_path}")
+        
+        # Create summary by source
+        source_summary = sql_df.groupby('Source')['SQL Plan'].sum().reset_index()
+        source_summary_path = os.path.join(plan_dir, f"source_summary_{current_quarter.lower()}.csv")
+        source_summary.to_csv(source_summary_path, index=False)
+        print(f"✅ Saved source summary to {source_summary_path}")
+        
+        # Create summary by segment
+        segment_summary = sql_df.groupby(['Segment', 'Source'])['SQL Plan'].sum().reset_index()
+        segment_summary_path = os.path.join(plan_dir, f"segment_summary_{current_quarter.lower()}.csv")
+        segment_summary.to_csv(segment_summary_path, index=False)
+        print(f"✅ Saved segment summary to {segment_summary_path}")
+        
+        total_sql_plan = source_summary['SQL Plan'].sum()
+        print(f"\n💰 Total SQL Plan: {total_sql_plan:,.0f}")
+    else:
+        print("⚠️ No SQL plan data found")
     
-    # Create summary by source
-    source_summary = sql_df.groupby('Source')['SQL Plan'].sum().reset_index()
-    source_summary_path = os.path.join(plan_dir, f"source_summary_{current_quarter.lower()}.csv")
-    source_summary.to_csv(source_summary_path, index=False)
-    print(f"✅ Saved source summary to {source_summary_path}")
+    # Save SAO plan data
+    if sao_plan_data:
+        sao_df = pd.DataFrame(sao_plan_data)
+        sao_csv_path = os.path.join(plan_dir, f"sao_plan_{current_quarter.lower()}.csv")
+        sao_df.to_csv(sao_csv_path, index=False)
+        print(f"✅ Saved SAO plan data to {sao_csv_path}")
+        
+        # Create SAO summary by source
+        sao_source_summary = sao_df.groupby('Source')['SAO Plan'].sum().reset_index()
+        sao_source_summary_path = os.path.join(plan_dir, f"sao_source_summary_{current_quarter.lower()}.csv")
+        sao_source_summary.to_csv(sao_source_summary_path, index=False)
+        print(f"✅ Saved SAO source summary to {sao_source_summary_path}")
+        
+        total_sao_plan = sao_source_summary['SAO Plan'].sum()
+        print(f"\n🎯 Total SAO Plan: {total_sao_plan:,.0f}")
+    else:
+        print("⚠️ No SAO plan data found")
     
-    # Create summary by segment
-    segment_summary = sql_df.groupby(['Segment', 'Source'])['SQL Plan'].sum().reset_index()
-    segment_summary_path = os.path.join(plan_dir, f"segment_summary_{current_quarter.lower()}.csv")
-    segment_summary.to_csv(segment_summary_path, index=False)
-    print(f"✅ Saved segment summary to {segment_summary_path}")
+    # Save Pipegen plan data
+    if pipegen_plan_data:
+        pipegen_df = pd.DataFrame(pipegen_plan_data)
+        pipegen_csv_path = os.path.join(plan_dir, f"pipegen_plan_{current_quarter.lower()}.csv")
+        pipegen_df.to_csv(pipegen_csv_path, index=False)
+        print(f"✅ Saved Pipegen plan data to {pipegen_csv_path}")
+        
+        # Create Pipegen summary by source
+        pipegen_source_summary = pipegen_df.groupby('Source')['Pipegen Plan'].sum().reset_index()
+        pipegen_source_summary_path = os.path.join(plan_dir, f"pipegen_source_summary_{current_quarter.lower()}.csv")
+        pipegen_source_summary.to_csv(pipegen_source_summary_path, index=False)
+        print(f"✅ Saved Pipegen source summary to {pipegen_source_summary_path}")
+        
+        total_pipegen_plan = pipegen_source_summary['Pipegen Plan'].sum()
+        print(f"\n🚀 Total Pipegen Plan: {total_pipegen_plan:,.0f}")
+    else:
+        print("⚠️ No Pipegen plan data found")
     
     # Display sample data
-    print(f"\n📊 Sample SQL Plan Data:")
-    for i, entry in enumerate(sql_plan_data[:10]):
-        print(f"  {i+1:2d}. {entry['Source']:10} - {entry['Segment']:12} - {entry['Booking Type']:12}: {entry['SQL Plan']:8.0f}")
+    if sql_plan_data:
+        print(f"\n📊 Sample SQL Plan Data:")
+        for i, entry in enumerate(sql_plan_data[:5]):
+            print(f"  {i+1:2d}. {entry['Source']:10} - {entry['Segment']:12} - {entry['Booking Type']:12}: {entry['SQL Plan']:8.0f}")
     
-    # Display source totals
-    print(f"\n📈 Plan Totals by Source:")
-    for _, row in source_summary.iterrows():
-        print(f"  {row['Source']:10}: {row['SQL Plan']:8.0f}")
+    if sao_plan_data:
+        print(f"\n🎯 Sample SAO Plan Data:")
+        for i, entry in enumerate(sao_plan_data[:5]):
+            print(f"  {i+1:2d}. {entry['Source']:10} - {entry['Segment']:12} - {entry['Booking Type']:12}: {entry['SAO Plan']:8.0f}")
     
-    total_plan = source_summary['SQL Plan'].sum()
-    print(f"\n💰 Total SQL Plan: {total_plan:,.0f}")
+    if pipegen_plan_data:
+        print(f"\n🚀 Sample Pipegen Plan Data:")
+        for i, entry in enumerate(pipegen_plan_data[:5]):
+            print(f"  {i+1:2d}. {entry['Source']:10} - {entry['Segment']:12} - {entry['Booking Type']:12}: {entry['Pipegen Plan']:8.0f}")
 
 if __name__ == "__main__":
     extract_plan_data()

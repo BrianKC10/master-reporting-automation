@@ -1,0 +1,24 @@
+Source,Segment,Booking Type,Pipegen Plan
+Marketing,SMB,New Business,1683079.0
+Marketing,SMB,Expansion,311562.0
+Marketing,Mid Market,New Business,800032.0
+Marketing,Mid Market,Expansion,155303.0
+Marketing,Enterprise,New Business,1845588.0
+Marketing,Enterprise,Expansion,173796.0
+Channel,SMB,New Business,85166.0
+Channel,SMB,Expansion,5360.0
+Channel,Mid Market,New Business,54276.0
+Channel,Mid Market,Expansion,4535.0
+Channel,Enterprise,New Business,225243.0
+Channel,Enterprise,Expansion,131724.0
+BDR,Mid Market,New Business,399651.0
+BDR,Enterprise,New Business,1474810.0
+AE,SMB,New Business,533806.0
+AE,SMB,Expansion,790245.0
+AE,Mid Market,New Business,800462.0
+AE,Mid Market,Expansion,507801.0
+AE,Enterprise,New Business,851973.0
+AE,Enterprise,Expansion,697416.0
+Success,SMB,Expansion,145038.0
+Success,Mid Market,Expansion,485560.0
+Success,Enterprise,Expansion,842199.0

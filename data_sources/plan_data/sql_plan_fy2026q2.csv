@@ -1,32 +1,24 @@
 Source,Segment,Booking Type,SQL Plan
-Marketing,Total,New Business,433.0
-Marketing,Total,Expansion,109.0
 Marketing,SMB,New Business,251.0
 Marketing,SMB,Expansion,58.0
 Marketing,Mid Market,New Business,93.0
 Marketing,Mid Market,Expansion,31.0
 Marketing,Enterprise,New Business,89.0
 Marketing,Enterprise,Expansion,20.0
-Channel,Total,New Business,44.0
-Channel,Total,Expansion,13.0
 Channel,SMB,New Business,20.0
 Channel,SMB,Expansion,2.0
 Channel,Mid Market,New Business,8.0
 Channel,Mid Market,Expansion,2.0
 Channel,Enterprise,New Business,16.0
 Channel,Enterprise,Expansion,9.0
-BDR,Total,New Business,142.0
 BDR,Mid Market,New Business,63.0
 BDR,Enterprise,New Business,79.0
-AE,Total,New Business,164.0
-AE,Total,Expansion,282.0
 AE,SMB,New Business,76.0
 AE,SMB,Expansion,170.0
 AE,Mid Market,New Business,59.0
 AE,Mid Market,Expansion,77.0
 AE,Enterprise,New Business,29.0
 AE,Enterprise,Expansion,35.0
-Success,Total,Expansion,167.0
 Success,SMB,Expansion,45.0
 Success,Mid Market,Expansion,69.0
 Success,Enterprise,Expansion,53.0

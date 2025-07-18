@@ -1,0 +1,24 @@
+Source,Segment,Booking Type,SAO Plan
+Marketing,SMB,New Business,218.0
+Marketing,SMB,Expansion,46.0
+Marketing,Mid Market,New Business,62.0
+Marketing,Mid Market,Expansion,16.0
+Marketing,Enterprise,New Business,65.0
+Marketing,Enterprise,Expansion,12.0
+Channel,SMB,New Business,12.0
+Channel,SMB,Expansion,2.0
+Channel,Mid Market,New Business,4.0
+Channel,Mid Market,Expansion,1.0
+Channel,Enterprise,New Business,9.0
+Channel,Enterprise,Expansion,7.0
+BDR,Mid Market,New Business,31.0
+BDR,Enterprise,New Business,42.0
+AE,SMB,New Business,57.0
+AE,SMB,Expansion,153.0
+AE,Mid Market,New Business,36.0
+AE,Mid Market,Expansion,63.0
+AE,Enterprise,New Business,26.0
+AE,Enterprise,Expansion,32.0
+Success,SMB,Expansion,39.0
+Success,Mid Market,Expansion,62.0
+Success,Enterprise,Expansion,49.0

@@ -286,8 +286,8 @@ def get_week_of_quarter(date_val):
     return base_week + week_in_month
 
 @st.cache_data(ttl=3600)
-def load_master_report_data():
-    """Load the master_report.csv file and create the three tables from raw data."""
+def load_master_report_and_raw_data():
+    """Load the master_report.csv file and return both raw data and processed SQL tables."""
     try:
         # Try to fetch fresh data from Salesforce first
         sf = connect_to_salesforce()
@@ -307,11 +307,24 @@ def load_master_report_data():
                 # Try deployment path
                 df = pd.read_csv("data_sources/master_report.csv")
         
-        # Load plan data to merge with calculations
-        plan_data = load_plan_data_from_csv()
-        
         # Get quarter progress for Plan to Date calculation
         progress, days_elapsed, total_days = get_quarter_progress()
+        
+        # Generate SQL tables
+        sqls_data = load_master_report_data_internal(df, progress)
+        
+        return df, progress, sqls_data
+        
+    except Exception as e:
+        st.error(f"Error loading master report data: {e}")
+        return None, None, None
+
+@st.cache_data(ttl=3600)
+def load_master_report_data_internal(df, progress):
+    """Create the three SQL tables from raw data."""
+    try:
+        # Load plan data to merge with calculations
+        plan_data = load_plan_data_from_csv()
         
         # Filter for SQLs (where SQO Date is not null)
         sql_data = df[df['SQO Date'].notna()].copy()
@@ -491,6 +504,52 @@ def load_plan_data_from_csv():
         st.error(f"Error loading plan data: {e}")
         return None
 
+@st.cache_data(ttl=3600)
+def load_sao_plan_data_from_csv():
+    """Load SAO plan data from CSV files."""
+    try:
+        current_quarter = get_current_quarter()
+        # Try both local and deployment paths
+        plan_dir = "../data_sources/plan_data"
+        if not os.path.exists(plan_dir):
+            plan_dir = "data_sources/plan_data"
+        
+        # Load SAO plan data
+        sao_plan_file = os.path.join(plan_dir, f"sao_plan_{current_quarter.lower()}.csv")
+        if os.path.exists(sao_plan_file):
+            sao_plan_df = pd.read_csv(sao_plan_file)
+            return sao_plan_df
+        else:
+            st.warning(f"SAO plan data file not found: {sao_plan_file}")
+            return None
+            
+    except Exception as e:
+        st.error(f"Error loading SAO plan data: {e}")
+        return None
+
+@st.cache_data(ttl=3600)
+def load_pipegen_plan_data_from_csv():
+    """Load Pipegen plan data from CSV files."""
+    try:
+        current_quarter = get_current_quarter()
+        # Try both local and deployment paths
+        plan_dir = "../data_sources/plan_data"
+        if not os.path.exists(plan_dir):
+            plan_dir = "data_sources/plan_data"
+        
+        # Load Pipegen plan data
+        pipegen_plan_file = os.path.join(plan_dir, f"pipegen_plan_{current_quarter.lower()}.csv")
+        if os.path.exists(pipegen_plan_file):
+            pipegen_plan_df = pd.read_csv(pipegen_plan_file)
+            return pipegen_plan_df
+        else:
+            st.warning(f"Pipegen plan data file not found: {pipegen_plan_file}")
+            return None
+            
+    except Exception as e:
+        st.error(f"Error loading Pipegen plan data: {e}")
+        return None
+
 def format_number(value):
     """Format numbers without $ signs for SQLs and SAOs."""
     if pd.isna(value) or value == '' or value == 0:
@@ -592,7 +651,7 @@ def format_gap(value):
     
     return f'<span class="{color_class}">{formatted_value}</span>'
 
-def create_table_html(data, title):
+def create_table_html(data, title, is_pipegen=False):
     """Create HTML table with appropriate styling based on table type."""
     if not data:
         return f"<h3>{title}</h3><p>No data available</p>"
@@ -624,7 +683,17 @@ def create_table_html(data, title):
             html += '<tr>'
             for col in df.columns:
                 value = row[col]
-                formatted_value = format_table_value(value, col)
+                if is_pipegen:
+                    if col in ['Actuals', 'Plan to Date', 'Q2 Plan Total']:
+                        formatted_value = format_pipegen_value(value)
+                    elif col == 'Gap to Date':
+                        formatted_value = format_pipegen_gap(value)
+                    elif col == 'Attainment to Date':
+                        formatted_value = format_attainment_percentage(value)
+                    else:
+                        formatted_value = str(value)
+                else:
+                    formatted_value = format_table_value(value, col)
                 cell_style = 'border: 1px solid #ddd; padding: 6px; text-align: center;'
                 
                 # Bold styling for "Total" rows
@@ -682,7 +751,17 @@ def create_table_html(data, title):
                 
                 for col in df.columns:
                     value = row[col]
-                    formatted_value = format_table_value(value, col)
+                    if is_pipegen:
+                        if col in ['Actuals', 'Plan to Date', 'Q2 Plan Total']:
+                            formatted_value = format_pipegen_value(value)
+                        elif col == 'Gap to Date':
+                            formatted_value = format_pipegen_gap(value)
+                        elif col == 'Attainment to Date':
+                            formatted_value = format_attainment_percentage(value)
+                        else:
+                            formatted_value = str(value)
+                    else:
+                        formatted_value = format_table_value(value, col)
                     
                     cell_style = 'border: 1px solid #ddd; padding: 6px; text-align: center;'
                     
@@ -788,7 +867,17 @@ def create_table_html(data, title):
                 
                 for col in df.columns:
                     value = row[col]
-                    formatted_value = format_table_value(value, col)
+                    if is_pipegen:
+                        if col in ['Actuals', 'Plan to Date', 'Q2 Plan Total']:
+                            formatted_value = format_pipegen_value(value)
+                        elif col == 'Gap to Date':
+                            formatted_value = format_pipegen_gap(value)
+                        elif col == 'Attainment to Date':
+                            formatted_value = format_attainment_percentage(value)
+                        else:
+                            formatted_value = str(value)
+                    else:
+                        formatted_value = format_table_value(value, col)
                     
                     cell_style = 'border: 1px solid #ddd; padding: 6px; text-align: center;'
                     
@@ -864,6 +953,70 @@ def format_table_value(value, col):
     else:
         return str(value)
 
+def format_pipegen_value(value):
+    """Format pipegen currency values with $ and M/k notation."""
+    if pd.isna(value) or value == '' or value == 0:
+        return "$0"
+    
+    try:
+        numeric_value = float(value)
+        if abs(numeric_value) >= 1000000:
+            # Format as millions
+            millions = numeric_value / 1000000
+            if millions == int(millions):
+                return f"${millions:.0f}M"
+            else:
+                return f"${millions:.2f}M"
+        elif abs(numeric_value) >= 1000:
+            # Format as thousands
+            thousands = numeric_value / 1000
+            if thousands == int(thousands):
+                return f"${thousands:.0f}k"
+            else:
+                return f"${thousands:.0f}k"
+        else:
+            return f"${numeric_value:,.0f}"
+    except (ValueError, TypeError):
+        return str(value)
+
+def format_pipegen_gap(value):
+    """Format pipegen gap values with $ and M/k notation and color coding."""
+    if pd.isna(value) or value == '':
+        return ""
+    
+    try:
+        numeric_value = float(value)
+        
+        # Format the value
+        if abs(numeric_value) >= 1000000:
+            # Format as millions
+            millions = numeric_value / 1000000
+            if millions == int(millions):
+                formatted_value = f"${millions:.0f}M"
+            else:
+                formatted_value = f"${millions:.2f}M"
+        elif abs(numeric_value) >= 1000:
+            # Format as thousands
+            thousands = numeric_value / 1000
+            if thousands == int(thousands):
+                formatted_value = f"${thousands:.0f}k"
+            else:
+                formatted_value = f"${thousands:.0f}k"
+        else:
+            formatted_value = f"${numeric_value:,.0f}"
+        
+        # Add color coding
+        if numeric_value > 0:
+            color_class = "gap-positive"
+        elif numeric_value < 0:
+            color_class = "gap-negative"
+        else:
+            color_class = ""
+            
+        return f'<span class="{color_class}">{formatted_value}</span>'
+    except (ValueError, TypeError):
+        return str(value)
+
 def add_hierarchical_totals(data, primary_group):
     """Add hierarchical totals (segment subtotals, source totals, grand total)."""
     if not data:
@@ -894,7 +1047,7 @@ def add_hierarchical_totals(data, primary_group):
                     # Check what booking types this source actually supports
                     valid_source_booking_types = {
                         'AE': ['New Business', 'Expansion'],
-                        'BDR': ['New Business'],
+                        'BDR': ['New Business'],  # BDR only operates in Mid Market and Enterprise, not SMB
                         'Channel': ['New Business', 'Expansion'],
                         'Marketing': ['New Business', 'Expansion'],
                         'Success': ['Expansion']
@@ -936,7 +1089,7 @@ def add_hierarchical_totals(data, primary_group):
                     # Check what booking types this source actually supports
                     valid_source_booking_types = {
                         'AE': ['New Business', 'Expansion'],
-                        'BDR': ['New Business'],
+                        'BDR': ['New Business'],  # BDR only operates in Mid Market and Enterprise, not SMB
                         'Channel': ['New Business', 'Expansion'],
                         'Marketing': ['New Business', 'Expansion'],
                         'Success': ['Expansion']
@@ -1101,10 +1254,10 @@ def main():
             st.cache_data.clear()
             st.rerun()
     
-    # Load the master report data
-    sqls_data = load_master_report_data()
+    # Load the raw data and processed SQL data
+    raw_df, progress, sqls_data = load_master_report_and_raw_data()
     
-    if sqls_data is None:
+    if sqls_data is None or raw_df is None:
         st.error("❌ Could not load master report data")
         st.stop()
     
@@ -1143,11 +1296,335 @@ def main():
     
     with tab2:
         st.header("🎯 SAOs - Pipeline Attainment")
-        st.info("SAOs data will be implemented in the next phase")
+        
+        # Load SAO plan data
+        sao_plan_data = load_sao_plan_data_from_csv()
+        
+        # Generate SAO data
+        sao_data = generate_sao_data(raw_df, sao_plan_data, progress)
+        
+        # Add table selection for SAOs
+        sao_table_options = {
+            "Source Summary": "table3",
+            "Source × Segment × Booking Type": "table1", 
+            "Segment × Source × Booking Type": "table2"
+        }
+        
+        selected_sao_table = st.selectbox(
+            "Select SAO Table View:",
+            options=list(sao_table_options.keys()),
+            key="sao_table_selector"
+        )
+        
+        # Display the selected table using same logic as SQL tab
+        if sao_data:
+            table_key = sao_table_options[selected_sao_table]
+            st.markdown(create_table_html(sao_data[table_key], selected_sao_table), 
+                       unsafe_allow_html=True)
+        else:
+            st.error("No SAO data available")
+        
+        if st.button("🔄 Refresh SAO Data", key="refresh_sao"):
+            st.cache_data.clear()
+            st.rerun()
     
     with tab3:
         st.header("🚀 Pipegen - Pipeline Attainment")
-        st.info("Pipegen data will be implemented in the next phase")
+        
+        # Load pipegen plan data
+        pipegen_plan_data = load_pipegen_plan_data_from_csv()
+        
+        # Generate pipegen data
+        pipegen_data = generate_pipegen_data(raw_df, pipegen_plan_data, progress)
+        
+        # Add table selection for pipegen
+        pipegen_table_options = {
+            "Source Summary": "table3",
+            "Source × Segment × Booking Type": "table1",
+            "Segment × Source × Booking Type": "table2"
+        }
+        
+        selected_pipegen_table = st.selectbox(
+            "Select Pipegen Table View:",
+            options=list(pipegen_table_options.keys()),
+            key="pipegen_table_selector"
+        )
+        
+        # Display the selected table using pipegen formatting
+        if pipegen_data:
+            table_key = pipegen_table_options[selected_pipegen_table]
+            st.markdown(create_table_html(pipegen_data[table_key], selected_pipegen_table, is_pipegen=True), 
+                       unsafe_allow_html=True)
+        else:
+            st.error("No pipegen data available")
+        
+        if st.button("🔄 Refresh Pipegen Data", key="refresh_pipegen"):
+            st.cache_data.clear()
+            st.rerun()
+
+def generate_sao_data(df, sao_plan_data, progress):
+    """Generate SAO data tables using actual SAO plan data."""
+    # Filter for SAOs (where SAO Date is not null)
+    sao_data = df[df['SAO Date'].notna()].copy()
+    
+    # Filter for current fiscal quarter using SAO Date Quarter
+    current_quarter = "2026-Q2"
+    sao_data = sao_data[sao_data['SAO Date_Quarter'] == current_quarter]
+    
+    # Create aggregated data for Table 1: Source × Segment × Booking Type
+    table1_data = []
+    
+    # Group by Source, Segment, and Booking Type
+    grouped = sao_data.groupby(['Source', 'Segment - historical', 'Bookings Type']).size().reset_index(name='Actuals')
+    
+    for _, row in grouped.iterrows():
+        source = row['Source']
+        segment = row['Segment - historical']
+        booking_type = row['Bookings Type']
+        actuals = row['Actuals']
+        
+        # Filter for valid combinations and source-specific booking types
+        valid_source_booking_types = {
+            'AE': ['New Business', 'Expansion'],
+            'BDR': ['New Business'],  # BDR only operates in Mid Market and Enterprise, not SMB
+            'Channel': ['New Business', 'Expansion'],
+            'Marketing': ['New Business', 'Expansion'],
+            'Success': ['Expansion']
+        }
+        
+        if (source in VALID_SOURCES and 
+            segment in ['SMB', 'Mid Market', 'Enterprise'] and 
+            booking_type in valid_source_booking_types.get(source, []) and
+            not (source == 'BDR' and segment == 'SMB')):  # Exclude BDR from SMB
+            
+            # Use actual SAO plan data
+            plan_total = 0
+            if sao_plan_data is not None:
+                matching_plan = sao_plan_data[
+                    (sao_plan_data['Source'] == source) & 
+                    (sao_plan_data['Segment'] == segment) & 
+                    (sao_plan_data['Booking Type'] == booking_type)
+                ]
+                if not matching_plan.empty:
+                    plan_total = round(matching_plan.iloc[0]['SAO Plan'])
+            
+            plan_to_date = round(plan_total * progress)
+            gap_to_date = actuals - plan_to_date
+            
+            if plan_to_date > 0:
+                attainment = (actuals / plan_to_date * 100)
+                attainment_str = f"{attainment:.0f}%" if attainment == int(attainment) else f"{attainment:.1f}%"
+            else:
+                attainment_str = "0%"
+            
+            table1_data.append({
+                'Source': source,
+                'Segment': segment, 
+                'Booking Type': booking_type,
+                'Actuals': actuals,
+                'Plan to Date': plan_to_date,
+                'Attainment to Date': attainment_str,
+                'Gap to Date': gap_to_date,
+                'Q2 Plan Total': plan_total
+            })
+    
+    # Create Table 2: Reorganize by Segment first (matching Google Sheets structure)
+    table2_data = []
+    segment_order = ['SMB', 'Mid Market', 'Enterprise']
+    
+    for segment in segment_order:
+        segment_items = [item for item in table1_data if item['Segment'] == segment]
+        segment_items.sort(key=lambda x: (x['Source'], x['Booking Type']))
+        
+        for item in segment_items:
+            table2_data.append({
+                'Segment': item['Segment'],
+                'Source': item['Source'],
+                'Booking Type': item['Booking Type'],
+                'Actuals': item['Actuals'],
+                'Plan to Date': item['Plan to Date'],
+                'Attainment to Date': item['Attainment to Date'],
+                'Gap to Date': item['Gap to Date'],
+                'Q2 Plan Total': item['Q2 Plan Total']
+            })
+    
+    # Create Table 3: Source Summary
+    table3_data = []
+    source_grouped = sao_data.groupby('Source').size().reset_index(name='Actuals')
+    
+    for _, row in source_grouped.iterrows():
+        source = row['Source']
+        actuals = row['Actuals']
+        
+        if source in VALID_SOURCES:
+            # Sum all SAO plan data for this source
+            plan_total = 0
+            if sao_plan_data is not None:
+                source_plans = sao_plan_data[sao_plan_data['Source'] == source]
+                if not source_plans.empty:
+                    # Use actual SAO plan total
+                    plan_total = round(source_plans['SAO Plan'].sum())
+            
+            plan_to_date = round(plan_total * progress)
+            gap_to_date = actuals - plan_to_date
+            
+            if plan_to_date > 0:
+                attainment = (actuals / plan_to_date * 100)
+                attainment_str = f"{attainment:.0f}%" if attainment == int(attainment) else f"{attainment:.1f}%"
+            else:
+                attainment_str = "0%"
+            
+            table3_data.append({
+                'Source': source,
+                'Actuals': actuals,
+                'Plan to Date': plan_to_date,
+                'Attainment to Date': attainment_str,
+                'Gap to Date': gap_to_date,
+                'Q2 Plan Total': plan_total
+            })
+    
+    # Apply hierarchical totals - use same logic as SQL
+    table1_with_totals = add_hierarchical_totals(table1_data, "Source")
+    table2_with_totals = add_segment_hierarchical_totals(table2_data)
+    table3_with_totals = add_grand_total(table3_data)
+    
+    return {
+        'table1': table1_with_totals,
+        'table2': table2_with_totals,
+        'table3': table3_with_totals
+    }
+
+def generate_pipegen_data(df, pipegen_plan_data, progress):
+    """Generate pipegen (ARR) data tables using SAO Date and ARR Change values."""
+    # Filter for pipegen data (where SAO Date is not null and has ARR Change)
+    pipegen_data = df[(df['SAO Date'].notna()) & (df['ARR Change'].notna())].copy()
+    
+    # Filter for current fiscal quarter using SAO Date Quarter
+    current_quarter = "2026-Q2"
+    pipegen_data = pipegen_data[pipegen_data['SAO Date_Quarter'] == current_quarter]
+    
+    # Create aggregated data for Table 1: Source × Segment × Booking Type
+    table1_data = []
+    
+    # Group by Source, Segment, and Booking Type and sum ARR Change
+    grouped = pipegen_data.groupby(['Source', 'Segment - historical', 'Bookings Type'])['ARR Change'].sum().reset_index(name='Actuals')
+    
+    for _, row in grouped.iterrows():
+        source = row['Source']
+        segment = row['Segment - historical']
+        booking_type = row['Bookings Type']
+        actuals = row['Actuals']
+        
+        # Filter for valid combinations and source-specific booking types
+        valid_source_booking_types = {
+            'AE': ['New Business', 'Expansion'],
+            'BDR': ['New Business'],  # BDR only operates in Mid Market and Enterprise, not SMB
+            'Channel': ['New Business', 'Expansion'],
+            'Marketing': ['New Business', 'Expansion'],
+            'Success': ['Expansion']
+        }
+        
+        if (source in VALID_SOURCES and 
+            segment in ['SMB', 'Mid Market', 'Enterprise'] and 
+            booking_type in valid_source_booking_types.get(source, []) and
+            not (source == 'BDR' and segment == 'SMB')):  # Exclude BDR from SMB
+            
+            # Use actual pipegen plan data
+            plan_total = 0
+            if pipegen_plan_data is not None:
+                matching_plan = pipegen_plan_data[
+                    (pipegen_plan_data['Source'] == source) & 
+                    (pipegen_plan_data['Segment'] == segment) & 
+                    (pipegen_plan_data['Booking Type'] == booking_type)
+                ]
+                if not matching_plan.empty:
+                    plan_total = round(matching_plan.iloc[0]['Pipegen Plan'])
+            
+            plan_to_date = plan_total * progress
+            gap_to_date = actuals - plan_to_date
+            
+            if plan_to_date > 0:
+                attainment = (actuals / plan_to_date * 100)
+                attainment_str = f"{attainment:.0f}%" if attainment == int(attainment) else f"{attainment:.1f}%"
+            else:
+                attainment_str = "0%"
+            
+            table1_data.append({
+                'Source': source,
+                'Segment': segment,
+                'Booking Type': booking_type,
+                'Actuals': actuals,
+                'Plan to Date': plan_to_date,
+                'Attainment to Date': attainment_str,
+                'Gap to Date': gap_to_date,
+                'Q2 Plan Total': plan_total
+            })
+    
+    # Create Table 2: Reorganize by Segment first (matching Google Sheets structure)
+    table2_data = []
+    segment_order = ['SMB', 'Mid Market', 'Enterprise']
+    
+    for segment in segment_order:
+        segment_items = [item for item in table1_data if item['Segment'] == segment]
+        segment_items.sort(key=lambda x: (x['Source'], x['Booking Type']))
+        
+        for item in segment_items:
+            table2_data.append({
+                'Segment': item['Segment'],
+                'Source': item['Source'],
+                'Booking Type': item['Booking Type'],
+                'Actuals': item['Actuals'],
+                'Plan to Date': item['Plan to Date'],
+                'Attainment to Date': item['Attainment to Date'],
+                'Gap to Date': item['Gap to Date'],
+                'Q2 Plan Total': item['Q2 Plan Total']
+            })
+    
+    # Create Table 3: Source Summary
+    table3_data = []
+    source_grouped = pipegen_data.groupby('Source')['ARR Change'].sum().reset_index(name='Actuals')
+    
+    for _, row in source_grouped.iterrows():
+        source = row['Source']
+        actuals = row['Actuals']
+        
+        if source in VALID_SOURCES:
+            # Sum all pipegen plan data for this source
+            plan_total = 0
+            if pipegen_plan_data is not None:
+                source_plans = pipegen_plan_data[pipegen_plan_data['Source'] == source]
+                if not source_plans.empty:
+                    # Use actual pipegen plan total
+                    plan_total = round(source_plans['Pipegen Plan'].sum())
+            
+            plan_to_date = plan_total * progress
+            gap_to_date = actuals - plan_to_date
+            
+            if plan_to_date > 0:
+                attainment = (actuals / plan_to_date * 100)
+                attainment_str = f"{attainment:.0f}%" if attainment == int(attainment) else f"{attainment:.1f}%"
+            else:
+                attainment_str = "0%"
+            
+            table3_data.append({
+                'Source': source,
+                'Actuals': actuals,
+                'Plan to Date': plan_to_date,
+                'Attainment to Date': attainment_str,
+                'Gap to Date': gap_to_date,
+                'Q2 Plan Total': plan_total
+            })
+    
+    # Apply hierarchical totals
+    table1_with_totals = add_hierarchical_totals(table1_data, "Source")
+    table2_with_totals = add_segment_hierarchical_totals(table2_data)
+    table3_with_totals = add_grand_total(table3_data)
+    
+    return {
+        'table1': table1_with_totals,
+        'table2': table2_with_totals,
+        'table3': table3_with_totals
+    }
 
 if __name__ == "__main__":
     main()
