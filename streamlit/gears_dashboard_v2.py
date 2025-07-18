@@ -163,8 +163,12 @@ def get_quarter_progress():
 def load_master_report_data():
     """Load the master_report.csv file and create the three tables from raw data."""
     try:
-        # Load the CSV file
-        df = pd.read_csv("../data_sources/master_report.csv")
+        # Load the CSV file - try both local and deployment paths
+        try:
+            df = pd.read_csv("../data_sources/master_report.csv")
+        except FileNotFoundError:
+            # Try deployment path
+            df = pd.read_csv("data_sources/master_report.csv")
         
         # Load plan data to merge with calculations
         plan_data = load_plan_data_from_csv()
@@ -331,7 +335,10 @@ def load_plan_data_from_csv():
     """Load plan data from CSV files."""
     try:
         current_quarter = get_current_quarter()
+        # Try both local and deployment paths
         plan_dir = "../data_sources/plan_data"
+        if not os.path.exists(plan_dir):
+            plan_dir = "data_sources/plan_data"
         
         # Load SQL plan data
         sql_plan_file = os.path.join(plan_dir, f"sql_plan_{current_quarter.lower()}.csv")
