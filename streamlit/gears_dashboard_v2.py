@@ -12,6 +12,15 @@ from datetime import datetime
 import os
 import pytz
 import re
+import requests
+from io import StringIO
+
+# Try to import Salesforce functionality
+try:
+    from simple_salesforce import Salesforce
+    SALESFORCE_AVAILABLE = True
+except ImportError:
+    SALESFORCE_AVAILABLE = False
 
 # Configuration
 VALID_SEGMENTS = ['Enterprise', 'Mid Market', 'SMB']
@@ -159,16 +168,65 @@ def get_quarter_progress():
     
     return progress, days_elapsed, total_days
 
+def connect_to_salesforce():
+    """Connect to Salesforce using Streamlit secrets."""
+    if not SALESFORCE_AVAILABLE:
+        return None
+    
+    try:
+        # Try to get credentials from Streamlit secrets
+        sf_username = st.secrets.get("SF_USERNAME", os.getenv('SF_USERNAME'))
+        sf_password = st.secrets.get("SF_PASSWORD", os.getenv('SF_PASSWORD'))
+        sf_security_token = st.secrets.get("SF_SECURITY_TOKEN", os.getenv('SF_SECURITY_TOKEN'))
+        
+        if not all([sf_username, sf_password, sf_security_token]):
+            return None
+        
+        sf = Salesforce(username=sf_username, password=sf_password, security_token=sf_security_token)
+        return sf
+    except Exception as e:
+        st.warning(f"Could not connect to Salesforce: {e}")
+        return None
+
+def fetch_salesforce_report(sf):
+    """Fetch fresh data from Salesforce report."""
+    if not sf:
+        return None
+    
+    try:
+        sf_instance = 'https://envoy.my.salesforce.com/'
+        reportId = '00OUO000009IZVD2A4'
+        export = '?isdtp=p1&export=1&enc=UTF-8&xf=csv'
+        sfUrl = sf_instance + reportId + export
+        
+        response = requests.get(sfUrl, headers=sf.headers, cookies={'sid': sf.session_id})
+        download_report = response.content.decode('utf-8')
+        df = pd.read_csv(StringIO(download_report))
+        
+        return df
+    except Exception as e:
+        st.warning(f"Could not fetch fresh data from Salesforce: {e}")
+        return None
+
 @st.cache_data(ttl=3600)
 def load_master_report_data():
     """Load the master_report.csv file and create the three tables from raw data."""
     try:
-        # Load the CSV file - try both local and deployment paths
-        try:
-            df = pd.read_csv("../data_sources/master_report.csv")
-        except FileNotFoundError:
-            # Try deployment path
-            df = pd.read_csv("data_sources/master_report.csv")
+        # Try to fetch fresh data from Salesforce first
+        sf = connect_to_salesforce()
+        fresh_df = fetch_salesforce_report(sf)
+        
+        if fresh_df is not None:
+            st.success("✅ Using fresh data from Salesforce")
+            df = fresh_df
+        else:
+            # Fallback to CSV file - try both local and deployment paths
+            st.info("📁 Using cached data from CSV file")
+            try:
+                df = pd.read_csv("../data_sources/master_report.csv")
+            except FileNotFoundError:
+                # Try deployment path
+                df = pd.read_csv("data_sources/master_report.csv")
         
         # Load plan data to merge with calculations
         plan_data = load_plan_data_from_csv()
@@ -956,6 +1014,13 @@ def calculate_subtotal(df, label, level_type):
 def main():
     """Main dashboard function."""
     st.title("⚙️ Gears - Pipeline Attainment Dashboard")
+    
+    # Add refresh button
+    col1, col2 = st.columns([3, 1])
+    with col2:
+        if st.button("🔄 Refresh Data", help="Fetch fresh data from Salesforce"):
+            st.cache_data.clear()
+            st.rerun()
     
     # Load the master report data
     sqls_data = load_master_report_data()
