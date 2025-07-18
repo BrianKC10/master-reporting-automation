@@ -243,7 +243,7 @@ def load_master_report_data():
                     'Q2 Plan Total': plan_total
                 })
         
-        # Create Table 2: Reorganize by Segment first
+        # Create Table 2: Reorganize by Segment first (matching Google Sheets structure)
         table2_data = []
         segment_order = ['SMB', 'Mid Market', 'Enterprise']
         
@@ -308,8 +308,9 @@ def load_master_report_data():
         
         # Add subtotals and totals to tables
         table1_data_with_totals = add_hierarchical_totals(table1_data, 'Source')
-        table2_data_with_totals = add_hierarchical_totals(table2_data, 'Segment')
+        table2_data_with_totals = add_segment_hierarchical_totals(table2_data)
         table3_data_with_totals = add_grand_total(table3_data)
+        
         
         # Sort tables appropriately
         table1_data.sort(key=lambda x: (x['Source'], segment_order.index(x['Segment']), x['Booking Type']))
@@ -448,7 +449,7 @@ def format_gap(value):
     return f'<span class="{color_class}">{formatted_value}</span>'
 
 def create_table_html(data, title):
-    """Create HTML table with proper formatting and merged cells."""
+    """Create HTML table with appropriate styling based on table type."""
     if not data:
         return f"<h3>{title}</h3><p>No data available</p>"
     
@@ -473,118 +474,233 @@ def create_table_html(data, title):
         <tbody>
     """
     
-    # Group data for merged cells
+    # Handle Source Summary table differently (no subtotals, simple table)
     if title == "Source Summary":
-        # For Source Summary, no grouping needed
         for _, row in df.iterrows():
             html += '<tr>'
             for col in df.columns:
                 value = row[col]
                 formatted_value = format_table_value(value, col)
-                html += f'<td style="border: 1px solid #ddd; padding: 6px; text-align: center;">{formatted_value}</td>'
+                cell_style = 'border: 1px solid #ddd; padding: 6px; text-align: center;'
+                
+                # Bold styling for "Total" rows
+                if 'Total' in str(row.get('Source', '')):
+                    cell_style += ' font-weight: bold;'
+                
+                html += f'<td style="{cell_style}">{formatted_value}</td>'
             html += '</tr>'
     else:
-        # Determine grouping based on table structure
-        if 'Segment' in df.columns and df.columns[0] == 'Segment':
-            # Table 2: Segment × Source × Booking Type
-            # Group by Segment first, then Source within each segment
-            segment_groups = df.groupby('Segment', sort=False)
+        # Handle different table types
+        if title == "Segment × Source × Booking Type":
+            # For Segment × Source × Booking Type table (segment-first)
+            segment_spans = {}
+            source_spans = {}
             
-            for segment, segment_df in segment_groups:
-                source_groups = segment_df.groupby('Source', sort=False)
-                segment_row_count = len(segment_df)
-                segment_first_row = True
+            for _, row in df.iterrows():
+                segment = row.get('Segment', '')
+                source = row.get('Source', '')
                 
-                for source, source_df in source_groups:
-                    source_rows = source_df.reset_index(drop=True)
-                    source_row_count = len(source_rows)
-                    
-                    for i, (_, row) in enumerate(source_rows.iterrows()):
-                        html += '<tr>'
+                # Count all rows that belong to each segment (including source totals, but not segment totals)
+                if 'Grand Total' not in segment:
+                    if 'Total' in segment:
+                        # This is a segment total row - separate from segment spans
+                        pass
+                    elif 'Total' in source:
+                        # This is a source total within segment - belongs to segment span
+                        if segment not in segment_spans:
+                            segment_spans[segment] = 0
+                        segment_spans[segment] += 1
+                    else:
+                        # Data row
+                        if segment not in segment_spans:
+                            segment_spans[segment] = 0
+                        segment_spans[segment] += 1
                         
-                        for col in df.columns:
-                            value = row[col]
-                            formatted_value = format_table_value(value, col)
-                            
-                            # Merge Segment cell across all rows in segment
-                            if col == 'Segment' and segment_first_row:
-                                html += f'<td style="border: 1px solid #ddd; padding: 6px; text-align: center; vertical-align: middle; font-weight: bold; font-size: 16px;" rowspan="{segment_row_count}">{formatted_value}</td>'
-                                segment_first_row = False
-                            elif col == 'Segment':
-                                continue
-                            # Merge Source cell within segment
-                            elif col == 'Source' and i == 0:
-                                html += f'<td style="border: 1px solid #ddd; padding: 6px; text-align: center; vertical-align: middle; font-weight: bold;" rowspan="{source_row_count}">{formatted_value}</td>'
-                            elif col == 'Source' and i > 0:
-                                continue
-                            else:
-                                html += f'<td style="border: 1px solid #ddd; padding: 6px; text-align: center;">{formatted_value}</td>'
-                        
-                        html += '</tr>'
-        else:
-            # Table 1: Source × Segment × Booking Type
-            # Group by Source first, then Segment within each source
-            source_groups = df.groupby('Source', sort=False)
+                        # Count source spans (data rows only, source total is separate)
+                        source_key = f"{segment}-{source}"
+                        if source_key not in source_spans:
+                            source_spans[source_key] = 0
+                        source_spans[source_key] += 1
             
-            for source, source_df in source_groups:
-                if 'Segment' in df.columns:
-                    segment_groups = source_df.groupby('Segment', sort=False)
-                    source_row_count = len(source_df)
-                    source_first_row = True
+            # Render with proper rowspan for segment-first table
+            segment_rendered = {}
+            source_rendered = {}
+            
+            for _, row in df.iterrows():
+                segment = row.get('Segment', '')
+                source = row.get('Source', '')
+                
+                is_source_total = 'Total' in source and 'Total' not in segment and 'Grand' not in source
+                is_segment_total = 'Total' in segment and 'Grand' not in segment
+                is_grand_total = 'Grand Total' in segment
+                
+                html += '<tr>'
+                
+                for col in df.columns:
+                    value = row[col]
+                    formatted_value = format_table_value(value, col)
                     
-                    for segment, segment_df in segment_groups:
-                        segment_rows = segment_df.reset_index(drop=True)
-                        segment_row_count = len(segment_rows)
-                        
-                        for i, (_, row) in enumerate(segment_rows.iterrows()):
-                            html += '<tr>'
-                            
-                            for col in df.columns:
-                                value = row[col]
-                                formatted_value = format_table_value(value, col)
-                                
-                                # Check if this is a total row
-                                is_total_row = 'Total' in str(row.get('Source', ''))
-                                cell_style = 'border: 1px solid #ddd; padding: 6px; text-align: center;'
-                                
-                                if is_total_row:
-                                    cell_style += ' font-weight: bold; background-color: #f0f0f0;'
-                                
-                                # Merge Source cell across all rows in source (unless it's a total row)
-                                if col == 'Source' and source_first_row and not is_total_row:
-                                    html += f'<td style="{cell_style} vertical-align: middle; font-weight: bold; font-size: 16px;" rowspan="{source_row_count}">{formatted_value}</td>'
-                                    source_first_row = False
-                                elif col == 'Source' and not is_total_row:
-                                    continue
-                                # Merge Segment cell within source (unless it's a total row)
-                                elif col == 'Segment' and i == 0 and not is_total_row:
-                                    html += f'<td style="{cell_style} vertical-align: middle; font-weight: bold;" rowspan="{segment_row_count}">{formatted_value}</td>'
-                                elif col == 'Segment' and i > 0 and not is_total_row:
-                                    continue
-                                else:
-                                    html += f'<td style="{cell_style}">{formatted_value}</td>'
-                            
-                            html += '</tr>'
-                else:
-                    # No segment column, just merge source
-                    source_rows = source_df.reset_index(drop=True)
-                    source_row_count = len(source_rows)
+                    cell_style = 'border: 1px solid #ddd; padding: 6px; text-align: center;'
                     
-                    for i, (_, row) in enumerate(source_rows.iterrows()):
-                        html += '<tr>'
-                        
-                        for col in df.columns:
-                            value = row[col]
-                            formatted_value = format_table_value(value, col)
-                            
-                            if col == 'Source' and i == 0:
-                                html += f'<td style="border: 1px solid #ddd; padding: 6px; text-align: center; vertical-align: middle; font-weight: bold; font-size: 16px;" rowspan="{source_row_count}">{formatted_value}</td>'
-                            elif col == 'Source' and i > 0:
-                                continue
+                    if col == 'Segment':
+                        if is_grand_total or is_segment_total:
+                            # Grand total and segment totals show their labels
+                            cell_style += ' font-weight: bold;'
+                            html += f'<td style="{cell_style}">{formatted_value}</td>'
+                        elif is_source_total:
+                            # Source totals are within the segment rowspan - don't render Segment cell
+                            pass
+                        else:
+                            # Data rows - use rowspan for first occurrence
+                            if segment not in segment_rendered:
+                                segment_rendered[segment] = True
+                                rowspan = segment_spans.get(segment, 1)
+                                cell_style += ' font-weight: bold; vertical-align: middle; font-size: 14px;'
+                                html += f'<td style="{cell_style}" rowspan="{rowspan}">{formatted_value}</td>'
+                            # Skip cell for subsequent rows (covered by rowspan)
+                    
+                    elif col == 'Source':
+                        if is_source_total:
+                            # Source totals show their label - extract just the source part
+                            parts = row.get('Source', '').split()
+                            if len(parts) >= 2:
+                                source_label = f"{parts[0]} Total"
                             else:
-                                html += f'<td style="border: 1px solid #ddd; padding: 6px; text-align: center;">{formatted_value}</td>'
+                                source_label = formatted_value
+                            cell_style += ' font-weight: bold;'
+                            html += f'<td style="{cell_style}">{source_label}</td>'
+                        elif is_segment_total or is_grand_total:
+                            # Segment and grand totals show empty source
+                            formatted_value = ''
+                            html += f'<td style="{cell_style}">{formatted_value}</td>'
+                        else:
+                            # Data rows - use rowspan for first occurrence
+                            source_key = f"{segment}-{source}"
+                            if source_key not in source_rendered:
+                                source_rendered[source_key] = True
+                                rowspan = source_spans.get(source_key, 1)
+                                cell_style += ' font-weight: bold; vertical-align: middle;'
+                                html += f'<td style="{cell_style}" rowspan="{rowspan}">{formatted_value}</td>'
+                            # Skip cell for subsequent rows (covered by rowspan)
+                    
+                    else:
+                        # All other columns
+                        if col == 'Booking Type' and (is_source_total or is_segment_total or is_grand_total):
+                            formatted_value = ''
                         
-                        html += '</tr>'
+                        if is_grand_total or is_segment_total or is_source_total:
+                            cell_style += ' font-weight: bold;'
+                        
+                        html += f'<td style="{cell_style}">{formatted_value}</td>'
+                
+                html += '</tr>'
+        else:
+            # For Source × Segment × Booking Type table (source-first)
+            # Create proper merged cells like Google Sheets
+            # First, calculate how many rows each source and segment should span
+            source_spans = {}
+            segment_spans = {}
+            
+            for _, row in df.iterrows():
+                source = row.get('Source', '')
+                segment = row.get('Segment', '')
+                
+                # Count all rows that belong to each source (including segment totals, but not source totals)
+                if 'Grand Total' not in source:
+                    if 'Total' in source:
+                        # This is a total row - extract the actual source
+                        if any(seg in source for seg in ['SMB', 'Mid Market', 'Enterprise']):
+                            # Segment total like "AE SMB Total" - belongs to AE span
+                            actual_source = source.split()[0]
+                            if actual_source not in source_spans:
+                                source_spans[actual_source] = 0
+                            source_spans[actual_source] += 1
+                        # Source totals like "AE Total" are separate rows, don't count in span
+                    else:
+                        # Data row
+                        if source not in source_spans:
+                            source_spans[source] = 0
+                        source_spans[source] += 1
+                        
+                        # Count segment spans (data rows only, segment total is separate)
+                        segment_key = f"{source}-{segment}"
+                        if segment_key not in segment_spans:
+                            segment_spans[segment_key] = 0
+                        segment_spans[segment_key] += 1
+            
+            # Now render with proper rowspan
+            source_rendered = {}
+            segment_rendered = {}
+            
+            for _, row in df.iterrows():
+                source = row.get('Source', '')
+                segment = row.get('Segment', '')
+                
+                is_segment_total = 'Total' in source and any(seg in source for seg in ['SMB', 'Mid Market', 'Enterprise'])
+                is_source_total = 'Total' in source and not is_segment_total and 'Grand' not in source
+                is_grand_total = 'Grand Total' in source
+                
+                html += '<tr>'
+                
+                for col in df.columns:
+                    value = row[col]
+                    formatted_value = format_table_value(value, col)
+                    
+                    cell_style = 'border: 1px solid #ddd; padding: 6px; text-align: center;'
+                    
+                    if col == 'Source':
+                        if is_grand_total or is_source_total:
+                            # Grand total and source totals show their labels
+                            cell_style += ' font-weight: bold;'
+                            html += f'<td style="{cell_style}">{formatted_value}</td>'
+                        elif is_segment_total:
+                            # Segment totals are within the source rowspan - don't render Source cell
+                            pass
+                        else:
+                            # Data rows - use rowspan for first occurrence
+                            if source not in source_rendered:
+                                source_rendered[source] = True
+                                rowspan = source_spans.get(source, 1)
+                                cell_style += ' font-weight: bold; vertical-align: middle; font-size: 14px;'
+                                html += f'<td style="{cell_style}" rowspan="{rowspan}">{formatted_value}</td>'
+                            # Skip cell for subsequent rows (covered by rowspan)
+                    
+                    elif col == 'Segment':
+                        if is_segment_total:
+                            # Segment totals show their label - extract just the segment part
+                            # From "AE SMB Total" show "SMB Total"
+                            parts = row.get('Source', '').split()
+                            if len(parts) >= 3:
+                                segment_label = f"{parts[1]} Total"
+                            else:
+                                segment_label = formatted_value
+                            cell_style += ' font-weight: bold;'
+                            html += f'<td style="{cell_style}">{segment_label}</td>'
+                        elif is_source_total or is_grand_total:
+                            # Source and grand totals show empty segment
+                            formatted_value = ''
+                            html += f'<td style="{cell_style}">{formatted_value}</td>'
+                        else:
+                            # Data rows - use rowspan for first occurrence
+                            segment_key = f"{source}-{segment}"
+                            if segment_key not in segment_rendered:
+                                segment_rendered[segment_key] = True
+                                rowspan = segment_spans.get(segment_key, 1)
+                                cell_style += ' font-weight: bold; vertical-align: middle;'
+                                html += f'<td style="{cell_style}" rowspan="{rowspan}">{formatted_value}</td>'
+                            # Skip cell for subsequent rows (covered by rowspan)
+                    
+                    else:
+                        # All other columns
+                        if col == 'Booking Type' and (is_segment_total or is_source_total or is_grand_total):
+                            formatted_value = ''
+                        
+                        if is_grand_total or is_source_total or is_segment_total:
+                            cell_style += ' font-weight: bold;'
+                        
+                        html += f'<td style="{cell_style}">{formatted_value}</td>'
+                
+                html += '</tr>'
     
     html += """
         </tbody>
@@ -612,47 +728,91 @@ def add_hierarchical_totals(data, primary_group):
     result = []
     df = pd.DataFrame(data)
     
-    # Sort data appropriately
-    segment_order = ['SMB', 'Mid Market', 'Enterprise']
     if primary_group == 'Source':
-        df = df.sort_values(['Source', 'Segment', 'Booking Type'])
+        # For Source × Segment × Booking Type table
+        segment_order = ['SMB', 'Mid Market', 'Enterprise']
         df['Segment'] = pd.Categorical(df['Segment'], categories=segment_order, ordered=True)
         df = df.sort_values(['Source', 'Segment', 'Booking Type'])
-    else:
-        df = df.sort_values(['Segment', 'Source', 'Booking Type'])
-        df['Segment'] = pd.Categorical(df['Segment'], categories=segment_order, ordered=True)
-        df = df.sort_values(['Segment', 'Source', 'Booking Type'])
-    
-    # Group by primary group (Source or Segment)
-    primary_groups = df.groupby(primary_group, sort=False)
-    
-    for primary_key, primary_df in primary_groups:
-        # Group by secondary group within primary
-        if primary_group == 'Source':
-            secondary_groups = primary_df.groupby('Segment', sort=False)
-        else:
-            secondary_groups = primary_df.groupby('Source', sort=False)
         
-        for secondary_key, secondary_df in secondary_groups:
-            # Add individual rows
-            for _, row in secondary_df.iterrows():
-                result.append(row.to_dict())
+        # Group by Source
+        for source in df['Source'].unique():
+            source_data = df[df['Source'] == source]
             
-            # Add segment subtotal if more than one booking type
-            if len(secondary_df) > 1:
-                if primary_group == 'Source':
-                    subtotal_label = f"{primary_key} {secondary_key} Total"
-                else:
-                    subtotal_label = f"{secondary_key} {primary_key} Total"
-                
-                subtotal = calculate_subtotal(secondary_df, subtotal_label, "segment")
-                result.append(subtotal)
-        
-        # Add primary group total
-        primary_total = calculate_subtotal(primary_df, f"{primary_key} Total", primary_group.lower())
-        result.append(primary_total)
+            # Process each segment within this source
+            for segment in segment_order:
+                segment_data = source_data[source_data['Segment'] == segment]
+                if len(segment_data) > 0:
+                    # Add individual rows for this segment
+                    for _, row in segment_data.iterrows():
+                        result.append(row.to_dict())
+                    
+                    # Add segment subtotal only if there are multiple booking types
+                    # Check what booking types this source actually supports
+                    valid_source_booking_types = {
+                        'AE': ['New Business', 'Expansion'],
+                        'BDR': ['New Business'],
+                        'Channel': ['New Business', 'Expansion'],
+                        'Marketing': ['New Business', 'Expansion'],
+                        'Success': ['Expansion']
+                    }
+                    
+                    # Only add subtotal if this source supports multiple booking types
+                    # AND this segment actually has multiple booking types
+                    source_supports_multiple = len(valid_source_booking_types.get(source, [])) > 1
+                    segment_has_multiple = len(segment_data['Booking Type'].unique()) > 1
+                    
+                    if source_supports_multiple and segment_has_multiple:
+                        subtotal_label = f"{source} {segment} Total"
+                        subtotal = calculate_subtotal(segment_data, subtotal_label, "segment")
+                        result.append(subtotal)
+            
+            # Add source total after all segments
+            source_total = calculate_subtotal(source_data, f"{source} Total", "source")
+            result.append(source_total)
     
-    # Add grand total
+    else:
+        # For Segment × Source × Booking Type table
+        segment_order = ['SMB', 'Mid Market', 'Enterprise']
+        df['Segment'] = pd.Categorical(df['Segment'], categories=segment_order, ordered=True)
+        df = df.sort_values(['Segment', 'Source', 'Booking Type'])
+        
+        # Group by Segment
+        for segment in segment_order:
+            segment_data = df[df['Segment'] == segment]
+            if len(segment_data) > 0:
+                # Process each source within this segment
+                for source in segment_data['Source'].unique():
+                    source_data = segment_data[segment_data['Source'] == source]
+                    
+                    # Add individual rows for this source
+                    for _, row in source_data.iterrows():
+                        result.append(row.to_dict())
+                    
+                    # Add source subtotal only if this source supports multiple booking types
+                    # Check what booking types this source actually supports
+                    valid_source_booking_types = {
+                        'AE': ['New Business', 'Expansion'],
+                        'BDR': ['New Business'],
+                        'Channel': ['New Business', 'Expansion'],
+                        'Marketing': ['New Business', 'Expansion'],
+                        'Success': ['Expansion']
+                    }
+                    
+                    # Only add subtotal if this source supports multiple booking types
+                    # AND this source actually has multiple booking types
+                    source_supports_multiple = len(valid_source_booking_types.get(source, [])) > 1
+                    source_has_multiple = len(source_data['Booking Type'].unique()) > 1
+                    
+                    if source_supports_multiple and source_has_multiple:
+                        subtotal_label = f"{source} Total"
+                        subtotal = calculate_subtotal(source_data, subtotal_label, "segment")
+                        result.append(subtotal)
+                
+                # Add segment total after all sources
+                segment_total = calculate_subtotal(segment_data, f"{segment} Total", "segment")
+                result.append(segment_total)
+    
+    # Add grand total at the end
     grand_total = calculate_subtotal(df, "Grand Total", "grand")
     result.append(grand_total)
     
@@ -672,6 +832,69 @@ def add_grand_total(data):
     
     return result
 
+def add_segment_hierarchical_totals(data):
+    """Add hierarchical totals for segment-first table (Segment × Source × Booking Type)."""
+    if not data:
+        return data
+    
+    result = []
+    df = pd.DataFrame(data)
+    
+    # Define order
+    segment_order = ['SMB', 'Mid Market', 'Enterprise']
+    df['Segment'] = pd.Categorical(df['Segment'], categories=segment_order, ordered=True)
+    df = df.sort_values(['Segment', 'Source', 'Booking Type'])
+    
+    # Valid source booking types
+    valid_source_booking_types = {
+        'AE': ['New Business', 'Expansion'],
+        'BDR': ['New Business'],
+        'Channel': ['New Business', 'Expansion'],
+        'Marketing': ['New Business', 'Expansion'],
+        'Success': ['Expansion']
+    }
+    
+    # Group by Segment
+    for segment in segment_order:
+        segment_data = df[df['Segment'] == segment]
+        if len(segment_data) > 0:
+            # Process each source within this segment
+            for source in segment_data['Source'].unique():
+                source_data = segment_data[segment_data['Source'] == source]
+                
+                # Add individual rows for this source
+                for _, row in source_data.iterrows():
+                    result.append(row.to_dict())
+                
+                # Add source subtotal only if this source supports multiple booking types
+                # AND this source actually has multiple booking types
+                source_supports_multiple = len(valid_source_booking_types.get(source, [])) > 1
+                source_has_multiple = len(source_data['Booking Type'].unique()) > 1
+                
+                if source_supports_multiple and source_has_multiple:
+                    subtotal_label = f"{source} Total"
+                    subtotal = calculate_subtotal(source_data, subtotal_label, "source")
+                    # For segment-first table, put the source total in the Source column
+                    subtotal['Segment'] = segment
+                    subtotal['Source'] = subtotal_label
+                    result.append(subtotal)
+            
+            # Add segment total after all sources
+            segment_total = calculate_subtotal(segment_data, f"{segment} Total", "segment")
+            # For segment-first table, put the segment total in the Segment column
+            segment_total['Segment'] = f"{segment} Total"
+            segment_total['Source'] = ''
+            result.append(segment_total)
+    
+    # Add grand total at the end
+    grand_total = calculate_subtotal(df, "Grand Total", "grand")
+    # For segment-first table, put the grand total in the Segment column
+    grand_total['Segment'] = "Grand Total"
+    grand_total['Source'] = ''
+    result.append(grand_total)
+    
+    return result
+
 def calculate_subtotal(df, label, level_type):
     """Calculate subtotal row from DataFrame."""
     subtotal = {
@@ -687,7 +910,7 @@ def calculate_subtotal(df, label, level_type):
         subtotal['Segment'] = ''
         subtotal['Booking Type'] = ''
     elif level_type == 'segment':
-        # For segment subtotals, put label in Source column, clear others
+        # For segment subtotals within source, put label in Source column
         subtotal['Source'] = label
         subtotal['Segment'] = ''
         subtotal['Booking Type'] = ''
