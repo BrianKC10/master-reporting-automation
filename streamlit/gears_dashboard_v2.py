@@ -208,6 +208,83 @@ def fetch_salesforce_report(sf):
         st.warning(f"Could not fetch fresh data from Salesforce: {e}")
         return None
 
+def process_salesforce_data(df):
+    """Process fresh Salesforce data to add quarter columns similar to cached CSV."""
+    # Convert date columns to datetime
+    date_columns = ['Created Date', 'SQO Date', 'SAO Date', 'Timestamp: Solution Validation', 'Close Date']
+    
+    for col in date_columns:
+        if col in df.columns:
+            df[col] = pd.to_datetime(df[col], errors='coerce')
+    
+    # Add quarter information for each date column
+    for col in date_columns:
+        if col in df.columns:
+            # Add quarter column
+            quarter_col = f"{col}_Quarter"
+            df[quarter_col] = df[col].apply(lambda x: get_quarter_from_date(x) if pd.notna(x) else None)
+            
+            # Add week of quarter column (simplified)
+            week_col = f"{col}_Week_of_Quarter"
+            df[week_col] = df[col].apply(lambda x: get_week_of_quarter(x) if pd.notna(x) else None)
+            
+            # Add month column
+            month_col = f"{col}_Month"
+            df[month_col] = df[col].dt.month
+            
+            # Add day of week column
+            dow_col = f"{col}_Day_of_Week"
+            df[dow_col] = df[col].dt.dayofweek
+            
+            # Add day name column
+            day_name_col = f"{col}_Day_Name"
+            df[day_name_col] = df[col].dt.day_name()
+    
+    return df
+
+def get_quarter_from_date(date_val):
+    """Get quarter string from date (e.g., '2026-Q2')."""
+    if pd.isna(date_val):
+        return None
+    
+    # Fiscal year logic (Feb-Jan cycle)
+    if date_val.month >= 2:
+        fiscal_year = date_val.year + 1
+    else:
+        fiscal_year = date_val.year
+    
+    # Quarter logic
+    if 2 <= date_val.month <= 4:
+        quarter = "Q1"
+    elif 5 <= date_val.month <= 7:
+        quarter = "Q2"
+    elif 8 <= date_val.month <= 10:
+        quarter = "Q3"
+    else:  # Nov, Dec, Jan
+        quarter = "Q4"
+    
+    return f"{fiscal_year}-{quarter}"
+
+def get_week_of_quarter(date_val):
+    """Get week of quarter (simplified calculation)."""
+    if pd.isna(date_val):
+        return None
+    
+    # Simple calculation - first week of month in quarter + week within month
+    quarter_start_months = {2: 1, 5: 1, 8: 1, 11: 1, 12: 1, 1: 1}  # Simplified
+    week_in_month = (date_val.day - 1) // 7 + 1
+    
+    if date_val.month in [2, 5, 8, 11]:
+        base_week = 0
+    elif date_val.month in [3, 6, 9, 12]:
+        base_week = 4
+    elif date_val.month in [4, 7, 10, 1]:
+        base_week = 8
+    else:
+        base_week = 0
+    
+    return base_week + week_in_month
+
 @st.cache_data(ttl=3600)
 def load_master_report_data():
     """Load the master_report.csv file and create the three tables from raw data."""
@@ -219,6 +296,8 @@ def load_master_report_data():
         if fresh_df is not None:
             st.success("✅ Using fresh data from Salesforce")
             df = fresh_df
+            # Process date columns to add quarter information for fresh data
+            df = process_salesforce_data(df)
         else:
             # Fallback to CSV file - try both local and deployment paths
             st.info("📁 Using cached data from CSV file")
