@@ -826,8 +826,22 @@ def add_grand_total(data):
     result = list(data)  # Copy existing data
     df = pd.DataFrame(data)
     
-    # Add grand total
-    grand_total = calculate_subtotal(df, "Total", "grand")
+    # Add grand total - only include columns that exist in the data
+    grand_total = {
+        'Source': 'Total',
+        'Actuals': df['Actuals'].sum(),
+        'Plan to Date': df['Plan to Date'].sum(),
+        'Gap to Date': df['Gap to Date'].sum(),
+        'Q2 Plan Total': df['Q2 Plan Total'].sum()
+    }
+    
+    # Calculate attainment based on totals
+    if grand_total['Plan to Date'] > 0:
+        attainment = (grand_total['Actuals'] / grand_total['Plan to Date'] * 100)
+        grand_total['Attainment to Date'] = f"{attainment:.0f}%" if attainment == int(attainment) else f"{attainment:.1f}%"
+    else:
+        grand_total['Attainment to Date'] = "0%"
+    
     result.append(grand_total)
     
     return result
